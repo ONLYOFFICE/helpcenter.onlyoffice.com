@@ -39,19 +39,7 @@ const nextConfig = {
         destination,
         permanent,
       };
-    }).concat([
-      {
-        source: '/:lang(fr|de|it|es|ru)/:path*',
-        destination: 'https://guides.onlyoffice.com/:lang/:path*',
-        permanent: true,
-      },
-      {
-        source: '/:lang(fr|de|it|es|ru)',
-        destination: 'https://guides.onlyoffice.com/:lang',
-        permanent: true,
-      },
-      
-    ]);
+    });
   },
 };
 

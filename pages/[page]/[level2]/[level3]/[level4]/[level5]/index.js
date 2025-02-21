@@ -63,11 +63,21 @@ export const getServerSideProps = async ({ locale, params }) => {
   const data = await getArticle(locale, params.page, `${locale === "en" ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}/${params.level4}/${params.level5}`);
   const categoriesMenuData = await getCategoriesMenu(locale);
 
-  if (!data?.data) {
-    return {
-      notFound: true
-    };
-  }
+  if (!data?.data?.length) {
+    if (locale !== "en") {
+      return {
+        redirect: {
+          destination: `/${params.page}/${params.level2}/${params.level3}/${params.level4}/${params.level5}`,
+          permanent: false
+        }
+      };
+    }
+    else  {
+      return {
+        notFound: true
+      };
+    }
+  } 
 
   return {
     props: {

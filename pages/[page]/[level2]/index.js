@@ -17,7 +17,7 @@ const Level2Page = ({ locale, data, menuData, categorySlug }) => {
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
   const [leftMenuData, setLeftMenuData] = useState(menuData);
   const categorySlugPlural = categorySlug === "docs" ? "docs" : `${categorySlug}s`;
-  const dataAttr = data.data?.[0]?.attributes;
+  const dataAttr = data?.data?.[0]?.attributes;
 
   useEffect(() => {
     if (!dataAttr.article) {
@@ -105,12 +105,19 @@ export async function getServerSideProps({ locale, params }) {
   const pathUrl = `${locale === "en" ? "" : `/${locale}`}/${params.page}/${params.level2}`;
   const data = await getLevel2Data(locale, params.page, pathUrl);
 
-  if (data.data.length === 0) {
+  if (!data?.data?.length) {
     return {
       notFound: true
     };
+  } else if (data.data[0]?.isFallback) {
+    return {
+      redirect: {
+        destination: `/${params.page}/${params.level2}`,
+        permanent: false
+      }
+    };
   }
-
+  
   const menuData = data.data[0].attributes.article ? await getCategoriesMenu(locale) : await getLeftMenu(locale, params.page);
 
   return {
