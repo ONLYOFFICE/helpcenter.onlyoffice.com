@@ -51,6 +51,15 @@ const MainPage = ({ locale, data }) => {
 export const getServerSideProps = async ({ locale }) => {
   const data = await getMainPageData(locale, true);
 
+  if (locale !== "en") {
+    return {
+      redirect: {
+        destination: `/`,
+        permanent: false
+      }
+    };
+  }
+
   return {
     props: {
       ...(await serverSideTranslations(locale, "common")),
