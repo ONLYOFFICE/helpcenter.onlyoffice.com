@@ -93,7 +93,7 @@ const LeftMenu = forwardRef(({
         <div className="left-menu-wrapper">
           <SearchArea
             className="left-menu-search"
-            placeholder={t("Search in Help Center")}
+            placeholder={t("SearchInHelpCenter")}
             isLeftMenu={true}
           />
           <Scrollbar scrollTop={scrollTopHeight} onScroll={handleVisibility} className={scrollVisible ? "scroll-visible" : ""}>
