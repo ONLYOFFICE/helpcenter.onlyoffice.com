@@ -8,7 +8,7 @@ const AccordionContent = ({ t }) => {
   return (
     <StyledAccordionContent>
       <Heading className="title-accordion" level={3}>
-        {t("Frequently Asked Questions")}
+        {t("FrequentlyAskedQuestions")}
       </Heading>
       <AccordionItem heading={t("AccordionHeadingOOLicense")}>
         <Trans

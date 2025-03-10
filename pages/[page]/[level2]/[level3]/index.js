@@ -123,9 +123,16 @@ export const getServerSideProps = async ({ locale, params, req, res }) => {
   const pathUrl = `${locale === "en" ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}`;
   const data = await getLevel3Data(locale, params.page, pathUrl);
 
-  if (data.data.length === 0) {
+  if (!data?.data?.length) {
     return {
       notFound: true
+    };
+  } else if (data.data[0]?.isFallback) {
+    return {
+      redirect: {
+        destination: `/${params.page}/${params.level2}/${params.level3}`,
+        permanent: false
+      }
     };
   }
 

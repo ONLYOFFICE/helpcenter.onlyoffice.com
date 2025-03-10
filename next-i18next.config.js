@@ -4,7 +4,7 @@ const availableLanguages = languages.map((el) => el.shortKey);
 module.exports = {
   i18n: {
     defaultLocale: "en",
-    locales: ["en"],
+    locales: availableLanguages,
     localeDetection: false,
   },
 };

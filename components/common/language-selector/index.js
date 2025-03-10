@@ -37,8 +37,8 @@ const LanguageSelector = ({ locale }) => {
               <InternalLink
                 onClick={() => { setIsOpen(false); setLang(language.shortKey) }}
                 className={`language-item-link ${lang === language.shortKey ? "active" : ""}`}
-                //href={router.asPath}
-                href={language.href}>
+                href={router.asPath}
+                locale={language.shortKey}>
                 <b>{language.shortKey}</b>
                 <p>{language.name}</p>
               </InternalLink>

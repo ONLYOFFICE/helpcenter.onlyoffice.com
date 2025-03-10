@@ -2,19 +2,31 @@
   {
     "key": "en-US",
     "shortKey": "en",
-    "href": "/",
     "name": "English"
   },
   {
     "key": "de-DE",
     "shortKey": "de",
-    "href": "https://guides.onlyoffice.com/de",
     "name": "Deutsch"
   },
   {
     "key": "fr-FR",
     "shortKey": "fr",
-    "href": "https://guides.onlyoffice.com/fr",
     "name": "Français"
+  },
+  {
+    "key": "es-ES",
+    "shortKey": "es",
+    "name": "Español"
+  },
+  {
+    "key": "it-IT",
+    "shortKey": "it",
+    "name": "Italiano"
+  },
+  {
+    "key": "zh-ZH",
+    "shortKey": "zh",
+    "name": "中文"
   }
 ]

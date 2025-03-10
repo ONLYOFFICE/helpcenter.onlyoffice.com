@@ -58,7 +58,14 @@ export const getServerSideProps = async ({ locale, params }) => {
   const categoriesMenuData = await getCategoriesMenu(locale);
   const data = await getLevel1Data(locale, params.page);
 
-  if (data.data.length === 0) {
+  if (locale !== "en") {
+    return {
+      redirect: {
+        destination: `/${params.page}`,
+        permanent: false
+      }
+    };
+  } else if (data.data.length === 0) {
     return {
       notFound: true
     };
