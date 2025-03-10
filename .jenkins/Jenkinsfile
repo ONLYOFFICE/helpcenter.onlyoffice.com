@@ -54,9 +54,16 @@ pipeline {
       }
       steps {
         sh '''
+
+          cp .jenkins/build.sh .jenkins/helpcenter_build.sh
         
           sed -i "s^config_cms^$cms^" config/config.json
           sed -i "s^config_appServer^$appServer^" config/config.json
+
+          if [ "${region}" = "info" ]; then
+            cp .jenkins/robots.txt ./
+          fi
+
           tar -czpf .jenkins/helpcenter.tar.gz \
             --exclude ".git" \
             --exclude ".gitignore" \
@@ -70,7 +77,7 @@ pipeline {
           transfers: [sshTransfer(cleanRemote: false, 
             excludes: '', 
             execCommand: '''
-              sudo bash /home/ubuntu/deploy/.jenkins/build.sh |& tee -a > /home/ubuntu/deploy/helpcenter_deploy.log
+              sudo bash /home/ubuntu/deploy/.jenkins/helpcenter_build.sh |& tee -a > /home/ubuntu/deploy/helpcenter_deploy.log
             ''', 
             execTimeout: 600000, 
             flatten: false, 
@@ -80,7 +87,7 @@ pipeline {
             remoteDirectory: '', 
             remoteDirectorySDF: false, 
             removePrefix: '', 
-            sourceFiles: '.jenkins/helpcenter.tar.gz,.jenkins/build.sh')], 
+            sourceFiles: '.jenkins/helpcenter.tar.gz,.jenkins/helpcenter_build.sh')], 
           usePromotionTimestamp: false, 
           useWorkspaceInPromotion: false, 
           verbose: false)])
