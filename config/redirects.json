@@ -624,8 +624,12 @@
     "permanent": true
   },
   "/installation/docs-changelog.aspx": {
-    "destination": "/docs/changelog/docs-changelog.aspx",
+    "destination": "/docs/docs-changelog.aspx",
     "permanent": true
+  },
+  "/server/document/changelog.aspx": {
+   "destination": "/docs/docs-changelog.aspx",
+   "permanent": true
   },
   "/installation/docs-cloud-index.aspx": {
     "destination": "/docs/installation/cloud",
@@ -691,6 +695,10 @@
     "destination": "/docs/installation/docs-community-install-centos.aspx",
     "permanent": true
   },
+  "/server/linux/document/linux-installation-centos.aspx": {
+    "destination": "/docs/installation/docs-community-install-centos.aspx",
+    "permanent": true
+  },
   "/installation/docs-community-install-cloudron.aspx": {
     "destination": "/docs/installation/docs-community-install-cloudron.aspx",
     "permanent": true
@@ -708,6 +716,10 @@
     "permanent": true
   },
   "/installation/docs-community-install-docker.aspx": {
+    "destination": "/docs/installation/docs-community-install-docker.aspx",
+    "permanent": true
+  },
+  "/server/docker/document/docker-installation.aspx": {
     "destination": "/docs/installation/docs-community-install-docker.aspx",
     "permanent": true
   },
@@ -740,6 +752,10 @@
     "permanent": true
   },
   "/installation/docs-community-install-ubuntu.aspx": {
+    "destination": "/docs/installation/docs-community-install-ubuntu.aspx",
+    "permanent": true
+  },
+  "/server/linux/document/linux-installation.aspx": {
     "destination": "/docs/installation/docs-community-install-ubuntu.aspx",
     "permanent": true
   },
@@ -1412,6 +1428,14 @@
     "permanent": true
   },
   "/integration/gettingstarted-nextcloud.aspx": {
+    "destination": "/integration/nextcloud.aspx",
+    "permanent": true
+  },
+  "/gettingstarted/integration/Nextcloud.aspx#InstallingNextcloudUsingUCS_block": {
+    "destination": "/integration/nextcloud.aspx#installingonlyofficedocswithnextcloudonavirtualmachineusingucs_block ",
+    "permanent": true
+  },
+  "/gettingstarted/integration/Nextcloud.aspx": {
     "destination": "/integration/nextcloud.aspx",
     "permanent": true
   },
