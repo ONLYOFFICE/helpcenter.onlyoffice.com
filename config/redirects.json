@@ -9646,5 +9646,37 @@
   "/mobile-applications/documents/spreadsheet-editor/tools-and-settings/view-spreadsheet-information.aspx": {
     "destination": "/mobile/ios/documents/spreadsheet-editor/view-spreadsheet-information.aspx",
     "permanent": true
-  }
+  },
+  "/installation/docspace-developer-https-docker.aspx": {
+  "destination": "/docspace/installation/docspace-developer-https-docker.aspx",
+  "permanent": true
+ },
+ "/installation/docspace-developer-https-linux.aspx": {
+  "destination": "/docspace/installation/docspace-developer-https-linux.aspx",
+  "permanent": true
+ },
+ "/installation/docspace-developer-https-windows.aspx": {
+  "destination": "/docspace/installation/docspace-developer-https-windows.aspx",
+  "permanent": true
+ },
+ "/installation/docspace-developer-index.aspx": {
+  "destination": "/docspace/installation/developer",
+  "permanent": true
+ },
+ "/installation/docspace-developer-install-script-parameters.aspx": {
+  "destination": "/docspace/installation/docspace-developer-install-script-parameters.aspx",
+  "permanent": true
+ },
+ "/installation/docspace-developer-install-script.aspx": {
+  "destination": "/docspace/installation/docspace-developer-install-script.aspx",
+  "permanent": true
+ },
+ "/installation/docspace-developer-install-windows.aspx": {
+  "destination": "/docspace/installation/docspace-developer-install-windows.aspx",
+  "permanent": true
+ },
+ "/installation/docspace-developer-remove-docker.aspx": {
+  "destination": "/docspace/installation/docspace-developer-remove-docker.aspx",
+  "permanent": true
+ }
 }
