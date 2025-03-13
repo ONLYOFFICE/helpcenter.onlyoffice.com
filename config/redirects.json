@@ -9678,5 +9678,9 @@
  "/installation/docspace-developer-remove-docker.aspx": {
   "destination": "/docspace/installation/docspace-developer-remove-docker.aspx",
   "permanent": true
+ },
+ "/docs/changelog/docs-changelog.aspx": {
+  "destination": "/docs/docs-changelog.aspx",
+  "permanent": true
  }
 }
