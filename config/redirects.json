@@ -9686,5 +9686,9 @@
  "/installation/groups-authorization-keys.aspx": {
   "destination": "/workspace/administration/connecting-external-services#connecting_third-party_services_block",
   "permanent": true
+ },
+ "/tipstricks/available-languages.aspx": {
+  "destination": "/workspace/administration/available-languages.aspx",
+  "permanent": true
  }
 }
