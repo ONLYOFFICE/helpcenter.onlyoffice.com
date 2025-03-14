@@ -9682,5 +9682,9 @@
  "/docs/changelog/docs-changelog.aspx": {
   "destination": "/docs/docs-changelog.aspx",
   "permanent": true
+ },
+ "/installation/groups-authorization-keys.aspx": {
+  "destination": "/workspace/administration/connecting-external-services#connecting_third-party_services_block",
+  "permanent": true
  }
 }
