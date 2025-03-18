@@ -15,7 +15,7 @@ const HeadSEO = ({
       <Head>
         <title>{title}</title>
         <meta charSet="utf-8" />
-        <meta name="robots" content="noindex, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
         <meta property="og:type" content="website" />
         <meta id="ctl00_MetaSiteNameOG" property="og:site_name" content={title} />
         <meta id="ctl00_MetaTitleOG" property="og:title" content={title} />
