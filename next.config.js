@@ -32,14 +32,21 @@ const nextConfig = {
   },
   productionBrowserSourceMaps: true,
   async redirects() {
-    return Object.keys(redirects).map((source) => {
-      const { destination, permanent } = redirects[source];
-      return {
-        source,
-        destination,
-        permanent,
-      };
-    });
+    return [
+      ...Object.keys(redirects).map((source) => {
+        const { destination, permanent } = redirects[source];
+        return {
+          source,
+          destination,
+          permanent,
+        };
+      }),
+      {
+        source: "/ru/:path*",
+        destination: "/:path*",
+        permanent: true,
+      },
+    ];
   },
 };
 
