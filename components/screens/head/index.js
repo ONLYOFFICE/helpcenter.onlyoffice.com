@@ -31,7 +31,7 @@ const HeadSEO = ({
         <link rel="apple-touch-icon" href="https://static-helpcenter.onlyoffice.com/images/favicon.ico" />
         <meta name="google" content="notranslate" />
         <meta name="google" content="nositelinkssearchbox" />
-        <link rel="canonical" href={`https://helpcenter.onlyoffice.com/${router.locale === "en" ? "" : `${router.locale}`}`} />
+        <link rel="canonical" href={`https://helpcenter.onlyoffice.com${router.locale === "en" ? "" : `/${router.locale}`}${router.asPath.replace(/^.*\/\/[^/]+/, "") === null ? "" : router.asPath.replace(/^.*\/\/[^/]+/, "")}`} />
 
         {languages.map((lng) => {
           const { key, shortKey } = lng;
