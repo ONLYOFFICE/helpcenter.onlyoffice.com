@@ -9690,5 +9690,21 @@
  "/tipstricks/available-languages.aspx": {
   "destination": "/workspace/administration/available-languages.aspx",
   "permanent": true
+ },
+ "/docs/userguides/document-editor": {
+  "destination": "/docs/userguides/document_editor",
+  "permanent": true
+ },
+ "/docs/userguides/spreadsheet-editor": {
+  "destination": "/docs/userguides/spreadsheet_editor",
+  "permanent": true
+ },
+ "/docs/userguides/presentation-editor": {
+  "destination": "/docs/userguides/presentation_editor",
+  "permanent": true
+ },
+ "/ONLYOFFICE-Editors/index.aspx": {
+  "destination": "/docs/userguides",
+  "permanent": true
  }
 }
