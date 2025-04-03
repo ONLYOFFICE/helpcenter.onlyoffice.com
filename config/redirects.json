@@ -9714,5 +9714,9 @@
  "/administration/docspace-configure-okta.aspx": {
   "destination": "/docspace/configuration/configure-okta.aspx",
   "permanent": true
+ },
+ "/server/controlpanel/opensource/encryption.aspx": {
+  "destination": "/workspace/administration/control-panel-encryption.aspx",
+  "permanent": true
  }
 }
