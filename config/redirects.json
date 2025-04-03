@@ -9710,5 +9710,9 @@
  "/server/integration-edition/linux/linux-installation-centos.aspx": {
   "destination": "/docs/installation/docs-enterprise-install-centos.aspx",
   "permanent": true
+ },
+ "/administration/docspace-configure-okta.aspx": {
+  "destination": "/docspace/configuration/configure-okta.aspx",
+  "permanent": true
  }
 }
