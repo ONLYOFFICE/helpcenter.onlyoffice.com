@@ -11,10 +11,6 @@
     "destination": "/workspace/administration/add-resource.aspx",
     "permanent": true
   },
-  "/administration/authorization-keys-saas.aspx": {
-    "destination": "/workspace/administration/authorization-keys-saas.aspx",
-    "permanent": true
-  },
   "/administration/available-languages.aspx": {
     "destination": "/workspace/administration/available-languages.aspx",
     "permanent": true
@@ -1232,7 +1228,7 @@
     "permanent": true
   },
   "/installation/workspace-community-index.aspx": {
-    "destination": "/workspace/installation/workspace",
+    "destination": "/workspace/installation/community",
     "permanent": true
   },
   "/installation/workspace-configure-webdav.aspx": {
@@ -1496,7 +1492,7 @@
     "permanent": true
   },
   "/integration/gettingstarted-zoom.aspx": {
-    "destination": "/integration/zoom.aspx",
+    "destination": "/integration/zoom-docspace.aspx",
     "permanent": true
   },
   "/integration/zapier.aspx": {
@@ -1873,14 +1869,6 @@
   },
   "/ONLYOFFICE-Editors/ONLYOFFICE-Document-Editor/UsageInstructions/CopyPasteUndoRedo.aspx": {
     "destination": "/docs/userguides/document_editor/CopyPasteUndoRedo.aspx",
-    "permanent": true
-  },
-  "/onlyoffice-editors/onlyoffice-document-editor/UsageInstructions/CreateFillableForms.aspx": {
-    "destination": "/docs/userguides/document_editor/CreateFillableForms.aspx",
-    "permanent": true
-  },
-  "/ONLYOFFICE-Editors/ONLYOFFICE-Document-Editor/UsageInstructions/CreateFillableForms.aspx": {
-    "destination": "/docs/userguides/document_editor/CreateFillableForms.aspx",
     "permanent": true
   },
   "/onlyoffice-editors/onlyoffice-document-editor/UsageInstructions/CreateLists.aspx": {
@@ -9726,5 +9714,41 @@
  "/server/integration-edition/docker/docker-installation.aspx": {
    "destination": "/docs/installation/docs-enterprise-install-docker.aspx",
    "permanent": true
+ },
+ "/server/developer-edition/linux/linux-installation.aspx": {
+   "destination": "/docs/installation/docs-developer-install-ubuntu.aspx",
+   "permanent": true
+ },
+ "/ONLYOFFICE-Editors/ONLYOFFICE-Presentation-Editor/index.aspx": {
+   "destination": "/docs/userguides/presentation_editor",
+   "permanent": true
+ },
+ "/ONLYOFFICE-Editors/ONLYOFFICE-Spreadsheet-Editor/index.aspx": {
+   "destination": "/docs/userguides/spreadsheet_editor",
+   "permanent": true
+ },
+ "/ONLYOFFICE-Editors/ONLYOFFICE-Document-Editor/index.aspx": {
+   "destination": "/docs/userguides/document_editor",
+   "permanent": true
+ },
+ "/installation/groups-index.aspx": {
+  "destination": "/",
+  "permanent": true
+ },
+ "/server/controlpanel/enterprise/switch-to-https.aspx": {
+  "destination": "/workspace/administration/control-panel-https.aspx",
+  "permanent": true
+ },
+ "/guides/two-factor-authentication.aspx": {
+  "destination": "/workspace/administration/two-factor-authentication.aspx",
+  "permanent": true
+ },
+ "/server/controlpanel/enterprise/sso-description.aspx": {
+  "destination": "/workspace/administration/control-panel-sso-description.aspx",
+  "permanent": true
+ },
+ "/tipstricks/data-backup-restore.aspx": {
+  "destination": "/workspace/administration/backup-saas.aspx",
+  "permanent": true
  }
 }
