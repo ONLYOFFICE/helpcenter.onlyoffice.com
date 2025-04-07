@@ -9722,5 +9722,9 @@
  "/server/integration-edition/linux/linux-installation.aspx": {
    "destination": "/docs/installation/docs-enterprise-install-ubuntu.aspx",
    "permanent": true
+ },
+ "/server/integration-edition/docker/docker-installation.aspx": {
+   "destination": "/docs/installation/docs-enterprise-install-docker.aspx",
+   "permanent": true
  }
 }
