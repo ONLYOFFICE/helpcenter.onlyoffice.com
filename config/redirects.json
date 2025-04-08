@@ -1487,6 +1487,10 @@
     "destination": "/integration/zoom-docspace.aspx",
     "permanent": true
   },
+  "/integration/zoom.aspx": {
+    "destination": "/integration/zoom-docspace.aspx",
+    "permanent": true
+  },
   "/integration/zapier.aspx": {
     "destination": "/integration/zapier-docspace.aspx",
     "permanent": true
@@ -9804,7 +9808,31 @@
   "permanent": true
  },
  "/video/manage-access-rights.aspx": {
-  "destination": "/video#workspace_block",
+  "destination": "/video.aspx#workspace_block",
   "permanent": true
- }
+ },
+ "/tipstricks/authorization-keys-saas.aspx": {
+  "destination": "/workspace/",
+  "permanent": true
+ },
+  "/administration/authorization-keys-saas.aspx": {
+    "destination": "/workspace/",
+    "permanent": true
+  },
+  "/administration/add-resource.aspx": {
+    "destination": "/workspace/administration/connecting-external-services",
+    "permanent": true
+  },
+  "/tipstricks/add-resource.aspx": {
+    "destination": "/workspace/administration/connecting-external-services",
+    "permanent": true
+  },
+  "/onlyoffice-editors/onlyoffice-document-editor/UsageInstructions/CreateFillableForms.aspx": {
+    "destination": "/docs/userguides/form_builder/CreatingManagingFormFields.aspx",
+    "permanent": true
+  },
+  "/ONLYOFFICE-Editors/ONLYOFFICE-Document-Editor/UsageInstructions/CreateFillableForms.aspx": {
+    "destination": "/docs/userguides/form_builder/CreatingManagingFormFields.aspx",
+    "permanent": true
+  }
 }
