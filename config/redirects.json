@@ -7,10 +7,6 @@
     "destination": "/workspace/administration/add-guests.aspx",
     "permanent": true
   },
-  "/administration/add-resource.aspx": {
-    "destination": "/workspace/administration/add-resource.aspx",
-    "permanent": true
-  },
   "/administration/available-languages.aspx": {
     "destination": "/workspace/administration/available-languages.aspx",
     "permanent": true
@@ -1425,10 +1421,6 @@
   },
   "/integration/gettingstarted-nextcloud.aspx": {
     "destination": "/integration/nextcloud.aspx",
-    "permanent": true
-  },
-  "/gettingstarted/integration/Nextcloud.aspx#InstallingNextcloudUsingUCS_block": {
-    "destination": "/integration/nextcloud.aspx#installingonlyofficedocswithnextcloudonavirtualmachineusingucs_block ",
     "permanent": true
   },
   "/gettingstarted/integration/Nextcloud.aspx": {
@@ -9749,6 +9741,70 @@
  },
  "/tipstricks/data-backup-restore.aspx": {
   "destination": "/workspace/administration/backup-saas.aspx",
+  "permanent": true
+ },
+ "/workspace/installation/workspace": {
+  "destination": "/workspace/installation/community",
+  "permanent": true
+ },
+ "/gettingstarted/configuration.aspx": {
+  "destination": "/workspace/administration/configuration.aspx",
+  "permanent": true
+ },
+ "/server/linux/document/linux-installation-from-snap.aspx": {
+  "destination": "/docs/installation/docs-community-install-from-snap.aspx",
+  "permanent": true
+ },
+ "/server/windows/community/authorization-keys.aspx": {
+  "destination": "/workspace/administration/connecting-external-services#connecting_third-party_services_block",
+  "permanent": true
+ },
+ "/server/controlpanel/enterprise/backup-restore.aspx": {
+  "destination": "/workspace/administration/control-panel-backup.aspx",
+  "permanent": true
+ },
+ "/gettingstarted/documents.aspx": {
+  "destination": "/workspace/administration/documents.aspx",
+  "permanent": true
+ },
+ "/gettingstarted/people.aspx": {
+  "destination": "/workspace/administration/people.aspx",
+  "permanent": true
+ },
+ "/guides/send-documents-for-e-signature.aspx": {
+  "destination": "/workspace/userguides/documents-send-documents-for-e-signature.aspx",
+  "permanent": true
+ },
+ "/administratorguides/import-contacts-from-web.aspx": {
+  "destination": "/workspace/administration/import-contacts-from-web.aspx",
+  "permanent": true
+ },
+ "/guides/Mailserver.aspx": {
+  "destination": "/workspace/administration/mail-server.aspx",
+  "permanent": true
+ },
+ "/gettingstarted/talk.aspx": {
+  "destination": "/workspace/administration/talk.aspx",
+  "permanent": true
+ },
+ "/guides/mailinglist.aspx": {
+  "destination": "/workspace/userguides/talk-mailinglist.aspx",
+  "permanent": true
+ },
+ "/tipstricks/managing-subscriptions.aspx": {
+  "destination": "/workspace/userguides/managing-subscriptions.aspx",
+  "permanent": true
+ },
+ "/guides/use-voip.aspx": {
+  "destination": "/workspace/userguides/crm-use-voip.aspx",
+  "permanent": true
+ },
+ "/gettingstarted/crm.aspx": {
+  "destination": "/workspace/administration/crm.aspx",
+  "permanent": true
+ },
+ "/video/manage-access-rights.aspx": {
+  "destination": "/video#workspace_block",
   "permanent": true
  }
 }
