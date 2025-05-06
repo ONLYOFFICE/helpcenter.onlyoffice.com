@@ -144,7 +144,7 @@ export const getServerSideProps = async ({ locale, params, req, res }) => {
       '<div class="bringattention translator" id="translatorAttention_block" style="display: none;">'
     );
   }
-  if (pathUrl === "/docs/installation/multitenancy.aspx") {
+  if (pathUrl === "/docs/installation/multitenancy.aspx" || pathUrl === "/docspace/configuration/monday.aspx") {
     res.setHeader("X-Robots-Tag", "noindex, nofollow");
   }
 
