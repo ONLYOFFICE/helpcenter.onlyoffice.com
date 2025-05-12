@@ -9834,5 +9834,9 @@
   "/ONLYOFFICE-Editors/ONLYOFFICE-Document-Editor/UsageInstructions/CreateFillableForms.aspx": {
     "destination": "/docs/userguides/form_builder/CreatingManagingFormFields.aspx",
     "permanent": true
+  },
+  "/mobile-applications/documents/android": {
+    "destination": "/mobile/android",
+    "permanent": true
   }
 }
