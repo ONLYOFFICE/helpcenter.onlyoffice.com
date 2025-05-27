@@ -9838,5 +9838,9 @@
   "/mobile-applications/documents/android": {
     "destination": "/mobile/android",
     "permanent": true
+  },
+  "/installation/groups-smtp-settings.aspx": {
+    "destination": "/workspace/administration/smtp-settings.aspx",
+    "permanent": true
   }
 }
