@@ -57,7 +57,7 @@ const GlossaryPage = ({ locale, menuData, glossaryData }) => {
   );
 };
 
-export const getServerSideProps = async ({ locale }) => {
+export const getServerSideProps = async ({ locale, preview }) => {
   const menuData = await getLeftMenu(locale, true, preview);
   const glossaryData = await getGlossary(locale, preview);
 
