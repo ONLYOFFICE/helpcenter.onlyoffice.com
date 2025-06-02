@@ -17,8 +17,8 @@ const VideoContent = ({ t, videoData, leftMenuIsOpen, setLeftMenuIsOpen }) => {
   const order = ['Docs', 'Docspace', 'Workspace', 'Connectors', 'Desktop', 'Mobile'];
 
   videoData.data.forEach(video => {
-    Object.keys(video.attributes).forEach(key => {
-      if (key.startsWith('article') && video.attributes[key]?.data) {
+    Object.keys(video).forEach(key => {
+      if (key.startsWith('article') && video[key]) {
         const groupName = key === 'article'
           ? 'Connectors'
           : key.replace('article_', '').charAt(0).toUpperCase() + key.slice(9);

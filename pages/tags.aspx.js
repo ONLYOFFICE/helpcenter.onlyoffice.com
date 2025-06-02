@@ -56,9 +56,9 @@ const TagsPage = ({ locale, menuData, tagsData }) => {
   );
 };
 
-export const getServerSideProps = async ({ locale }) => {
-  const menuData = await getLeftMenu(locale, true);
-  const tagsData = await getTags(locale);
+export const getServerSideProps = async ({ locale, preview }) => {
+  const menuData = await getLeftMenu(locale, true, preview);
+  const tagsData = await getTags(locale, preview);
 
   if (tagsData.data === null || tagsData.data.length === 0) {
     return {
@@ -71,7 +71,8 @@ export const getServerSideProps = async ({ locale }) => {
       ...(await serverSideTranslations(locale, "common")),
       locale,
       menuData,
-      tagsData
+      tagsData,
+      preview: !!preview
     },
   };
 };

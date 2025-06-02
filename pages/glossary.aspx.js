@@ -58,8 +58,8 @@ const GlossaryPage = ({ locale, menuData, glossaryData }) => {
 };
 
 export const getServerSideProps = async ({ locale }) => {
-  const menuData = await getLeftMenu(locale, true);
-  const glossaryData = await getGlossary(locale);
+  const menuData = await getLeftMenu(locale, true, preview);
+  const glossaryData = await getGlossary(locale, preview);
 
   if (glossaryData.data === null || glossaryData.data.length === 0) {
     return {
@@ -72,7 +72,8 @@ export const getServerSideProps = async ({ locale }) => {
       ...(await serverSideTranslations(locale, "common")),
       locale,
       menuData,
-      glossaryData
+      glossaryData,
+      preview: !!preview
     },
   };
 };

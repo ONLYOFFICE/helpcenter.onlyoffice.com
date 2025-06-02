@@ -105,7 +105,7 @@ const ArticleContent = ({
   }, [videoOffsetTrigger, pageDescription]);
 
   const handleTagModal = async (tagName) => {
-    const data = await getTagsArticle(locale, tagName, 4, 1);
+    const data = await getTagsArticle(locale, tagName, 4, 1, preview);
 
     const { articles, article_desktops, article_docs, article_docspaces, article_mobiles, article_workspaces } = data;
     const hasMoreTags = [articles, article_desktops, article_docs, article_docspaces, article_mobiles, article_workspaces].some(({ meta: { pagination } }) => pagination.pageCount > pagination.page);
@@ -158,19 +158,19 @@ const ArticleContent = ({
             pageName={pageName}
           />
           <Heading ref={headingRef} className="wrapper-title" level={1}>{pageName}</Heading>
-          {tags?.data.length > 0 &&
+          {tags?.length > 0 &&
             <ul ref={tagsRef} className="tags">
-              {tags?.data.map((item, index) => (
+              {tags?.map((item, index) => (
                 <li key={index}>
-                  <Tag onClick={() => handleTagModal(item.attributes.title)} name={item.attributes.title} />
+                  <Tag onClick={() => handleTagModal(item.title)} name={item.title} />
                 </li>
               ))}
             </ul>
           }
           <div ref={wrapperContentRef}>
             <StyledRawHtml onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</StyledRawHtml>
-            {videos && videos.data.length > 0 &&
-              <ConnectorsVideo t={t} videos={videos.data} setVideoOffsetTrigger={setVideoOffsetTrigger} />
+            {videos && videos.length > 0 &&
+              <ConnectorsVideo t={t} videos={videos} setVideoOffsetTrigger={setVideoOffsetTrigger} />
             }
           </div>
           <DownloadArea className="download-area" slug={categoryName} subcat={level2CategoryName} t={t} />

@@ -33,6 +33,18 @@ const nextConfig = {
   productionBrowserSourceMaps: true,
   async redirects() {
     return [
+      {
+        source: '/api/preview',
+        has: [
+          {
+            type: 'header',
+            key: 'x-custom-header',
+            value: '(?<preview>.*)',
+          },
+        ],
+        destination: '/api/preview',
+        permanent: false,
+      },
       ...Object.keys(redirects).map((source) => {
         const { destination, permanent } = redirects[source];
         return {
@@ -45,7 +57,7 @@ const nextConfig = {
         source: "/ru/:path*",
         destination: "/:path*",
         permanent: true,
-      },
+      }
     ];
   },
 };

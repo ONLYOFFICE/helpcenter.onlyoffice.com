@@ -17,7 +17,7 @@ const Level2Page = ({ locale, data, menuData, categorySlug }) => {
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
   const [leftMenuData, setLeftMenuData] = useState(menuData);
   const categorySlugPlural = categorySlug === "docs" ? "docs" : `${categorySlug}s`;
-  const dataAttr = data?.data?.[0]?.attributes;
+  const dataAttr = data?.data?.[0];
 
   useEffect(() => {
     if (!dataAttr.article) {
@@ -52,8 +52,8 @@ const Level2Page = ({ locale, data, menuData, categorySlug }) => {
           <ArticleContent
             t={t}
             locale={locale}
-            categoryName={dataAttr.category?.data.attributes?.name}
-            categoryUrl={dataAttr.category?.data.attributes?.url}
+            categoryName={dataAttr.category?.name}
+            categoryUrl={dataAttr.category?.url}
             pageName={dataAttr?.title}
             pageDescription={dataAttr?.content}
             tags={dataAttr?.tags}
@@ -62,30 +62,30 @@ const Level2Page = ({ locale, data, menuData, categorySlug }) => {
             setLeftMenuIsOpen={setLeftMenuIsOpen}
           />
         ) : (
-          dataAttr?.[`level_2_${categorySlugPlural}`]?.data?.some(item => item.attributes?.[`level_3_${categorySlugPlural}`]?.data?.length > 0) ? (
+          dataAttr?.[`level_2_${categorySlugPlural}`]?.some(item => item?.[`level_3_${categorySlugPlural}`]?.length > 0) ? (
             <CategoryContent
               t={t}
               categorySlug={categorySlug}
-              categoryName={dataAttr.general_category?.data.attributes.name}
-              categoryUrl={dataAttr.general_category?.data.attributes.url}
+              categoryName={dataAttr.general_category?.name}
+              categoryUrl={dataAttr.general_category?.url}
               pageName={dataAttr.name}
               pageDescription={dataAttr.description}
-              categoryData={dataAttr?.[`level_2_${categorySlugPlural}`]?.data}
+              categoryData={dataAttr?.[`level_2_${categorySlugPlural}`]}
               leftMenuData={leftMenuData}
               leftMenuLevel={3}
               leftMenuIsOpen={leftMenuIsOpen}
               setLeftMenuIsOpen={setLeftMenuIsOpen}
-              articleData={dataAttr?.[`article_${categorySlugPlural}`].data}
+              articleData={dataAttr?.[`article_${categorySlugPlural}`]}
             />
           ) : (
             <SubCategoryContent
               t={t}
               categorySlug={categorySlug}
-              categoryName={dataAttr.general_category?.data.attributes.name}
-              categoryUrl={dataAttr.general_category?.data.attributes.url}
+              categoryName={dataAttr.general_category?.name}
+              categoryUrl={dataAttr.general_category?.url}
               pageName={dataAttr.name}
-              categoryData={dataAttr?.[`level_2_${categorySlugPlural}`]?.data}
-              articleData={dataAttr?.[`article_${categorySlugPlural}`]?.data}
+              categoryData={dataAttr?.[`level_2_${categorySlugPlural}`]}
+              articleData={dataAttr?.[`article_${categorySlugPlural}`]}
               leftMenuData={leftMenuData}
               leftMenuIsOpen={leftMenuIsOpen}
               pageDescription={dataAttr.description}
@@ -101,9 +101,9 @@ const Level2Page = ({ locale, data, menuData, categorySlug }) => {
   );
 };
 
-export async function getServerSideProps({ locale, params }) {
+export async function getServerSideProps({ locale, params, preview }) {
   const pathUrl = `${locale === "en" ? "" : `/${locale}`}/${params.page}/${params.level2}`;
-  const data = await getLevel2Data(locale, params.page, pathUrl);
+  const data = await getLevel2Data(locale, params.page, pathUrl, preview);
 
   if (!data?.data?.length) {
     return {
@@ -118,7 +118,7 @@ export async function getServerSideProps({ locale, params }) {
     };
   }
   
-  const menuData = data.data[0].attributes.article ? await getCategoriesMenu(locale) : await getLeftMenu(locale, params.page);
+  const menuData = data.data[0].article ? await getCategoriesMenu(locale, preview) : await getLeftMenu(locale, params.page, preview);
 
   return {
     props: {
@@ -126,7 +126,8 @@ export async function getServerSideProps({ locale, params }) {
       locale,
       data,
       menuData,
-      categorySlug: params.page
+      categorySlug: params.page,
+      preview: !!preview
     },
   };
 }

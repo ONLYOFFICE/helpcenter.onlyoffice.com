@@ -92,11 +92,11 @@ const SearchResultsContent = ({ t, categoriesMenuData, leftMenuIsOpen, setLeftMe
             <div className="search-results-items">
               {searchResults?.data?.map((item, index) => (
                 <div className="search-results-item" key={index}>
-                  <InternalLink className="search-results-link" href={item?.attributes?.url}>
-                    <Highlighter className="search-results-query" searchWords={[query]} textToHighlight={item?.attributes?.title} />
+                  <InternalLink className="search-results-link" href={item?.url}>
+                    <Highlighter className="search-results-query" searchWords={[query]} textToHighlight={item?.title} />
                   </InternalLink>
                   <p className="search-results-description">
-                    <Highlighter className="search-results-query" searchWords={[query]} textToHighlight={item?.attributes?.description?.replace(/<[^>]*>/g, "") || item?.attributes?.content.replace(/<[^>]*>/g, '')} />
+                    <Highlighter className="search-results-query" searchWords={[query]} textToHighlight={item?.description?.replace(/<[^>]*>/g, "") || item?.content.replace(/<[^>]*>/g, '')} />
                   </p>
                 </div>
               ))}

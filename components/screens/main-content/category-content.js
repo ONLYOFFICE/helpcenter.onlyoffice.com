@@ -12,7 +12,7 @@ import CategoryGuidesCell from "./sub-components/guides-cell/category-guides-cel
 const Level1CategoryContent = ({ t, locale, categoriesMenuData, categoryName, categoryImg, data, categorySlug, leftMenuIsOpen, setLeftMenuIsOpen }) => {
   const [leftMenuData, setLeftMenuData] = useState(categoriesMenuData);
   const [showLeftMenu, setShowLeftMenu] = useState(false);
-  const topData = data.data.filter(item => topSlugIdData.includes(item.attributes.slug_id));
+  const topData = data.filter(item => topSlugIdData.includes(item.slug_id));
 
   useEffect(() => {
     const loadData = async () => {
@@ -58,11 +58,11 @@ const Level1CategoryContent = ({ t, locale, categoriesMenuData, categoryName, ca
           {topData.length > 0 &&
             <div className="guides-cards-top">
               {topData
-              ?.sort((a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || (a.attributes.name || a.attributes.title).localeCompare(b.attributes.name || b.attributes.title))
+              ?.sort((a, b) => (a.position ?? Infinity) - (b.position ?? Infinity) || (a.name || a.title).localeCompare(b.name || b.title))
               ?.map((item, index) => (
-                <InternalLink className="guides-cards-top-link" href={item.attributes.url} key={index}>
-                  <img src={item.attributes.card_field_img?.data?.attributes.url} alt={item.attributes.name} />
-                  <div>{item.attributes.name}</div>
+                <InternalLink className="guides-cards-top-link" href={item.url} key={index}>
+                  <img src={item.card_field_img?.url} alt={item.name} />
+                  <div>{item.name}</div>
                 </InternalLink>
               ))}
             </div>
@@ -71,9 +71,9 @@ const Level1CategoryContent = ({ t, locale, categoriesMenuData, categoryName, ca
             breakpointCols={{ default: 2, 592: 1 }}
             className="guides-cards-items"
             columnClassName="guides-cards-items-column">
-            {data.data
-              .filter(item => !topSlugIdData.includes(item.attributes.slug_id))
-              .sort((a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || (a.attributes.name || a.attributes.title).localeCompare(b.attributes.name || b.attributes.title))
+            {data
+              .filter(item => !topSlugIdData.includes(item.slug_id))
+              .sort((a, b) => (a.position ?? Infinity) - (b.position ?? Infinity) || (a.name || a.title).localeCompare(b.name || b.title))
               .map((item, index) => (
                 <CategoryGuidesCell
                   data={item}

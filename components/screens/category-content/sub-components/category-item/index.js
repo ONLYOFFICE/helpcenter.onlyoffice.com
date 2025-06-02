@@ -5,49 +5,49 @@ import { useRouter } from "next/router";
 
 const CategoryItem = ({ data, leftMenuLevel, categorySlug }) => {
   const categorySlugPlural = categorySlug === "docs" ? "docs" : `${categorySlug}s`;
-  const icon = data.attributes.icon || data.attributes.category_pic;
-  const levelLinks = data.attributes[`level_${leftMenuLevel}_${categorySlugPlural}`]?.data || [];
-  const articleLinks = data.attributes[`article_${categorySlugPlural}`]?.data || [];
+  const icon = data.icon || data.category_pic;
+  const levelLinks = data[`level_${leftMenuLevel}_${categorySlugPlural}`] || [];
+  const articleLinks = data[`article_${categorySlugPlural}`] || [];
   const router = useRouter();
 
-  const sortByIconOrPositionOrName = (a, b) => (b.attributes.icon_small?.data?.attributes?.url ? 1 : 0) - (a.attributes.icon_small?.data?.attributes?.url ? 1 : 0) || (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || (a.attributes.name).localeCompare(b.attributes.name);
-  const sortByPositionOrTitle = (a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || (a.attributes.title).localeCompare(b.attributes.title);
+  const sortByIconOrPositionOrName = (a, b) => (b.icon_small?.url ? 1 : 0) - (a.icon_small?.url ? 1 : 0) || (a.position ?? Infinity) - (b.position ?? Infinity) || (a.name).localeCompare(b.name);
+  const sortByPositionOrTitle = (a, b) => (a.position ?? Infinity) - (b.position ?? Infinity) || (a.title).localeCompare(b.title);
 
-  const topPositionSubLinks = levelLinks.filter(item => item.attributes.position_top);
-  const filteredSubLinks = [...levelLinks.filter(item => !item.attributes.position_top).sort(sortByIconOrPositionOrName), ...articleLinks.sort(sortByPositionOrTitle)];
+  const topPositionSubLinks = levelLinks.filter(item => item.position_top);
+  const filteredSubLinks = [...levelLinks.filter(item => !item.position_top).sort(sortByIconOrPositionOrName), ...articleLinks.sort(sortByPositionOrTitle)];
 
   const checkTitleLength = !filteredSubLinks.some(item => {
-    const title = item.attributes.title;
+    const title = item.title;
     return title && title.replace(/\s/g, "").length > 40;
   });
 
   const renderIcon = () => {
-    if (icon?.data?.attributes.url) {
+    if (icon?.url) {
       return (
         <img
           style={{
-            height: icon.data.attributes.height,
-            width: icon.data.attributes.width
+            height: icon.height,
+            width: icon.width
           }}
-          src={icon.data.attributes.url}
-          alt={data.attributes.name}
+          src={icon.url}
+          alt={data.name}
         />
       );
     }
   };
 
   return (
-    <StyledCategoryItem className="category-item" id={data.attributes.url.split("#")[1]?.length !== 0 ? data.attributes.url.split("#")[1] : ''}>
+    <StyledCategoryItem className="category-item" id={data.url.split("#")[1]?.length !== 0 ? data.url.split("#")[1] : ''}>
       <Heading className="category-item-title" level={4}>
-        {data.attributes.url && data.attributes.url.split("#")[0] !== router.asPath ? (
-          <InternalLink href={data.attributes.url}>
+        {data.url && data.url.split("#")[0] !== router.asPath ? (
+          <InternalLink href={data.url}>
             {renderIcon()}
-            {data.attributes.name}
+            {data.name}
           </InternalLink>
         ) : (
           <>
             {renderIcon()}
-            {data.attributes.name}
+            {data.name}
           </>
         )}
       </Heading>
@@ -55,18 +55,18 @@ const CategoryItem = ({ data, leftMenuLevel, categorySlug }) => {
         <ul className="category-item-top-links">
           {topPositionSubLinks.map((item, index) => (
             <li key={index}>
-              <InternalLink href={item.attributes.url}>
-                {item.attributes.icon_small?.data?.attributes.url && (
-                  <img src={item.attributes.icon_small.data.attributes.url} alt={item.attributes.name || item.attributes.level_4_title || item.attributes.title} />
+              <InternalLink href={item.url}>
+                {item.icon_small?.url && (
+                  <img src={item.icon_small.url} alt={item.name || item.level_4_title || item.title} />
                 )}
-                {item.attributes.name || item.attributes.level_4_title || item.attributes.title}
+                {item.name || item.level_4_title || item.title}
               </InternalLink>
             </li>
           ))}
         </ul>
       )}
-      {data.attributes.subtitle && (
-        <Heading className="category-item-subtitle" level={5} label={data.attributes.subtitle} />
+      {data.subtitle && (
+        <Heading className="category-item-subtitle" level={5} label={data.subtitle} />
       )}
       {filteredSubLinks.length > 0 && (
         <>
@@ -75,11 +75,11 @@ const CategoryItem = ({ data, leftMenuLevel, categorySlug }) => {
               <ul className="category-item-list">
                 {filteredSubLinks?.slice(0, Math.ceil(filteredSubLinks?.length / 2)).map((item, index) => (
                   <li key={index}>
-                    <InternalLink href={item.attributes.url}>
-                      {item.attributes.icon_small?.data?.attributes.url && (
-                        <img src={item.attributes.icon_small.data.attributes.url} alt={item.attributes.name || item.attributes.level_4_title || item.attributes.title} />
+                    <InternalLink href={item.url}>
+                      {item.icon_small?.url && (
+                        <img src={item.icon_small.url} alt={item.name || item.level_4_title || item.title} />
                       )}
-                      {item.attributes.name || item.attributes.level_4_title || item.attributes.title}
+                      {item.name || item.level_4_title || item.title}
                     </InternalLink>
                   </li>
                 ))}
@@ -87,11 +87,11 @@ const CategoryItem = ({ data, leftMenuLevel, categorySlug }) => {
               <ul className="category-item-list">
                 {filteredSubLinks?.slice(Math.ceil(filteredSubLinks.length / 2)).map((item, index) => (
                   <li key={index}>
-                    <InternalLink href={item.attributes.url}>
-                      {item.attributes.icon_small?.data?.attributes.url && (
-                        <img src={item.attributes.icon_small.data.attributes.url} alt={item.attributes.name || item.attributes.level_4_title || item.attributes.title} />
+                    <InternalLink href={item.url}>
+                      {item.icon_small?.url && (
+                        <img src={item.icon_small.url} alt={item.name || item.level_4_title || item.title} />
                       )}
-                      {item.attributes.name || item.attributes.level_4_title || item.attributes.title}
+                      {item.name || item.level_4_title || item.title}
                     </InternalLink>
                   </li>
                 ))}
@@ -101,11 +101,11 @@ const CategoryItem = ({ data, leftMenuLevel, categorySlug }) => {
             <ul className="category-item-list">
               {filteredSubLinks.map((item, index) => (
                 <li key={index}>
-                  <InternalLink href={item.attributes.url}>
-                    {item.attributes.icon_small?.data?.attributes.url && (
-                      <img src={item.attributes.icon_small.data.attributes.url} alt={item.attributes.name || item.attributes.level_4_title || item.attributes.title} />
+                  <InternalLink href={item.url}>
+                    {item.icon_small?.url && (
+                      <img src={item.icon_small.url} alt={item.name || item.level_4_title || item.title} />
                     )}
-                    {item.attributes.name || item.attributes.level_4_title || item.attributes.title}
+                    {item.name || item.level_4_title || item.title}
                   </InternalLink>
                 </li>
               ))}

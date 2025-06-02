@@ -11,7 +11,7 @@ import getTagsArticle from "@lib/strapi/getTagsArticle";
 import ArticlePopup from "@components/screens/common/article-popup";
 
 const FaqContent = ({ t, faqData, locale, leftMenuData, leftMenuIsOpen, setLeftMenuIsOpen }) => {
-  const { name, faq_block, tags } = faqData.data[0].attributes;
+  const { name, faq_block, tags } = faqData.data[0];
   const [isExpanded, setIsExpanded] = useState(false);
   const [tagName, setTagName] = useState();
   const [tagItems, setTagItems] = useState();
@@ -19,7 +19,7 @@ const FaqContent = ({ t, faqData, locale, leftMenuData, leftMenuIsOpen, setLeftM
   const [modalActive, setModalActive] = useState(false);
 
   const handleTagModal = async (tagName) => {
-    const data = await getTagsArticle(locale, tagName, 4, 1);
+    const data = await getTagsArticle(locale, tagName, 4, 1, preview);
 
     const { articles, article_desktops, article_docs, article_docspaces, article_mobiles, article_workspaces } = data;
     const hasMoreTags = [articles, article_desktops, article_docs, article_docspaces, article_mobiles, article_workspaces].some(({ meta: { pagination } }) => pagination.pageCount > pagination.page);
@@ -50,11 +50,11 @@ const FaqContent = ({ t, faqData, locale, leftMenuData, leftMenuIsOpen, setLeftM
         <div className="wrapper">
           <Breadcrumbs t={t} pageName={name} />
           <Heading className="wrapper-title" level={1} label={name} />
-          {tags?.data.length > 0 && 
+          {tags?.length > 0 && 
             <ul className="tags">
-              {tags?.data.map((item, index) => (
+              {tags?.map((item, index) => (
                 <li key={index}>
-                  <Tag onClick={() => handleTagModal(item.attributes.title)} name={item.attributes.title} />
+                  <Tag onClick={() => handleTagModal(item.title)} name={item.title} />
                 </li>
               ))}
             </ul>

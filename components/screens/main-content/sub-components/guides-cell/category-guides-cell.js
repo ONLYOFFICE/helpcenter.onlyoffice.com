@@ -8,8 +8,8 @@ import { isExternalLink } from "@utils/helpers/System/isExternal";
 
 const CategoryGuidesCell = ({ data, categorySlug, t }) => {
   const [isClient, setIsClient] = useState(false);
-  const connectorsSlug = data.attributes.connector_img;
-  const items = [...data.attributes[`level_2_${categorySlug}`]?.data ?? [], ...data.attributes[`article_${categorySlug}`]?.data ?? []];
+  const connectorsSlug = data.connector_img;
+  const items = [...data[`level_2_${categorySlug}`] ?? [], ...data[`article_${categorySlug}`] ?? []];
 
   useEffect(() => {
     setIsClient(true);
@@ -18,74 +18,74 @@ const CategoryGuidesCell = ({ data, categorySlug, t }) => {
   return (
     <StyledGuidesCell isCategoryPage={true}>
       <div className="guides-cell-header">
-        {(data.attributes.url === null || data.attributes.url_docspace) ? (
+        {(data.url === null || data.url_docspace) ? (
           <>
             <Heading className={`guides-cell-title ${connectorsSlug ? "integration" : ""}`} level={4}>
               {!connectorsSlug &&
-                <img className="guides-cell-icon" src={data.attributes.card_field_img?.data?.attributes.url} alt={data.attributes.name} />
+                <img className="guides-cell-icon" src={data.card_field_img?.url} alt={data.name} />
               }
-              {data.attributes.name || data.attributes.title}
+              {data.name || data.title}
               {connectorsSlug &&
-                <img className="guides-cell-icon" src={data.attributes.connector_img.data?.attributes.url} alt={data.attributes.title} />
+                <img className="guides-cell-icon" src={data.connector_img?.url} alt={data.title} />
               }
             </Heading>
           </>
         ) : (
-          <InternalLink className={`guides-cell-title ${connectorsSlug ? "integration" : ""}`} href={data.attributes.url}>
+          <InternalLink className={`guides-cell-title ${connectorsSlug ? "integration" : ""}`} href={data.url}>
             {!connectorsSlug &&
-              <img className="guides-cell-icon" src={data.attributes.card_field_img?.data?.attributes.url} alt={data.attributes.name} />
+              <img className="guides-cell-icon" src={data.card_field_img?.url} alt={data.name} />
             }
-            {data.attributes.name || data.attributes.title}
+            {data.name || data.title}
             {connectorsSlug &&
-              <img className="guides-cell-icon" src={data.attributes.connector_img.data?.attributes.url} alt={data.attributes.title} />
+              <img className="guides-cell-icon" src={data.connector_img?.url} alt={data.title} />
             }
           </InternalLink>
         )}
-        {data.attributes.description &&
-          <div className="guides-cell-description">{ReactHtmlParser(data.attributes.description)}</div>
+        {data.description &&
+          <div className="guides-cell-description">{ReactHtmlParser(data.description)}</div>
         }
-        {data.attributes.url_docspace &&
+        {data.url_docspace &&
           <div className="guides-cell-int-links">
-            <InternalLink className="guides-cell-int-link docs" label={t("Docs")} href={data.attributes.url} />
-            <InternalLink className="guides-cell-int-link docspace" label={t("DocSpace")} href={data.attributes.url_docspace} />
+            <InternalLink className="guides-cell-int-link docs" label={t("Docs")} href={data.url} />
+            <InternalLink className="guides-cell-int-link docspace" label={t("DocSpace")} href={data.url_docspace} />
           </div>
         }
       </div>
       {!connectorsSlug &&
         <div className="guides-cell-columns">
           <div className="guides-cell-column">
-            {items?.sort((a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity)).slice(0, Math.ceil(items?.length / 2)).map((item, index) => (
+            {items?.sort((a, b) => (a.position ?? Infinity) - (b.position ?? Infinity)).slice(0, Math.ceil(items?.length / 2)).map((item, index) => (
               <React.Fragment key={index}>
-                {isClient && isExternalLink(item.attributes?.url) ? (
+                {isClient && isExternalLink(item?.url) ? (
                   <ExternalLink
                     className="guides-cell-link"
-                    label={item.attributes?.name || item.attributes?.title}
-                    href={item.attributes?.url}
+                    label={item.name || item.title}
+                    href={item.url}
                   />
                 ) : (
                   <InternalLink
-                    className={`guides-cell-link ${item.attributes?.name ? "guides-cell-header-link" : ""}`}
-                    label={item.attributes?.name || item.attributes?.title}
-                    href={item.attributes?.url}
+                    className={`guides-cell-link ${item.name ? "guides-cell-header-link" : ""}`}
+                    label={item.name || item.title}
+                    href={item.url}
                   />
                 )}
               </React.Fragment>
             ))}
           </div>
           <div className="guides-cell-column">
-            {items?.sort((a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity)).slice(Math.ceil(items.length / 2), items?.length).map((item, index) => (
+            {items?.sort((a, b) => (a.position ?? Infinity) - (b.position ?? Infinity)).slice(Math.ceil(items.length / 2), items?.length).map((item, index) => (
               <React.Fragment key={index}>
-                {isClient && isExternalLink(item.attributes?.url) ? (
+                {isClient && isExternalLink(item?.url) ? (
                   <ExternalLink
                     className="guides-cell-link"
-                    label={item.attributes?.name || item.attributes?.title}
-                    href={item.attributes?.url}
+                    label={item.name || item.title}
+                    href={item.url}
                   />
                 ) : (
                   <InternalLink
-                    className={`guides-cell-link ${item.attributes?.name ? "guides-cell-header-link" : ""}`}
-                    label={item.attributes?.name || item.attributes?.title}
-                    href={item.attributes?.url}
+                    className={`guides-cell-link ${item.name ? "guides-cell-header-link" : ""}`}
+                    label={item.name || item.title}
+                    href={item.url}
                   />
                 )}
               </React.Fragment>

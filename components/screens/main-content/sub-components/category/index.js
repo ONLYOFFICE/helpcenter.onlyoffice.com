@@ -4,10 +4,10 @@ import InternalLink from "@components/common/internal-link";
 const Category = ({ data }) => {
   return (
     <StyledCategory>
-      {data.data.sort((a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity)).map((item, index) => (
-        <InternalLink className="category-box" href={item.attributes.url} key={index}>
-          <img className="category-box-img" src={item.attributes.card_field_img?.data?.attributes.url} alt={item.attributes.name} />
-          <div className="category-box-title">{item.attributes.name}</div>
+      {data.data.sort((a, b) => (a.position ?? Infinity) - (b.position ?? Infinity)).map((item, index) => (
+        <InternalLink className="category-box" href={item.url} key={index}>
+          <img className="category-box-img" src={item.card_field_img?.url} alt={item.name} />
+          <div className="category-box-title">{item.name}</div>
         </InternalLink>
       ))}
     </StyledCategory>

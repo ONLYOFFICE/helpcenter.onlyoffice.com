@@ -13,7 +13,7 @@ const FunctionsPage = ({ locale, menuData, functions }) => {
   const { t } = useTranslation();
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
   const [leftMenuData, setLeftMenuData] = useState(menuData);
-  const { title, content, tags } = functions.data[0].attributes;
+  const { title, content, tags } = functions.data[0];
 
   useEffect(() => {
     const loadData = async () => {
@@ -59,9 +59,9 @@ const FunctionsPage = ({ locale, menuData, functions }) => {
   );
 };
 
-export async function getServerSideProps({ locale, params }) {
-  const menuData = await getLeftMenu(locale, true);
-  const functions = await getFunctions(locale, `functions/${params.functions}`);
+export async function getServerSideProps({ locale, params, preview }) {
+  const menuData = await getLeftMenu(locale, true, preview);
+  const functions = await getFunctions(locale, `functions/${params.functions}`, preview);
 
   if (functions.data.length === 0) {
     return {
@@ -74,7 +74,8 @@ export async function getServerSideProps({ locale, params }) {
       ...(await serverSideTranslations(locale, "common")),
       locale,
       menuData,
-      functions
+      functions,
+      preview: !!preview
     },
   };
 }

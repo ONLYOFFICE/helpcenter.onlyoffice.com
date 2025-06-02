@@ -46,9 +46,9 @@ const VideoPage = ({ locale, categoriesMenu, videoData }) => {
   );
 };
 
-export const getServerSideProps = async ({ locale }) => {
-  const categoriesMenu = await getCategoriesMenu(locale);
-  const videoData = await getVideos(locale);
+export const getServerSideProps = async ({ locale, preview }) => {
+  const categoriesMenu = await getCategoriesMenu(locale, preview);
+  const videoData = await getVideos(locale, preview);
 
   if (videoData.data === null || videoData.data.length === 0) {
     return {
@@ -61,7 +61,8 @@ export const getServerSideProps = async ({ locale }) => {
       ...(await serverSideTranslations(locale, "common")),
       locale,
       categoriesMenu,
-      videoData
+      videoData,
+      preview: !!preview
     },
   };
 };

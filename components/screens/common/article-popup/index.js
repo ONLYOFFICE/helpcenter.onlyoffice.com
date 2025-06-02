@@ -10,7 +10,7 @@ const ArticlePopup = ({ t, locale, tagName, tagItems, setTagItems, modalActive, 
 
   const loadMoreTags = async () => {
     setIsLoading(true);
-    const newData = await getTagsArticle(locale, tagName, 4, page);
+    const newData = await getTagsArticle(locale, tagName, 4, page, preview);
     const { articles, article_desktops, article_docs, article_docspaces, article_mobiles,  article_workspaces } = newData;
     const hasMoreTags = [articles, article_desktops, article_docs, article_docspaces, article_mobiles, article_workspaces].some(({ meta: { pagination } }) => pagination.pageCount > pagination.page);
 
@@ -45,15 +45,15 @@ const ArticlePopup = ({ t, locale, tagName, tagItems, setTagItems, modalActive, 
           <ul className="article-popup-list">
             {tagItems?.map((item, index) => (
               <li key={index}>
-                <InternalLink onClick={closePopup} className="article-popup-list-link" href={item.attributes.url}>
-                  {item.attributes?.mark?.data?.attributes.name &&
-                    <span className="mark" style={{ backgroundColor: item.attributes?.mark.data?.attributes.color }}>
-                      {item.attributes?.mark.data?.attributes.name}
+                <InternalLink onClick={closePopup} className="article-popup-list-link" href={item.url}>
+                  {item.mark &&
+                    <span className="mark" style={{ backgroundColor: item.mark.color }}>
+                      {item.mark.name}
                     </span>
                   }
-                  <span className="article-popup-list-title">{item.attributes?.title}</span>
-                  {item.attributes?.subtitle &&
-                    <span className="article-popup-list-subtitle">({item.attributes.subtitle})</span>
+                  <span className="article-popup-list-title">{item.title}</span>
+                  {item.subtitle &&
+                    <span className="article-popup-list-subtitle">({item.subtitle})</span>
                   }
                 </InternalLink>
               </li>

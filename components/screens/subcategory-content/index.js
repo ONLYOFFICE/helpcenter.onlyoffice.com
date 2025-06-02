@@ -49,7 +49,7 @@ const SubCategoryContent = ({
   const [tagName, setTagName] = useState();
   const [tagItems, setTagItems] = useState();
   const [hasMoreTags, setHasMoreTags] = useState(false);
-  const sortItems = (a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || (a.attributes.name || a.attributes.title).localeCompare(b.attributes.name || b.attributes.title);
+  const sortItems = (a, b) => (a.position ?? Infinity) - (b.position ?? Infinity) || (a.name || a.title).localeCompare(b.name || b.title);
 
   useEffect(() => {
     const firstHeader = document.querySelector('.changelog-main-header');
@@ -77,7 +77,7 @@ const SubCategoryContent = ({
   };
 
   const handleTagModal = async (tagName) => {
-    const data = await getTagsArticle(locale, tagName, 4, 1);
+    const data = await getTagsArticle(locale, tagName, 4, 1, preview);
 
     const { articles, article_desktops, article_docs, article_docspaces, article_mobiles, article_workspaces } = data;
     const hasMoreTags = [articles, article_desktops, article_docs, article_docspaces, article_mobiles, article_workspaces].some(({ meta: { pagination } }) => pagination.pageCount > pagination.page);
@@ -117,8 +117,8 @@ const SubCategoryContent = ({
             pageName={pageName}
           />
           <Heading className="wrapper-title subcategory-heading" level={1}>
-            {pageIcon?.data &&
-              <img src={pageIcon.data?.attributes.url} alt={pageName} />
+            {pageIcon?.url &&
+              <img src={pageIcon?.url} alt={pageName} />
             }
             {pageName}
           </Heading>
@@ -126,7 +126,7 @@ const SubCategoryContent = ({
             <ul ref={tagsRef} className="tags">
               {tags?.data.map((item, index) => (
                 <li key={index}>
-                  <Tag onClick={() => handleTagModal(item.attributes.title)} name={item.attributes.title} />
+                  <Tag onClick={() => handleTagModal(item.title)} name={item.title} />
                 </li>
               ))}
             </ul>
@@ -141,11 +141,11 @@ const SubCategoryContent = ({
                   <ul className="subcategory-articles">
                     {articleData.sort(sortItems).map((item, index) => (
                       <li key={index}>
-                        <InternalLink href={item.attributes.url}>
-                          {item.attributes.icon?.data?.attributes.url && (
-                            <img src={item.attributes.icon?.data?.attributes.url} alt={item.attributes.level_4_title || item.attributes.title} />
+                        <InternalLink href={item.url}>
+                          {item.icon?.url && (
+                            <img src={item.icon?.url} alt={item.level_4_title || item.title} />
                           )}
-                          {item.attributes.level_4_title || item.attributes.title}
+                          {item.level_4_title || item.title}
                         </InternalLink>
                       </li>
                     ))}
@@ -153,12 +153,12 @@ const SubCategoryContent = ({
                 )}
                 {categoryData.sort(sortItems).map((item, index) => (
                   <SubCategoryItem
-                    headingName={item.attributes.name}
-                    headingIcon={item.attributes.icon?.data?.attributes.url || item.attributes.category_pic?.data?.attributes.url}
-                    id={`${item.attributes.name.replace(/ /g, "_").toLowerCase()}_block`}
+                    headingName={item.name}
+                    headingIcon={item.icon?.url || item.category_pic?.url}
+                    id={`${item.name.replace(/ /g, "_").toLowerCase()}_block`}
                     links={[
-                      ...(item.attributes[`level_4_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`]?.data || []),
-                      ...(item.attributes[`article_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`]?.data || [])
+                      ...(item[`level_4_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`] || []),
+                      ...(item[`article_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`] || [])
                     ]}
                     categorySlug={categorySlug}
                     sortItems={sortItems}

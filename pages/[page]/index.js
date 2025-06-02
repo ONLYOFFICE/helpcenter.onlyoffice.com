@@ -13,7 +13,7 @@ const Level1Page = ({ locale, categoriesMenuData, data }) => {
   const { t } = useTranslation();
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
 
-  const { slug_id, articles, seo_title, seo_description, name, card_field_img } = data.data[0].attributes;
+  const { slug_id, articles, seo_title, seo_description, name, card_field_img } = data.data[0];
   const categorySlugPlural = slug_id === "docs" ? "docs" : `${slug_id}s`;
 
   return (
@@ -39,8 +39,8 @@ const Level1Page = ({ locale, categoriesMenuData, data }) => {
           locale={locale}
           categoriesMenuData={categoriesMenuData}
           categoryName={name}
-          categoryImg={card_field_img?.data?.attributes.url}
-          data={slug_id === "integration" ? articles : data.data[0].attributes[`category_${categorySlugPlural}`]}
+          categoryImg={card_field_img?.url}
+          data={slug_id === "integration" ? articles : data.data[0][`category_${categorySlugPlural}`]}
           categorySlug={categorySlugPlural}
           leftMenuCategories={categoriesMenuData}
           leftMenuIsOpen={leftMenuIsOpen}
@@ -54,9 +54,9 @@ const Level1Page = ({ locale, categoriesMenuData, data }) => {
   );
 };
 
-export const getServerSideProps = async ({ locale, params }) => {
-  const categoriesMenuData = await getCategoriesMenu(locale);
-  const data = await getLevel1Data(locale, params.page);
+export const getServerSideProps = async ({ locale, params, preview }) => {
+  const categoriesMenuData = await getCategoriesMenu(locale, preview);
+  const data = await getLevel1Data(locale, params.page, preview);
 
   if (locale !== "en") {
     return {
@@ -65,29 +65,29 @@ export const getServerSideProps = async ({ locale, params }) => {
         permanent: false
       }
     };
-  } else if (data.data.length === 0) {
+  } else if (data.length === 0) {
     return {
       notFound: true
     };
   }
 
-  if (data.data[0].attributes.slug_id === "integration") {
+  if (data.slug_id === "integration") {
     const updatedArticles = [];
     const indxToRemove = new Set();
 
-    data.data[0].attributes.articles.data.forEach((article, index, arr) => {
-      const { url } = article.attributes;
+    data.articles.forEach((article, index, arr) => {
+      const { url } = article;
       const docspaceUrl = url.replace('.aspx', '-docspace.aspx');
-      const docspaceArticleIndex = arr.findIndex(a => a.attributes.url === docspaceUrl);
+      const docspaceArticleIndex = arr.findIndex(a => a.url === docspaceUrl);
 
       if (docspaceArticleIndex !== -1) {
-        article.attributes.url_docspace = docspaceUrl;
+        article.url_docspace = docspaceUrl;
         indxToRemove.add(docspaceArticleIndex);
       }
       updatedArticles.push(article);
     });
 
-    data.data[0].attributes.articles.data = updatedArticles.filter((_, index) => !indxToRemove.has(index));
+    data.articles = updatedArticles.filter((_, index) => !indxToRemove.has(index));
   }
 
   return {
@@ -95,7 +95,8 @@ export const getServerSideProps = async ({ locale, params }) => {
       ...(await serverSideTranslations(locale, "common")),
       locale,
       categoriesMenuData,
-      data
+      data,
+      preview: !!preview
     },
   };
 };

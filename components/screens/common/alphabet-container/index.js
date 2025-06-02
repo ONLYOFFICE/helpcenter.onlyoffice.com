@@ -11,7 +11,7 @@ const AlphabetContainer = ({
     isTagPage,
     locale
   }) => {
-  const titleStartLetters = new Set(data.data?.map((item) => item.attributes.title[0].toLowerCase()));
+  const titleStartLetters = new Set(data.data?.map((item) => item.title[0].toLowerCase()));
   const filteredAlphabet = t("Alphabet").split("").filter((letter) => titleStartLetters.has(letter));
 
   const [prodAplh, setProdAlph] = useState(filteredAlphabet);
@@ -39,22 +39,22 @@ const AlphabetContainer = ({
 
               {isTagPage ? (
                 <ul className="alphabet-tags">
-                  {data.data?.filter((item) => item.attributes.title.toLowerCase().startsWith(c)).map((item, index) => (
+                  {data.data?.filter((item) => item.title.toLowerCase().startsWith(c)).map((item, index) => (
                     <li key={index}>
-                      <button className="alphabet-tag" onClick={() => handleTagModal(item.attributes.title)}>
-                        {item.attributes.title}
+                      <button className="alphabet-tag" onClick={() => handleTagModal(item.title)}>
+                        {item.title}
                       </button>
                     </li>
                   ))}
                 </ul>
               ) : (
-                data.data?.filter((item) => item.attributes.title.toLowerCase().startsWith(c)).map((item, index) => (
+                data.data?.filter((item) => item.title.toLowerCase().startsWith(c)).map((item, index) => (
                   <Dictionary
                     key={index}
                     t={t}
-                    title={item.attributes.title}
-                    subtitle={item.attributes.subtitle}
-                    definition={item.attributes.definition}
+                    title={item.title}
+                    subtitle={item.subtitle}
+                    definition={item.definition}
                     locale={locale}
                   />
                 ))

@@ -43,8 +43,8 @@ const CategoryContent = ({
   const [hasMoreTags, setHasMoreTags] = useState(false);
   const cookies = new Cookies(null, { path: "/" });
   const sortPageItems = categoryData?.sort((a, b) =>
-    (b.attributes.icon_small?.data?.attributes?.url ? 1 : 0) - (a.attributes.icon_small?.data?.attributes?.url ? 1 : 0) ||
-    (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || a.attributes.name.localeCompare(b.attributes.name));
+    (b.icon_small?.url ? 1 : 0) - (a.icon_small?.url ? 1 : 0) ||
+    (a.position ?? Infinity) - (b.position ?? Infinity) || a.name.localeCompare(b.name));
 
   useEffect(() => {
     if (descriptionRef.current) {
@@ -66,7 +66,7 @@ const CategoryContent = ({
   }, []);
 
   const handleTagModal = async (tagName) => {
-    const data = await getTagsArticle(locale, tagName, 4, 1);
+    const data = await getTagsArticle(locale, tagName, 4, 1, preview);
 
     const { articles, article_desktops, article_docs, article_docspaces, article_mobiles, article_workspaces } = data;
     const hasMoreTags = [articles, article_desktops, article_docs, article_docspaces, article_mobiles, article_workspaces].some(({ meta: { pagination } }) => pagination.pageCount > pagination.page);
@@ -107,7 +107,7 @@ const CategoryContent = ({
             <ul ref={tagsRef} className="tags">
               {tags?.data.map((item, index) => (
                 <li key={index}>
-                  <Tag onClick={() => handleTagModal(item.attributes.title)} name={item.attributes.title} />
+                  <Tag onClick={() => handleTagModal(item.title)} name={item.title} />
                 </li>
               ))}
             </ul>
@@ -118,13 +118,13 @@ const CategoryContent = ({
           {articleData?.length > 0 && (
             <div className="category-articles">
               {articleData.sort((a, b) => {
-                (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || a.attributes.title.localeCompare(b.attributes.title)
+                (a.position ?? Infinity) - (b.position ?? Infinity) || a.title.localeCompare(b.title)
               }).map((item, index) => (
-                <div id={`${item.attributes.title.replace(/ /g, "_").toLowerCase()}_block`} className="category-articles-item" key={index}>
-                  {item.attributes.icon?.data?.attributes.url && (
-                    <img src={item.attributes.icon.data.attributes.url} alt={item.attributes.name || item.attributes.level_4_title || item.attributes.title} />
+                <div id={`${item.title.replace(/ /g, "_").toLowerCase()}_block`} className="category-articles-item" key={index}>
+                  {item.icon?.url && (
+                    <img src={item.icon?.url} alt={item.name || item.level_4_title || item.title} />
                   )}
-                  <InternalLink href={item.attributes.url} label={item.attributes.level_4_title || item.attributes.title} />
+                  <InternalLink href={item.url} label={item.level_4_title || item.title} />
                 </div>
               ))}
             </div>

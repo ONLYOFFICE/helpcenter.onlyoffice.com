@@ -49,11 +49,11 @@ const SearchResult = ({ locale, categoriesMenuData, searchResults, query, page }
   );
 };
 
-export const getServerSideProps = async ({ locale, query }) => {
+export const getServerSideProps = async ({ locale, query, preview }) => {
   const page = query.page || 1;
   const pageSize = query.pageSize || 12;
-  const categoriesMenuData = await getCategoriesMenu(locale);
-  const searchResults = await getSearchResults(locale, query.query, page, pageSize);
+  const categoriesMenuData = await getCategoriesMenu(locale, preview);
+  const searchResults = await getSearchResults(locale, query.query, page, pageSize, preview);
 
   return {
     props: {
@@ -62,7 +62,8 @@ export const getServerSideProps = async ({ locale, query }) => {
       categoriesMenuData,
       searchResults,
       page,
-      query: query.query
+      query: query.query,
+      preview: !!preview
     },
   };
 };

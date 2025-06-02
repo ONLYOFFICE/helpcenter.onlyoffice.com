@@ -16,7 +16,7 @@ const TagsContent = ({ t, locale, tagsData, leftMenuData, leftMenuIsOpen }) => {
   const page = 1;
 
   const handleTagModal = async (tagName) => {
-    const data = await getTagsArticle(locale, tagName, 2, page);
+    const data = await getTagsArticle(locale, tagName, 2, page, preview);
 
     const { articles, article_desktops, article_docs, article_docspaces, article_mobiles, article_workspaces } = data;
     const hasMoreTags = [articles, article_desktops, article_docs, article_docspaces, article_mobiles, article_workspaces].some(({ meta: { pagination } }) => pagination.total > pagination.page + 1);

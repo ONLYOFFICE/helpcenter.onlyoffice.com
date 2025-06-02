@@ -14,7 +14,7 @@ const FaqPage = ({ locale, menuData, faqData }) => {
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
   const [leftMenuData, setLeftMenuData] = useState(menuData);
 
-  const { seo_title, seo_description, name } = faqData.data[0].attributes;
+  const { seo_title, seo_description, name } = faqData.data[0];
   const seoTitle = seo_title ? seo_title : `${name} - ONLYOFFICE`;
   const seoDescription = seo_description ? seo_description : t("ONLYOFFICEMeta");
 
@@ -61,9 +61,9 @@ const FaqPage = ({ locale, menuData, faqData }) => {
   );
 };
 
-export async function getServerSideProps({ locale, params }) {
-  const menuData = await getLeftMenu(locale, true);
-  const faqData = await getFaq(locale, `/faq/${params.faq}`);
+export async function getServerSideProps({ locale, params, preview }) {
+  const menuData = await getLeftMenu(locale, true, preview);
+  const faqData = await getFaq(locale, `/faq/${params.faq}`, preview);
 
   if (faqData.data === null || faqData.data.length === 0) {
     return {
@@ -76,7 +76,8 @@ export async function getServerSideProps({ locale, params }) {
       ...(await serverSideTranslations(locale, "common")),
       locale,
       menuData,
-      faqData
+      faqData,
+      preview: !!preview
     },
   };
 }

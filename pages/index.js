@@ -15,13 +15,13 @@ const MainPage = ({ locale, data }) => {
 
   return (
     <Layout>
-      <Layout.PageHead>
+     <Layout.PageHead>
         <HeadSEO
           title={t("titleIndexPage")}
           description={t("ONLYOFFICEMeta")}
         />
       </Layout.PageHead>
-      <Layout.PageHeader>
+       <Layout.PageHeader>
         <Header
           t={t}
           locale={locale}
@@ -31,7 +31,7 @@ const MainPage = ({ locale, data }) => {
           setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
       </Layout.PageHeader>
-      <Layout.SectionMain>
+       <Layout.SectionMain>
         <MainContent
           t={t}
           locale={locale}
@@ -48,8 +48,8 @@ const MainPage = ({ locale, data }) => {
   );
 };
 
-export const getServerSideProps = async ({ locale }) => {
-  const data = await getMainPageData(locale, true);
+export const getServerSideProps = async ({ locale, preview }) => {
+  const data = await getMainPageData(locale, preview);
 
   if (locale !== "en") {
     return {
@@ -64,7 +64,8 @@ export const getServerSideProps = async ({ locale }) => {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
-      data
+      data,
+      preview: !!preview
     },
   };
 };

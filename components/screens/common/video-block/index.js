@@ -11,10 +11,10 @@ const VideoBlock = ({ t, video }) => {
       <Heading className="video-block-title" level={3} dangerouslySetInnerHTML={{ __html: t("VideosWithASimilarTopic") }} />
 
       <div className="video-block-wrapper">
-        <YouTube className="video-block-youtube" videoId={video.data.attributes.url} />
+        <YouTube className="video-block-youtube" videoId={video.url} />
         <div className="video-block-content">
-          <Heading className="video-block-name" level={4} label={video.data.attributes.title} />
-          <Text className="video-block-description" label={video.data.attributes.description} />
+          <Heading className="video-block-name" level={4} label={video.title} />
+          <Text className="video-block-description" label={video.description} />
         </div>
       </div>
 

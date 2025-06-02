@@ -8,7 +8,7 @@ const VideoItem = ({ data, isMain }) => {
     <StyledVideoItem className="video-item">
       <div className="video-item-frame">
         <YouTube
-          videoId={data.attributes.url}
+          videoId={data.url}
           opts={{
             width: isMain ? "512" : "224",
             height: "auto"
@@ -17,11 +17,11 @@ const VideoItem = ({ data, isMain }) => {
       </div>
       <Heading
         className={`video-item-title ${isMain && "main"}`}
-        label={data.attributes.title}
+        label={data.title}
         level={5}
       />
-      {isMain && data.attributes.description &&
-        <Text className="video-item-description" label={data.attributes.description} as="p" />
+      {isMain && data.description &&
+        <Text className="video-item-description" label={data.description} as="p" />
       }
     </StyledVideoItem>
   );

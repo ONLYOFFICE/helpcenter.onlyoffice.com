@@ -6,5 +6,9 @@
         "url": "",
         "timeout": "30000"
     },
-    "appServer": "config_appServer"
+    "appServer": "config_appServer",
+    "preview": {
+        "secretKey": "preview_secret_key",
+        "previewUrl": "preview_url_placeholder"
+    }
 }

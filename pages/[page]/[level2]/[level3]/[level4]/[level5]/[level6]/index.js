@@ -14,7 +14,7 @@ const Level6Page = ({ locale, data, categoriesMenuData, categorySlug }) => {
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
 
   const categorySlugSingular = categorySlug === "docs" ? "doc" : categorySlug;
-  const articleData = data.data?.[0]?.attributes;
+  const articleData = data.data?.[0];
 
   return (
     <Layout>
@@ -37,14 +37,14 @@ const Level6Page = ({ locale, data, categoriesMenuData, categorySlug }) => {
         <ArticleContent
           t={t}
           locale={locale}
-          categoryName={articleData[`category_${categorySlug}`]?.data?.attributes?.general_category.data.attributes.name || articleData[`level_2_${categorySlugSingular}`]?.data?.attributes[`category_${categorySlugSingular}`].data.attributes.general_category.data.attributes.name || articleData[`level_3_${categorySlugSingular}`]?.data?.attributes[`level_2_${categorySlugSingular}`].data.attributes[`category_${categorySlugSingular}`].data.attributes.general_category.data.attributes.name || articleData[`level_4_${categorySlugSingular}`]?.data?.attributes[`level_3_${categorySlugSingular}`].data.attributes[`level_2_${categorySlugSingular}`].data.attributes[`category_${categorySlugSingular}`].data.attributes.general_category.data.attributes.name}
-          categoryUrl={articleData[`category_${categorySlug}`]?.data?.attributes?.general_category.data.attributes.url || articleData[`level_2_${categorySlugSingular}`]?.data?.attributes[`category_${categorySlugSingular}`].data.attributes.general_category.data.attributes.url || articleData[`level_3_${categorySlugSingular}`]?.data?.attributes[`level_2_${categorySlugSingular}`].data.attributes[`category_${categorySlugSingular}`].data.attributes.general_category.data.attributes.url || articleData[`level_4_${categorySlugSingular}`]?.data?.attributes[`level_3_${categorySlugSingular}`].data.attributes[`level_2_${categorySlugSingular}`].data.attributes[`category_${categorySlugSingular}`].data.attributes.general_category.data.attributes.url}
-          level2CategoryName={articleData[`category_${categorySlug}`]?.data?.attributes?.name || articleData[`level_2_${categorySlugSingular}`]?.data?.attributes[`category_${categorySlugSingular}`].data.attributes.name || articleData[`level_3_${categorySlugSingular}`]?.data?.attributes[`level_2_${categorySlugSingular}`].data.attributes[`category_${categorySlugSingular}`].data.attributes.name || articleData[`level_4_${categorySlugSingular}`]?.data?.attributes[`level_3_${categorySlugSingular}`].data.attributes[`level_2_${categorySlugSingular}`].data.attributes[`category_${categorySlugSingular}`].data.attributes.name}
-          level2CategoryUrl={articleData[`category_${categorySlug}`]?.data?.attributes?.url || articleData[`level_2_${categorySlugSingular}`]?.data?.attributes[`category_${categorySlugSingular}`].data.attributes.url || articleData[`level_3_${categorySlugSingular}`]?.data?.attributes[`level_2_${categorySlugSingular}`].data.attributes[`category_${categorySlugSingular}`].data.attributes.url || articleData[`level_4_${categorySlugSingular}`]?.data?.attributes[`level_3_${categorySlugSingular}`].data.attributes[`level_2_${categorySlugSingular}`].data.attributes[`category_${categorySlugSingular}`].data.attributes.url}
-          level3CategoryName={articleData[`level_2_${categorySlugSingular}`]?.data?.attributes?.name || articleData[`level_3_${categorySlugSingular}`]?.data?.attributes[`level_2_${categorySlugSingular}`].data.attributes.name || articleData[`level_4_${categorySlugSingular}`]?.data?.attributes[`level_3_${categorySlugSingular}`].data.attributes[`level_2_${categorySlugSingular}`].data.attributes.name}
-          level3CategoryUrl={articleData[`level_2_${categorySlugSingular}`]?.data?.attributes?.url || articleData[`level_3_${categorySlugSingular}`]?.data?.attributes[`level_2_${categorySlugSingular}`].data.attributes.url || articleData[`level_4_${categorySlugSingular}`]?.data?.attributes[`level_3_${categorySlugSingular}`].data.attributes[`level_2_${categorySlugSingular}`].data.attributes.url}
-          level4CategoryName={articleData[`level_4_${categorySlugSingular}`]?.data?.attributes[`level_3_${categorySlugSingular}`].data.attributes?.name || articleData[`level_3_${categorySlugSingular}`]?.data?.attributes.name}
-          level4CategoryUrl={articleData[`level_4_${categorySlugSingular}`]?.data?.attributes[`level_3_${categorySlugSingular}`].data.attributes?.url || articleData[`level_3_${categorySlugSingular}`]?.data?.attributes.url}
+          categoryName={articleData[`category_${categorySlug}`]?.general_category.name || articleData[`level_2_${categorySlugSingular}`]?.[`category_${categorySlugSingular}`].general_category.name || articleData[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`][`category_${categorySlugSingular}`].general_category.name || articleData[`level_4_${categorySlugSingular}`]?.[`level_3_${categorySlugSingular}`][`level_2_${categorySlugSingular}`][`category_${categorySlugSingular}`].general_category.name}
+          categoryUrl={articleData[`category_${categorySlug}`]?.general_category.url || articleData[`level_2_${categorySlugSingular}`]?.[`category_${categorySlugSingular}`].general_category.url || articleData[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`][`category_${categorySlugSingular}`].general_category.url || articleData[`level_4_${categorySlugSingular}`]?.[`level_3_${categorySlugSingular}`][`level_2_${categorySlugSingular}`][`category_${categorySlugSingular}`].general_category.url}
+          level2CategoryName={articleData[`category_${categorySlug}`]?.name || articleData[`level_2_${categorySlugSingular}`]?.[`category_${categorySlugSingular}`].name || articleData[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`][`category_${categorySlugSingular}`].name || articleData[`level_4_${categorySlugSingular}`]?.[`level_3_${categorySlugSingular}`][`level_2_${categorySlugSingular}`][`category_${categorySlugSingular}`].name}
+          level2CategoryUrl={articleData[`category_${categorySlug}`]?.url || articleData[`level_2_${categorySlugSingular}`]?.[`category_${categorySlugSingular}`].url || articleData[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`][`category_${categorySlugSingular}`].url || articleData[`level_4_${categorySlugSingular}`]?.[`level_3_${categorySlugSingular}`][`level_2_${categorySlugSingular}`][`category_${categorySlugSingular}`].url}
+          level3CategoryName={articleData[`level_2_${categorySlugSingular}`]?.name || articleData[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`].name || articleData[`level_4_${categorySlugSingular}`]?.[`level_3_${categorySlugSingular}`][`level_2_${categorySlugSingular}`].name}
+          level3CategoryUrl={articleData[`level_2_${categorySlugSingular}`]?.url || articleData[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`].url || articleData[`level_4_${categorySlugSingular}`]?.[`level_3_${categorySlugSingular}`][`level_2_${categorySlugSingular}`].url}
+          level4CategoryName={articleData[`level_4_${categorySlugSingular}`]?.[`level_3_${categorySlugSingular}`]?.name || articleData[`level_3_${categorySlugSingular}`]?.name}
+          level4CategoryUrl={articleData[`level_4_${categorySlugSingular}`]?.[`level_3_${categorySlugSingular}`]?.url || articleData[`level_3_${categorySlugSingular}`]?.url}
           pageName={articleData?.title}
           pageDescription={articleData?.content}
           tags={articleData?.tags}
@@ -59,9 +59,9 @@ const Level6Page = ({ locale, data, categoriesMenuData, categorySlug }) => {
   );
 };
 
-export const getServerSideProps = async ({ locale, params }) => {
-  const data = await getArticle(locale, params.page, `${locale === "en" ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}/${params.level4}/${params.level5}/${params.level6}`);
-  const categoriesMenuData = await getCategoriesMenu(locale);
+export const getServerSideProps = async ({ locale, params, preview }) => {
+  const data = await getArticle(locale, params.page, `${locale === "en", preview ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}/${params.level4}/${params.level5}/${params.level6}`, preview);
+  const categoriesMenuData = await getCategoriesMenu(locale, preview);
 
   if (!data?.data?.length) {
     if (locale !== "en") {
@@ -85,7 +85,8 @@ export const getServerSideProps = async ({ locale, params }) => {
       locale,
       data,
       categoriesMenuData,
-      categorySlug: params.page
+      categorySlug: params.page,
+      preview: !!preview
     },
   };
 };

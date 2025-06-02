@@ -13,7 +13,7 @@ const SubCategoryItem = ({ categorySlug, sortItems, id, headingName, headingIcon
   }, []);
 
   const checkTitleLength = !links?.some(item => {
-    const title = item.attributes.title;
+    const title = item.title;
     return title && title.replace(/\s/g, "").length > 40;
   });
 
@@ -33,10 +33,10 @@ const SubCategoryItem = ({ categorySlug, sortItems, id, headingName, headingIcon
             <ul className="subcategory-item-list">
               {links?.slice(0, Math.ceil(links?.length / 2)).sort(sortItems).map((item, index) => (
                 <li key={index}>
-                  {isClient && isExternalLink(item.attributes?.url) ? (
-                    <ExternalLink href={item.attributes.url} label={item.attributes.name || item.attributes.title} />
+                  {isClient && isExternalLink(item.url) ? (
+                    <ExternalLink href={item.url} label={item.name || item.title} />
                   ) : (
-                    <InternalLink href={item.attributes.url} label={item.attributes.name || item.attributes.title} />
+                    <InternalLink href={item.url} label={item.name || item.title} />
                   )}
                 </li>
               ))}
@@ -44,10 +44,10 @@ const SubCategoryItem = ({ categorySlug, sortItems, id, headingName, headingIcon
             <ul className="subcategory-item-list">
               {links?.slice(Math.ceil(links.length / 2)).sort(sortItems).map((item, index) => (
                 <li key={index}>
-                  {isClient && isExternalLink(item.attributes?.url) ? (
-                    <ExternalLink href={item.attributes.url} label={item.attributes.name || item.attributes.title} />
+                  {isClient && isExternalLink(item?.url) ? (
+                    <ExternalLink href={item.url} label={item.name || item.title} />
                   ) : (
-                    <InternalLink href={item.attributes.url} label={item.attributes.name || item.attributes.title} />
+                    <InternalLink href={item.url} label={item.name || item.title} />
                   )}
                 </li>
               ))}
@@ -57,10 +57,10 @@ const SubCategoryItem = ({ categorySlug, sortItems, id, headingName, headingIcon
           <ul className="subcategory-item-list">
             {links.sort(sortItems).map((item, index) => (
               <li key={index}>
-                {isClient && isExternalLink(item.attributes?.url) ? (
-                  <ExternalLink href={item.attributes.url} label={item.attributes.name || item.attributes.title} />
+                {isClient && isExternalLink(item?.url) ? (
+                  <ExternalLink href={item.url} label={item.name || item.title} />
                 ) : (
-                  <InternalLink href={item.attributes.url} label={item.attributes.name || item.attributes.title} />
+                  <InternalLink href={item.url} label={item.name || item.title} />
                 )}
               </li>
             ))}
