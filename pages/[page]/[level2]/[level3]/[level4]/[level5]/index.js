@@ -60,7 +60,7 @@ const Level5Page = ({ locale, data, categoriesMenuData, categorySlug }) => {
 };
 
 export const getServerSideProps = async ({ locale, params, preview }) => {
-  const data = await getArticle(locale, params.page, `${locale === "en", preview ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}/${params.level4}/${params.level5}`, preview);
+  const data = await getArticle(locale, params.page, `${locale === "en" ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}/${params.level4}/${params.level5}`, preview);
   const categoriesMenuData = await getCategoriesMenu(locale, preview);
 
   if (!data?.data?.length) {
