@@ -50,6 +50,7 @@ const FunctionsPage = ({ locale, menuData, functions }) => {
           leftMenuIsOpen={leftMenuIsOpen}
           pageName={title}
           leftMenuData={leftMenuData}
+          setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>
