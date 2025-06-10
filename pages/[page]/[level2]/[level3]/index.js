@@ -137,12 +137,7 @@ export const getServerSideProps = async ({ locale, params, req, res, preview }) 
   }
 
   const menuData = data.data[0].article ? await getCategoriesMenu(locale, preview) : await getLeftMenu(locale, params.page, preview);
-  let cookies;
-  try {
-    cookies = new Cookies(req.headers.cookie, { path: "/" });
-  } catch (err) {
-    cookies = { get: () => undefined };
-  }
+  const cookies = new Cookies(req.headers.cookie, { path: "/" });
   if (cookies.get("neverShowTranslators") === "never" && data.data[0]?.content) {
     data.data[0].content = data.data[0].content.replace(
       /<div class="bringattention translator" id="translatorAttention_block" style="display: block;">/g,
