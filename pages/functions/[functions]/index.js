@@ -62,7 +62,7 @@ const FunctionsPage = ({ locale, menuData, functions }) => {
 
 export async function getServerSideProps({ locale, params, preview }) {
   const menuData = await getLeftMenu(locale, true, preview);
-  const functions = await getFunctions(locale, `functions/${params.functions}`, preview);
+  const functions = await getFunctions(locale, locale === "en" ? `functions/${params.functions}` : `/${locale}/functions/${params.functions}`, preview);
 
   if (functions.data.length === 0) {
     return {

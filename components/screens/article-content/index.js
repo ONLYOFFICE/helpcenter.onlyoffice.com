@@ -104,7 +104,7 @@ const ArticleContent = ({
     };
   }, [videoOffsetTrigger, pageDescription]);
 
-  const handleTagModal = async (tagName) => {
+  const handleTagModal = async (tagName, preview) => {
     const data = await getTagsArticle(locale, tagName, 4, 1, preview);
 
     const { articles, article_desktops, article_docs, article_docspaces, article_mobiles, article_workspaces } = data;
