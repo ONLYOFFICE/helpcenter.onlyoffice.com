@@ -9842,5 +9842,21 @@
   "/installation/groups-smtp-settings.aspx": {
     "destination": "/workspace/administration/smtp-settings.aspx",
     "permanent": true
+  },
+  "/gettingstarted/calendar.aspx": {
+    "destination": "/workspace/administration/calendar.aspx",
+    "permanent": true
+  },
+  "/gettingstarted/mail.aspx": {
+    "destination": "/workspace/administration/mail.aspx",
+    "permanent": true
+  },
+  "/gettingstarted/community.aspx": {
+    "destination": "/workspace/administration/community.aspx",
+    "permanent": true
+  },
+  "/gettingstarted/projects.aspx": {
+    "destination": "/workspace/administration/projects.aspx",
+    "permanent": true
   }
 }
