@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /*?_ga=
+Disallow: /*?from=
+Disallow: /*?sa=
+Disallow: /*?spm=
+Disallow: /*?utm_source=
+Sitemap: https://helpcenter.onlyoffice.com/sitemap.xml
