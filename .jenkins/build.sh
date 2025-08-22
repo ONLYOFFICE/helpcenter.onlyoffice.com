@@ -15,7 +15,7 @@ BUILD_DIR="/app/${APP_NAME}_BUILD"
 SOURCE_ARCHIVE_PATH="/home/ubuntu/deploy/.jenkins/$APP_NAME.tar.gz"
 BACKUP_DIR="/app/backups"
 BACKUP_NAME="$APP_NAME-$CURRENT_DATE.tar.gz"
-BUILD_LOG="/home/ubuntu/deploy/oforms_deploy.log"
+BUILD_LOG="/home/ubuntu/deploy/helpcenter_deploy.log"
 NOTIFICATION_APP_NAME="var_notification_app_name"
 
 ### TELEGRAM NOTIFICATION FUNCTION
