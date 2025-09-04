@@ -620,8 +620,8 @@
     "permanent": true
   },
   "/server/document/changelog.aspx": {
-   "destination": "/docs/docs-changelog.aspx",
-   "permanent": true
+    "destination": "/docs/docs-changelog.aspx",
+    "permanent": true
   },
   "/installation/docs-cloud-index.aspx": {
     "destination": "/docs/installation/cloud",
@@ -7664,7 +7664,7 @@
     "permanent": true
   },
   "/userguides/groups-tipstricks-documents-connect-Onedrive.aspx": {
-    "destination": "connect-Onedrive.aspx",
+    "destination": "/workspace/administration/connect-onedrive.aspx",
     "permanent": true
   },
   "/userguides/groups-tipstricks-documents-connect-Owncloud.aspx": {
@@ -7672,7 +7672,7 @@
     "permanent": true
   },
   "/userguides/groups-tipstricks-documents-context-menu.aspx": {
-    "destination": "context-menu.aspx",
+    "destination": "/workspace/userguides/documents-context-menu.aspx",
     "permanent": true
   },
   "/userguides/groups-tipstricks-documents-document-versions.aspx": {
@@ -9632,189 +9632,189 @@
     "permanent": true
   },
   "/installation/docspace-developer-https-docker.aspx": {
-  "destination": "/docspace/installation/docspace-developer-https-docker.aspx",
-  "permanent": true
- },
- "/installation/docspace-developer-https-linux.aspx": {
-  "destination": "/docspace/installation/docspace-developer-https-linux.aspx",
-  "permanent": true
- },
- "/installation/docspace-developer-https-windows.aspx": {
-  "destination": "/docspace/installation/docspace-developer-https-windows.aspx",
-  "permanent": true
- },
- "/installation/docspace-developer-index.aspx": {
-  "destination": "/docspace/installation/developer",
-  "permanent": true
- },
- "/installation/docspace-developer-install-script-parameters.aspx": {
-  "destination": "/docspace/installation/docspace-developer-install-script-parameters.aspx",
-  "permanent": true
- },
- "/installation/docspace-developer-install-script.aspx": {
-  "destination": "/docspace/installation/docspace-developer-install-script.aspx",
-  "permanent": true
- },
- "/installation/docspace-developer-install-windows.aspx": {
-  "destination": "/docspace/installation/docspace-developer-install-windows.aspx",
-  "permanent": true
- },
- "/installation/docspace-developer-remove-docker.aspx": {
-  "destination": "/docspace/installation/docspace-developer-remove-docker.aspx",
-  "permanent": true
- },
- "/docs/changelog/docs-changelog.aspx": {
-  "destination": "/docs/docs-changelog.aspx",
-  "permanent": true
- },
- "/installation/groups-authorization-keys.aspx": {
-  "destination": "/workspace/administration/connecting-external-services#connecting_third-party_services_block",
-  "permanent": true
- },
- "/tipstricks/available-languages.aspx": {
-  "destination": "/workspace/administration/available-languages.aspx",
-  "permanent": true
- },
- "/docs/userguides/document-editor": {
-  "destination": "/docs/userguides/document_editor",
-  "permanent": true
- },
- "/docs/userguides/spreadsheet-editor": {
-  "destination": "/docs/userguides/spreadsheet_editor",
-  "permanent": true
- },
- "/docs/userguides/presentation-editor": {
-  "destination": "/docs/userguides/presentation_editor",
-  "permanent": true
- },
- "/ONLYOFFICE-Editors/index.aspx": {
-  "destination": "/docs/userguides",
-  "permanent": true
- },
- "/server/integration-edition/linux/linux-installation-centos.aspx": {
-  "destination": "/docs/installation/docs-enterprise-install-centos.aspx",
-  "permanent": true
- },
- "/administration/docspace-configure-okta.aspx": {
-  "destination": "/docspace/configuration/configure-okta.aspx",
-  "permanent": true
- },
- "/server/controlpanel/opensource/encryption.aspx": {
-  "destination": "/workspace/administration/control-panel-encryption.aspx",
-  "permanent": true
- },
- "/server/integration-edition/linux/linux-installation.aspx": {
-   "destination": "/docs/installation/docs-enterprise-install-ubuntu.aspx",
-   "permanent": true
- },
- "/server/integration-edition/docker/docker-installation.aspx": {
-   "destination": "/docs/installation/docs-enterprise-install-docker.aspx",
-   "permanent": true
- },
- "/server/developer-edition/linux/linux-installation.aspx": {
-   "destination": "/docs/installation/docs-developer-install-ubuntu.aspx",
-   "permanent": true
- },
- "/ONLYOFFICE-Editors/ONLYOFFICE-Presentation-Editor/index.aspx": {
-   "destination": "/docs/userguides/presentation_editor",
-   "permanent": true
- },
- "/ONLYOFFICE-Editors/ONLYOFFICE-Spreadsheet-Editor/index.aspx": {
-   "destination": "/docs/userguides/spreadsheet_editor",
-   "permanent": true
- },
- "/ONLYOFFICE-Editors/ONLYOFFICE-Document-Editor/index.aspx": {
-   "destination": "/docs/userguides/document_editor",
-   "permanent": true
- },
- "/installation/groups-index.aspx": {
-  "destination": "/",
-  "permanent": true
- },
- "/server/controlpanel/enterprise/switch-to-https.aspx": {
-  "destination": "/workspace/administration/control-panel-https.aspx",
-  "permanent": true
- },
- "/guides/two-factor-authentication.aspx": {
-  "destination": "/workspace/administration/two-factor-authentication.aspx",
-  "permanent": true
- },
- "/server/controlpanel/enterprise/sso-description.aspx": {
-  "destination": "/workspace/administration/control-panel-sso-description.aspx",
-  "permanent": true
- },
- "/tipstricks/data-backup-restore.aspx": {
-  "destination": "/workspace/administration/backup-saas.aspx",
-  "permanent": true
- },
- "/workspace/installation/workspace": {
-  "destination": "/workspace/installation/community",
-  "permanent": true
- },
- "/gettingstarted/configuration.aspx": {
-  "destination": "/workspace/administration/configuration.aspx",
-  "permanent": true
- },
- "/server/linux/document/linux-installation-from-snap.aspx": {
-  "destination": "/docs/installation/docs-community-install-from-snap.aspx",
-  "permanent": true
- },
- "/server/windows/community/authorization-keys.aspx": {
-  "destination": "/workspace/administration/connecting-external-services#connecting_third-party_services_block",
-  "permanent": true
- },
- "/server/controlpanel/enterprise/backup-restore.aspx": {
-  "destination": "/workspace/administration/control-panel-backup.aspx",
-  "permanent": true
- },
- "/gettingstarted/documents.aspx": {
-  "destination": "/workspace/administration/documents.aspx",
-  "permanent": true
- },
- "/gettingstarted/people.aspx": {
-  "destination": "/workspace/administration/people.aspx",
-  "permanent": true
- },
- "/guides/send-documents-for-e-signature.aspx": {
-  "destination": "/workspace/userguides/documents-send-documents-for-e-signature.aspx",
-  "permanent": true
- },
- "/administratorguides/import-contacts-from-web.aspx": {
-  "destination": "/workspace/administration/import-contacts-from-web.aspx",
-  "permanent": true
- },
- "/guides/Mailserver.aspx": {
-  "destination": "/workspace/administration/mail-server.aspx",
-  "permanent": true
- },
- "/gettingstarted/talk.aspx": {
-  "destination": "/workspace/administration/talk.aspx",
-  "permanent": true
- },
- "/guides/mailinglist.aspx": {
-  "destination": "/workspace/userguides/talk-mailinglist.aspx",
-  "permanent": true
- },
- "/tipstricks/managing-subscriptions.aspx": {
-  "destination": "/workspace/userguides/managing-subscriptions.aspx",
-  "permanent": true
- },
- "/guides/use-voip.aspx": {
-  "destination": "/workspace/userguides/crm-use-voip.aspx",
-  "permanent": true
- },
- "/gettingstarted/crm.aspx": {
-  "destination": "/workspace/administration/crm.aspx",
-  "permanent": true
- },
- "/video/manage-access-rights.aspx": {
-  "destination": "/video.aspx#workspace_block",
-  "permanent": true
- },
- "/tipstricks/authorization-keys-saas.aspx": {
-  "destination": "/workspace/",
-  "permanent": true
- },
+    "destination": "/docspace/installation/docspace-developer-https-docker.aspx",
+    "permanent": true
+  },
+  "/installation/docspace-developer-https-linux.aspx": {
+    "destination": "/docspace/installation/docspace-developer-https-linux.aspx",
+    "permanent": true
+  },
+  "/installation/docspace-developer-https-windows.aspx": {
+    "destination": "/docspace/installation/docspace-developer-https-windows.aspx",
+    "permanent": true
+  },
+  "/installation/docspace-developer-index.aspx": {
+    "destination": "/docspace/installation/developer",
+    "permanent": true
+  },
+  "/installation/docspace-developer-install-script-parameters.aspx": {
+    "destination": "/docspace/installation/docspace-developer-install-script-parameters.aspx",
+    "permanent": true
+  },
+  "/installation/docspace-developer-install-script.aspx": {
+    "destination": "/docspace/installation/docspace-developer-install-script.aspx",
+    "permanent": true
+  },
+  "/installation/docspace-developer-install-windows.aspx": {
+    "destination": "/docspace/installation/docspace-developer-install-windows.aspx",
+    "permanent": true
+  },
+  "/installation/docspace-developer-remove-docker.aspx": {
+    "destination": "/docspace/installation/docspace-developer-remove-docker.aspx",
+    "permanent": true
+  },
+  "/docs/changelog/docs-changelog.aspx": {
+    "destination": "/docs/docs-changelog.aspx",
+    "permanent": true
+  },
+  "/installation/groups-authorization-keys.aspx": {
+    "destination": "/workspace/administration/connecting-external-services#connecting_third-party_services_block",
+    "permanent": true
+  },
+  "/tipstricks/available-languages.aspx": {
+    "destination": "/workspace/administration/available-languages.aspx",
+    "permanent": true
+  },
+  "/docs/userguides/document-editor": {
+    "destination": "/docs/userguides/document_editor",
+    "permanent": true
+  },
+  "/docs/userguides/spreadsheet-editor": {
+    "destination": "/docs/userguides/spreadsheet_editor",
+    "permanent": true
+  },
+  "/docs/userguides/presentation-editor": {
+    "destination": "/docs/userguides/presentation_editor",
+    "permanent": true
+  },
+  "/ONLYOFFICE-Editors/index.aspx": {
+    "destination": "/docs/userguides",
+    "permanent": true
+  },
+  "/server/integration-edition/linux/linux-installation-centos.aspx": {
+    "destination": "/docs/installation/docs-enterprise-install-centos.aspx",
+    "permanent": true
+  },
+  "/administration/docspace-configure-okta.aspx": {
+    "destination": "/docspace/configuration/configure-okta.aspx",
+    "permanent": true
+  },
+  "/server/controlpanel/opensource/encryption.aspx": {
+    "destination": "/workspace/administration/control-panel-encryption.aspx",
+    "permanent": true
+  },
+  "/server/integration-edition/linux/linux-installation.aspx": {
+    "destination": "/docs/installation/docs-enterprise-install-ubuntu.aspx",
+    "permanent": true
+  },
+  "/server/integration-edition/docker/docker-installation.aspx": {
+    "destination": "/docs/installation/docs-enterprise-install-docker.aspx",
+    "permanent": true
+  },
+  "/server/developer-edition/linux/linux-installation.aspx": {
+    "destination": "/docs/installation/docs-developer-install-ubuntu.aspx",
+    "permanent": true
+  },
+  "/ONLYOFFICE-Editors/ONLYOFFICE-Presentation-Editor/index.aspx": {
+    "destination": "/docs/userguides/presentation_editor",
+    "permanent": true
+  },
+  "/ONLYOFFICE-Editors/ONLYOFFICE-Spreadsheet-Editor/index.aspx": {
+    "destination": "/docs/userguides/spreadsheet_editor",
+    "permanent": true
+  },
+  "/ONLYOFFICE-Editors/ONLYOFFICE-Document-Editor/index.aspx": {
+    "destination": "/docs/userguides/document_editor",
+    "permanent": true
+  },
+  "/installation/groups-index.aspx": {
+    "destination": "/",
+    "permanent": true
+  },
+  "/server/controlpanel/enterprise/switch-to-https.aspx": {
+    "destination": "/workspace/administration/control-panel-https.aspx",
+    "permanent": true
+  },
+  "/guides/two-factor-authentication.aspx": {
+    "destination": "/workspace/administration/two-factor-authentication.aspx",
+    "permanent": true
+  },
+  "/server/controlpanel/enterprise/sso-description.aspx": {
+    "destination": "/workspace/administration/control-panel-sso-description.aspx",
+    "permanent": true
+  },
+  "/tipstricks/data-backup-restore.aspx": {
+    "destination": "/workspace/administration/backup-saas.aspx",
+    "permanent": true
+  },
+  "/workspace/installation/workspace": {
+    "destination": "/workspace/installation/community",
+    "permanent": true
+  },
+  "/gettingstarted/configuration.aspx": {
+    "destination": "/workspace/administration/configuration.aspx",
+    "permanent": true
+  },
+  "/server/linux/document/linux-installation-from-snap.aspx": {
+    "destination": "/docs/installation/docs-community-install-from-snap.aspx",
+    "permanent": true
+  },
+  "/server/windows/community/authorization-keys.aspx": {
+    "destination": "/workspace/administration/connecting-external-services#connecting_third-party_services_block",
+    "permanent": true
+  },
+  "/server/controlpanel/enterprise/backup-restore.aspx": {
+    "destination": "/workspace/administration/control-panel-backup.aspx",
+    "permanent": true
+  },
+  "/gettingstarted/documents.aspx": {
+    "destination": "/workspace/administration/documents.aspx",
+    "permanent": true
+  },
+  "/gettingstarted/people.aspx": {
+    "destination": "/workspace/administration/people.aspx",
+    "permanent": true
+  },
+  "/guides/send-documents-for-e-signature.aspx": {
+    "destination": "/workspace/userguides/documents-send-documents-for-e-signature.aspx",
+    "permanent": true
+  },
+  "/administratorguides/import-contacts-from-web.aspx": {
+    "destination": "/workspace/administration/import-contacts-from-web.aspx",
+    "permanent": true
+  },
+  "/guides/Mailserver.aspx": {
+    "destination": "/workspace/administration/mail-server.aspx",
+    "permanent": true
+  },
+  "/gettingstarted/talk.aspx": {
+    "destination": "/workspace/administration/talk.aspx",
+    "permanent": true
+  },
+  "/guides/mailinglist.aspx": {
+    "destination": "/workspace/userguides/talk-mailinglist.aspx",
+    "permanent": true
+  },
+  "/tipstricks/managing-subscriptions.aspx": {
+    "destination": "/workspace/userguides/managing-subscriptions.aspx",
+    "permanent": true
+  },
+  "/guides/use-voip.aspx": {
+    "destination": "/workspace/userguides/crm-use-voip.aspx",
+    "permanent": true
+  },
+  "/gettingstarted/crm.aspx": {
+    "destination": "/workspace/administration/crm.aspx",
+    "permanent": true
+  },
+  "/video/manage-access-rights.aspx": {
+    "destination": "/video.aspx#workspace_block",
+    "permanent": true
+  },
+  "/tipstricks/authorization-keys-saas.aspx": {
+    "destination": "/workspace/",
+    "permanent": true
+  },
   "/administration/authorization-keys-saas.aspx": {
     "destination": "/workspace/",
     "permanent": true
@@ -9857,6 +9857,46 @@
   },
   "/gettingstarted/projects.aspx": {
     "destination": "/workspace/administration/projects.aspx",
+    "permanent": true
+  },
+  "/server/docker/opensource/migrate-from-community-to-enterprise.aspx": {
+    "destination": "/workspace/installation/workspace-migrate-to-enterprise-docker.aspx",
+    "permanent": true
+  },
+  "/server/linux/opensource/migrate-from-community-to-enterprise-on-linux.aspx": {
+    "destination": "/workspace/installation/workspace-migrate-to-enterprise-linux.aspx",
+    "permanent": true
+  },
+  "/server/windows/opensource/migrate-from-community-to-enterprise-on-windows.aspx": {
+    "destination": "/workspace/installation/workspace-migrate-to-enterprise-windows.aspx",
+    "permanent": true
+  },
+  "/server/docker/mail/docker-installation.aspx": {
+    "destination": "/workspace/installation/mail-install-docker.aspx",
+    "permanent": true
+  },
+  "/server/controlpanel/enterprise/index.aspx": {
+    "destination": "/workspace/administration/ONLYOFFICE-Control-Panel",
+    "permanent": true
+  },
+  "/server/docker/enterprise/enterprise-script-parameters.aspx": {
+    "destination": "/workspace/installation/workspace-enterprise-install-docker-parameters.aspx",
+    "permanent": true
+  },
+  "/server/windows/community/ldap-settings.aspx": {
+    "destination": "/workspace/administration/control-panel-ldap.aspx",
+    "permanent": true
+  },
+  "/userguides/groups-guides-projects-task-statuses.aspx": {
+    "destination": "/workspace/userguides/projects-task-statuses.aspx",
+    "permanent": true
+  },
+  "/desktop/documents/allplatforms/private-room.aspx": {
+    "destination": "/desktop/security/desktop-private-room.aspx",
+    "permanent": true
+  },
+  "/guides/share-documents.aspx": {
+    "destination": "/workspace/userguides/documents-share-documents.aspx",
     "permanent": true
   }
 }

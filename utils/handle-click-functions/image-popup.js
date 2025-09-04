@@ -9,6 +9,14 @@ const handleImagePopupClick = (event, setBigPhotoSrc, setImageModalActive) => {
       if (closestBigPhotoScreen) {
         setBigPhotoSrc(closestBigPhotoScreen.getAttribute("src"));
         setImageModalActive(true);
+
+        const handleEsc = (e) => {
+          if (e.key === "Escape") {
+            setImageModalActive(false);
+            document.removeEventListener("keydown", handleEsc);
+          }
+        };
+        document.addEventListener("keydown", handleEsc);
       }
     }
   }

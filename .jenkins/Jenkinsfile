@@ -54,6 +54,7 @@ pipeline {
         cms="${cms}"
         appServer="${appServer}"
         preview_url="${preview_url}"
+        site_url="${site_url}"
       }
       steps {
         withCredentials([string(credentialsId: 'cms_helpcenter_test_preview_secret', 
@@ -68,6 +69,7 @@ pipeline {
             cms_helpcenter_preview_secret="${cms_helpcenter_test_preview_secret}"
           fi
 
+          sed -i "s^var_notification_app_name^$site_url^" .jenkins/build.sh
           cp .jenkins/build.sh .jenkins/helpcenter_build.sh
         
           sed -i "s^config_cms^$cms^" config/config.json
