@@ -11,8 +11,11 @@ const Tooltip = () => {
       const title = el.getAttribute("title");
 
       if (title) {
-        el.setAttribute("data-tooltip-html", title);
-        el.setAttribute("data-tooltip-id", "tables-tooltip");
+        el.querySelectorAll("td").forEach((cell) => {
+          cell.setAttribute("data-tooltip-html", title);
+          cell.setAttribute("data-tooltip-id", "tables-tooltip");
+        });
+
         el.removeAttribute("title");
       }
     });
