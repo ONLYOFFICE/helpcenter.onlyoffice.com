@@ -5,6 +5,7 @@ import StyledTooltip from "./styled-tooltip";
 
 const Tooltip = () => {
   useEffect(() => {
+    const applyTooltips = () => {
     const elements = document.querySelectorAll(".tdwttp");
 
     elements.forEach((el) => {
@@ -19,6 +20,17 @@ const Tooltip = () => {
         el.removeAttribute("title");
       }
     });
+    };
+
+    applyTooltips();
+    
+    const observer = new MutationObserver(() => {
+      applyTooltips();
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    return () => observer.disconnect();
   }, []);
 
   return (
