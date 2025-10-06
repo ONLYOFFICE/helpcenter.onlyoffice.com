@@ -20,10 +20,18 @@ const Tooltip = () => {
         el.removeAttribute("title");
       }
     });
+
+      setTimeout(() => {
+        try {
+          ReactTooltip.rebuild?.();
+        } catch (e) {
+          console.warn("Tooltip rebuild skipped:", e);
+        }
+      }, 50);
     };
 
     applyTooltips();
-    
+
     const observer = new MutationObserver(() => {
       applyTooltips();
     });
@@ -39,7 +47,7 @@ const Tooltip = () => {
         id="tables-tooltip"
         className="tooltip"
         place="bottom"
-        noArrow={true}
+        noArrow
         offset={15}
       />
     </StyledTooltip>
