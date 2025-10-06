@@ -5,40 +5,25 @@ import StyledTooltip from "./styled-tooltip";
 
 const Tooltip = () => {
   useEffect(() => {
-    const applyTooltips = () => {
-    const elements = document.querySelectorAll(".tdwttp");
-
-    elements.forEach((el) => {
-      const title = el.getAttribute("title");
-
-      if (title) {
-        el.querySelectorAll("td").forEach((cell) => {
-          cell.setAttribute("data-tooltip-html", title);
-          cell.setAttribute("data-tooltip-id", "tables-tooltip");
-        });
-
-        el.removeAttribute("title");
-      }
-    });
-
-      setTimeout(() => {
-        try {
-          ReactTooltip.rebuild?.();
-        } catch (e) {
-          console.warn("Tooltip rebuild skipped:", e);
+    document.querySelectorAll('.tdwttp').forEach(row => {
+      row.querySelectorAll('td').forEach(cell => {
+        if (!cell.querySelector('.tooltip-target')) {
+          const wrapper = document.createElement('div');
+          wrapper.className = 'tooltip-target';
+          wrapper.setAttribute('data-tooltip-html', row.getAttribute('title'));
+          wrapper.setAttribute('data-tooltip-id', 'tables-tooltip');
+          wrapper.style.width = '100%';
+          wrapper.style.height = '100%';
+          wrapper.style.display = 'block';
+    
+          while (cell.firstChild) {
+            wrapper.appendChild(cell.firstChild);
+          }
+          cell.appendChild(wrapper);
         }
-      }, 50);
-    };
-
-    applyTooltips();
-
-    const observer = new MutationObserver(() => {
-      applyTooltips();
+      });
+      row.removeAttribute('title');
     });
-
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    return () => observer.disconnect();
   }, []);
 
   return (
