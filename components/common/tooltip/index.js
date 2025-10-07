@@ -1,42 +1,33 @@
 import { useEffect } from "react";
-import { Tooltip as ReactTooltip } from "react-tooltip";
-import "react-tooltip/dist/react-tooltip.css";
+import tippy from "tippy.js";
+import "tippy.js/dist/tippy.css";
 import StyledTooltip from "./styled-tooltip";
 
 const Tooltip = () => {
   useEffect(() => {
-    document.querySelectorAll('.tdwttp').forEach(row => {
-      row.querySelectorAll('td').forEach(cell => {
-        if (!cell.querySelector('.tooltip-target')) {
-          const wrapper = document.createElement('div');
-          wrapper.className = 'tooltip-target';
-          wrapper.setAttribute('data-tooltip-html', row.getAttribute('title'));
-          wrapper.setAttribute('data-tooltip-id', 'tables-tooltip');
-          wrapper.style.width = '100%';
-          wrapper.style.height = '100%';
-          wrapper.style.display = 'block';
-    
-          while (cell.firstChild) {
-            wrapper.appendChild(cell.firstChild);
-          }
-          cell.appendChild(wrapper);
+    const rows = document.querySelectorAll(".tdwttp");
+
+    rows.forEach((row) => {
+      const title = row.getAttribute("title");
+      if (!title) return;
+
+      row.querySelectorAll("td").forEach((cell) => {
+        if (!cell._tippy) {
+          tippy(cell, {
+            content: title,
+            placement: "bottom",
+            arrow: false,
+            offset: [0, 15],
+            allowHTML: true,
+          });
         }
       });
-      row.removeAttribute('title');
+
+      row.removeAttribute("title");
     });
   }, []);
 
-  return (
-    <StyledTooltip>
-      <ReactTooltip
-        id="tables-tooltip"
-        className="tooltip"
-        place="bottom"
-        noArrow
-        offset={15}
-      />
-    </StyledTooltip>
-  );
+  return <StyledTooltip />;
 };
 
 export default Tooltip;
