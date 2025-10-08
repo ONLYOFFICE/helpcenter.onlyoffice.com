@@ -1,34 +1,33 @@
 import { useEffect } from "react";
-import { Tooltip as ReactTooltip } from "react-tooltip";
-import "react-tooltip/dist/react-tooltip.css";
+import tippy from "tippy.js";
+import "tippy.js/dist/tippy.css";
 import StyledTooltip from "./styled-tooltip";
 
 const Tooltip = () => {
   useEffect(() => {
-    const elements = document.querySelectorAll(".tdwttp");
+    const rows = document.querySelectorAll(".tdwttp");
 
-    elements.forEach((el) => {
-      const title = el.getAttribute("title");
+    rows.forEach((row) => {
+      const title = row.getAttribute("title");
+      if (!title) return;
 
-      if (title) {
-        el.setAttribute("data-tooltip-html", title);
-        el.setAttribute("data-tooltip-id", "tables-tooltip");
-        el.removeAttribute("title");
-      }
+      row.querySelectorAll("td").forEach((cell) => {
+        if (!cell._tippy) {
+          tippy(cell, {
+            content: title,
+            placement: "bottom",
+            arrow: false,
+            offset: [0, 15],
+            allowHTML: true,
+          });
+        }
+      });
+
+      row.removeAttribute("title");
     });
   }, []);
 
-  return (
-    <StyledTooltip>
-      <ReactTooltip
-        id="tables-tooltip"
-        className="tooltip"
-        place="bottom"
-        noArrow={true}
-        offset={15}
-      />
-    </StyledTooltip>
-  );
+  return <StyledTooltip />;
 };
 
 export default Tooltip;

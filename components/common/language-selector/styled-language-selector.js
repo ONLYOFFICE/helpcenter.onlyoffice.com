@@ -17,10 +17,6 @@ const StyledLanguageSelector = styled.div`
       .language-link {
         background-position-y: -40px;
       }
-
-      &:after {
-        background-position-y: -32px;
-      }
     }
 
     &:after {
@@ -32,7 +28,7 @@ const StyledLanguageSelector = styled.div`
       background-image: url("https://static-helpcenter.onlyoffice.com/images/icons/arrow-drop-down.react.svg");
       background-repeat: no-repeat;
       background-position-x: -8px;
-      background-position-y: ${(props) => (props.isOpen ? "-32px" : "-8px")};
+      background-position-y: -8px;
       transform: ${(props) => (props.isOpen ? "rotate(180deg)" : "")};
       transition: 0.3s;
     }

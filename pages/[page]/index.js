@@ -57,8 +57,9 @@ const Level1Page = ({ locale, categoriesMenuData, data }) => {
 export const getServerSideProps = async ({ locale, params, preview }) => {
   const categoriesMenuData = await getCategoriesMenu(locale, preview);
   const data = await getLevel1Data(locale, params.page, preview);
+  const allowedLocales = ["en", "de", "fr"];
 
-  if (locale !== "en") {
+  if (!allowedLocales.includes(locale)) {
     return {
       redirect: {
         destination: `/${params.page}`,

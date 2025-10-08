@@ -6,7 +6,7 @@ import InternalLink from "../internal-link";
 
 const LanguageSelector = ({ locale }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [lang, setLang] = useState("en");
+  const [lang, setLang] = useState(locale);
   const router = useRouter();
 
   useEffect(() => {
