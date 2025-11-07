@@ -173,7 +173,7 @@ const ArticleContent = ({
               <ConnectorsVideo t={t} videos={videos} setVideoOffsetTrigger={setVideoOffsetTrigger} />
             }
           </div>
-          <DownloadArea className="download-area" slug={categoryName} subcat={level2CategoryName} t={t} />
+          <DownloadArea className="download-area" slug={categoryName} subcat={level2CategoryName} locale={locale}/>
           <ArticlePopup
             t={t}
             locale={locale}
