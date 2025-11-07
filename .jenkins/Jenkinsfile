@@ -9,6 +9,7 @@ switch(BRANCH_NAME) {
     cms="https://cmshelpcenter.teamlab.info"
     appServer="https://testnew-helpcenter.onlyoffice.com/"
     preview_url="https://testnew-helpcenter.onlyoffice.com/api/preview"
+    main_site_base_domain="https://test-new.teamlab.info"
     break
   case "production.deploy":
     aws_region="us-east-1"
@@ -19,6 +20,7 @@ switch(BRANCH_NAME) {
     cms="https://cmshelpcenter.onlyoffice.com"
     appServer="https://prodnew-helpcenter.onlyoffice.com/"
     preview_url="https://helpcenter.onlyoffice.com/api/preview"
+    main_site_base_domain="https://onlyoffice.com"
     break
   default:
     println("Branch: ${BRANCH_NAME} do not for deploy.")
@@ -55,6 +57,7 @@ pipeline {
         appServer="${appServer}"
         preview_url="${preview_url}"
         site_url="${site_url}"
+        main_site_base_domain = "${main_site_base_domain}"
       }
       steps {
         withCredentials([string(credentialsId: 'cms_helpcenter_test_preview_secret', 
@@ -77,6 +80,7 @@ pipeline {
           sed -i "s^preview_secret_key^$cms_helpcenter_preview_secret^" config/config.json
           sed -i "s^preview_url_placeholder^$preview_url^" config/config.json
 
+          sed -i "s^var_main_site_base_domain^$main_site_base_domain^" .env
 
           if [ "${region}" = "info" ]; then
             cp .jenkins/robots.txt ./
