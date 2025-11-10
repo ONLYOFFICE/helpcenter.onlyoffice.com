@@ -58,18 +58,20 @@ export const getServerSideProps = async ({ locale, params, preview }) => {
   const categoriesMenuData = await getCategoriesMenu(locale, preview);
   const data = await getLevel1Data(locale, params.page, preview);
   const allowedLocales = ["en", "de", "fr"];
+  const zhAllowedPages = ["docspace"];
 
-  if (!allowedLocales.includes(locale)) {
+  if (
+    !allowedLocales.includes(locale) && 
+    !(locale === "zh" && zhAllowedPages.includes(params.page))
+  ) {
     return {
       redirect: {
         destination: `/${params.page}`,
-        permanent: false
-      }
+        permanent: false,
+      },
     };
   } else if (data.length === 0) {
-    return {
-      notFound: true
-    };
+    return { notFound: true };
   }
 
   if (data.slug_id === "integration") {

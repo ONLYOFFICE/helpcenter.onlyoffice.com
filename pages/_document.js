@@ -31,7 +31,25 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-        <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5NW47TX" height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                'necessary': 'granted',
+                'analytics_storage': 'denied',
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
+                'security_storage': 'granted',
+                'functionality_storage': 'denied',
+                'personalization_storage': 'denied',
+            });
+            `,
+            }}
+          />
+          <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5NW47TX" height="0" width="0" style="display:none;visibility:hidden"></iframe>` }}></noscript>
         </Head>
         <body>
           <Main />
