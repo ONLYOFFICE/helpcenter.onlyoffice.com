@@ -14,6 +14,7 @@ import ImagePopup from "./sub-components/image-popup";
 import DownloadArea from "./sub-components/download-area";
 import ConnectorsVideo from "./sub-components/connectors-video";
 import ArticlePopup from "@components/screens/common/article-popup";
+import AiChips from "@components/common/ai-chips";
 import Cookies from "universal-cookie";
 import ScrollToTopButton from "@components/screens/common/scroll-to-top-button";
 import { handleFaqAccordionClick, handleImagePopupClick, handleTogglerClick, handleShortcutToggleClick, handleChangelogClick } from "@utils/handle-click-functions";
@@ -36,7 +37,8 @@ const ArticleContent = ({
   videos,
   leftMenuIsOpen,
   setLeftMenuIsOpen,
-  leftMenuData
+  leftMenuData,
+  isAIGenerated
 }) => {
   const containerRef = useRef(null);
   const wrapperContentRef = useRef(null);
@@ -157,6 +159,7 @@ const ArticleContent = ({
             level4CategoryUrl={level4CategoryUrl}
             pageName={pageName}
           />
+          {isAIGenerated && <AiChips />}
           <Heading ref={headingRef} className="wrapper-title" level={1}>{pageName}</Heading>
           {tags?.length > 0 &&
             <ul ref={tagsRef} className="tags">
