@@ -59,8 +59,8 @@ const Level3Page = ({ locale, menuData, data, categorySlug, preview }) => {
             categoryUrl={dataAttr[`category_${categorySlug}`]?.general_category.url || dataAttr[`level_2_${categorySlugSingular}`]?.[`category_${categorySlugSingular}`].general_category.url || dataAttr[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`]?.[`category_${categorySlugSingular}`].general_category.url || dataAttr[`level_4_${categorySlugSingular}`]?.[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`]?.[`category_${categorySlugSingular}`].general_category.url}
             level2CategoryName={dataAttr[`category_${categorySlug}`]?.name || dataAttr[`level_2_${categorySlugSingular}`]?.[`category_${categorySlugSingular}`].name || dataAttr[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`]?.[`category_${categorySlugSingular}`].name || dataAttr[`level_4_${categorySlugSingular}`]?.[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`]?.[`category_${categorySlugSingular}`]?.name}
             level2CategoryUrl={dataAttr[`category_${categorySlug}`]?.url || dataAttr[`level_2_${categorySlugSingular}`]?.[`category_${categorySlugSingular}`].url || dataAttr[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`]?.[`category_${categorySlugSingular}`].url || dataAttr[`level_4_${categorySlugSingular}`]?.[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`]?.[`category_${categorySlugSingular}`]?.url}
-            level3CategoryName={dataAttr[`level_2_${categorySlugSingular}`]?.name || dataAttr[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`].name || dataAttr[`level_4_${categorySlugSingular}`]?.[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`]?.[`category_${categorySlugSingular}`].name}
-            level3CategoryUrl={dataAttr[`level_2_${categorySlugSingular}`]?.url || dataAttr[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`].url || dataAttr[`level_4_${categorySlugSingular}`]?.[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`]?.[`category_${categorySlugSingular}`].url}
+            level3CategoryName={dataAttr[`level_2_${categorySlugSingular}`]?.name || dataAttr[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`].name || dataAttr[`level_4_${categorySlugSingular}`]?.[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`]?.name}
+            level3CategoryUrl={dataAttr[`level_2_${categorySlugSingular}`]?.url || dataAttr[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`].url || dataAttr[`level_4_${categorySlugSingular}`]?.[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`]?.url}
             level4CategoryName={dataAttr[`level_4_${categorySlugSingular}`]?.[`level_3_${categorySlugSingular}`]?.name || dataAttr[`level_3_${categorySlugSingular}`]?.name}
             level4CategoryUrl={dataAttr[`level_4_${categorySlugSingular}`]?.[`level_3_${categorySlugSingular}`]?.url || dataAttr[`level_3_${categorySlugSingular}`]?.url}
             pageName={dataAttr.title}
@@ -69,6 +69,7 @@ const Level3Page = ({ locale, menuData, data, categorySlug, preview }) => {
             leftMenuIsOpen={leftMenuIsOpen}
             setLeftMenuIsOpen={setLeftMenuIsOpen}
             videos={dataAttr.videos}
+            isAIGenerated={dataAttr.isAIGenerated}
           />
         ) : (
           !level4DataLength?.every(item => item === undefined) && level4DataLength?.filter(item => item !== 0).length > level4DataLength?.filter(item => item === 0).length ? (

@@ -47,13 +47,21 @@ const CookieBanner = () => {
         return;
       }
 
-      const res = await fetch(`${process.env.NEXT_PUBLIC_MAIN_SITE_BASE_DOMAIN}/api/ip-geolocation`);
-      const data = await res.json();
+      try {
+        const res = await fetch("/api/ip-geolocation");
 
-      if (!res.ok) return;
+        if (!res.ok) {
+          console.error("Failed to fetch IP info:", res.status);
+          return;
+        }
 
-      setIPGeolocationInfo(data);
-      sessionStorage.setItem("IPGeolocationInfo", JSON.stringify(data));
+        const data = await res.json();
+
+        setIPGeolocationInfo(data);
+        sessionStorage.setItem("IPGeolocationInfo", JSON.stringify(data));
+      } catch (error) {
+        console.error("Error fetching IP info:", error);
+      }
     })();
   }, [setIPGeolocationInfo]);
 
