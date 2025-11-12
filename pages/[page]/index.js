@@ -58,7 +58,7 @@ export const getServerSideProps = async ({ locale, params, preview }) => {
   const categoriesMenuData = await getCategoriesMenu(locale, preview);
   const data = await getLevel1Data(locale, params.page, preview);
   const allowedLocales = ["en", "de", "fr"];
-  const zhAllowedPages = ["docspace"];
+  const zhAllowedPages = ["docspace", "docs"];
 
   if (
     !allowedLocales.includes(locale) && 

@@ -681,7 +681,7 @@ const StyledRawHtml = styled.div`
     }
 
     /* code */
-    .prettyprint {
+    .prettyprint, pre {
       padding: 2px;
       background: #f4f4f4;
       font-family: "Roboto Mono", Menlo, "Bitstream Vera Sans Mono",
