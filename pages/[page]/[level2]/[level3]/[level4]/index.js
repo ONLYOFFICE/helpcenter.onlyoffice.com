@@ -67,6 +67,7 @@ const Level4Page = ({ locale, data, menuData, categorySlug }) => {
             videos={dataAttr?.videos}
             leftMenuIsOpen={leftMenuIsOpen}
             setLeftMenuIsOpen={setLeftMenuIsOpen}
+            isAIGenerated={dataAttr.isAIGenerated}
           />
         ) : (
           <SubCategoryContent 
