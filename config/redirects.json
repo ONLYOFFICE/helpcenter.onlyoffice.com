@@ -9898,5 +9898,53 @@
   "/guides/share-documents.aspx": {
     "destination": "/workspace/userguides/documents-share-documents.aspx",
     "permanent": true
+  },
+  "/administration/connect-telegram-docspace.aspx": {
+    "destination": "/docspace/configuration/connect-telegram-docspace.aspx",
+    "permanent": true
+  },
+  "/docspace/configuration/connect-google-docspace.aspx": {
+    "destination": "/docspace",
+    "permanent": true
+  },
+  "/docspace/configuration/connect-sharepoint-docspace.aspx": {
+    "destination": "/docspace",
+    "permanent": true
+  },
+  "/docspace/configuration/connect-selectel-docspace.aspx": {
+    "destination": "/docspace",
+    "permanent": true
+  },
+  "/administration/connect-clickatell-docspace.aspx": {
+    "destination": "/docspace",
+    "permanent": true
+  },
+  "/administration/connect-docusign-docspace.aspx": {
+    "destination": "/docspace",
+    "permanent": true
+  },
+  "/administration/connect-mail-ru-docspace.aspx": {
+    "destination": "/docspace",
+    "permanent": true
+  },
+  "/administration/connect-selectel-docspace.aspx": {
+    "destination": "/docspace",
+    "permanent": true
+  },
+  "/administration/connect-smsc-docspace.aspx": {
+    "destination": "/docspace",
+    "permanent": true
+  },
+  "/administration/connect-vk-docspace.aspx": {
+    "destination": "/docspace",
+    "permanent": true
+  },
+  "/administration/connect-wordpress-docspace.aspx": {
+    "destination": "/docspace",
+    "permanent": true
+  },
+  "/administration/connect-yandex-docspace.aspx": {
+    "destination": "/docspace",
+    "permanent": true
   }
 }
