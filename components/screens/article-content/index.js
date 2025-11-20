@@ -59,6 +59,11 @@ const ArticleContent = ({
   const cookies = new Cookies(null, { path: "/" });
 
   useEffect(() => {
+    const firstTab = document.querySelector('input[name="tabs"]');
+    if (firstTab) firstTab.checked = true;
+  }, []);
+
+  useEffect(() => {
     if (containerRef.current) {
       tableBuilder(containerRef.current, cookies);
 
