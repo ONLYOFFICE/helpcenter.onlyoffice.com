@@ -59,8 +59,14 @@ const ArticleContent = ({
   const cookies = new Cookies(null, { path: "/" });
 
   useEffect(() => {
-    const firstTab = document.querySelector('input[name="tabs"]');
-    if (firstTab) firstTab.checked = true;
+    const groups = new Set(
+      [...document.querySelectorAll('input[type="radio"]')].map(i => i.name)
+    );
+
+    groups.forEach(name => {
+      const first = document.querySelector(`input[name="${name}"]`);
+      if (first) first.checked = true;
+    });
   }, []);
 
   useEffect(() => {
