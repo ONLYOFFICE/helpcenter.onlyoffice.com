@@ -48,7 +48,7 @@ const CookieBanner = () => {
       }
 
       try {
-        const res = await fetch("/api/ip-geolocation");
+        const res = await fetch(`${process.env.NEXT_PUBLIC_MAIN_SITE_BASE_DOMAIN}/api/ip-geolocation`);
 
         if (!res.ok) {
           console.error("Failed to fetch IP info:", res.status);
