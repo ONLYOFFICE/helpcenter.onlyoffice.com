@@ -20,6 +20,11 @@
     "name": "Español"
   },
   {
+    "key": "pt-BR",
+    "shortKey": "pt-Br",
+    "name": "Português"
+  },
+  {
     "key": "it-IT",
     "shortKey": "it",
     "name": "Italiano"

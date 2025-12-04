@@ -59,7 +59,7 @@ const StyledLanguageSelector = styled.div`
       > b {
         color: ${globalColors.grayMain};
         text-transform: uppercase;
-        width: 21px;
+        width: 41px;
       }
 
       &.active {
