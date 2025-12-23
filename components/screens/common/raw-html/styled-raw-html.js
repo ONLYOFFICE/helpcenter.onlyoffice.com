@@ -830,6 +830,7 @@ const StyledRawHtml = styled.div`
       padding: 4px 12px;
       position: relative;
       top: 1px;
+      cursor: pointer;
     }
 
     input:checked+label {
