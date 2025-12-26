@@ -9946,5 +9946,9 @@
   "/administration/connect-yandex-docspace.aspx": {
     "destination": "/docspace",
     "permanent": true
+  },
+  "/tipstricks/google-user-data.aspx": {
+    "destination": "/workspace/administration/google-user-data.aspx",
+    "permanent": true
   }
 }
