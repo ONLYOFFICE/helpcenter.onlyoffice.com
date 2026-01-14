@@ -57,12 +57,14 @@ const Level1Page = ({ locale, categoriesMenuData, data }) => {
 export const getServerSideProps = async ({ locale, params, preview }) => {
   const categoriesMenuData = await getCategoriesMenu(locale, preview);
   const data = await getLevel1Data(locale, params.page, preview);
-  const allowedLocales = ["en", "de", "fr", "pt"];
+  const allowedLocales = ["en", "de", "fr"];
   const zhAllowedPages = ["docspace", "docs"];
+  const ptAllowedPages = ["integration"];
 
   if (
     !allowedLocales.includes(locale) &&
-    !(locale === "zh" && zhAllowedPages.includes(params.page))
+    !(locale === "zh" && zhAllowedPages.includes(params.page)) &&
+    !((locale === "pt-BR" || locale === "es") && ptAllowedPages.includes(params.page))
   ) {
     return {
       redirect: {
@@ -74,11 +76,11 @@ export const getServerSideProps = async ({ locale, params, preview }) => {
     return { notFound: true };
   }
 
-  if (data.slug_id === "integration") {
+  if (data.data[0].slug_id === "integration") {
     const updatedArticles = [];
     const indxToRemove = new Set();
 
-    data.articles.forEach((article, index, arr) => {
+    data.data[0].articles.forEach((article, index, arr) => {
       const { url } = article;
       const docspaceUrl = url.replace('.aspx', '-docspace.aspx');
       const docspaceArticleIndex = arr.findIndex(a => a.url === docspaceUrl);
@@ -90,7 +92,7 @@ export const getServerSideProps = async ({ locale, params, preview }) => {
       updatedArticles.push(article);
     });
 
-    data.articles = updatedArticles.filter((_, index) => !indxToRemove.has(index));
+    data.data[0].articles = updatedArticles.filter((_, index) => !indxToRemove.has(index));
   }
 
   return {

@@ -37,7 +37,7 @@ const StyledLanguageSelector = styled.div`
   .language-list {
     position: absolute;
     top: 40px;
-    left: -55px;
+    right: 0;
     display: flex;
     flex-direction: column;
     padding: 24px;
