@@ -9946,5 +9946,449 @@
   "/administration/connect-yandex-docspace.aspx": {
     "destination": "/docspace",
     "permanent": true
+  },
+  "/tipstricks/google-user-data.aspx": {
+    "destination": "/workspace/administration/google-user-data.aspx",
+    "permanent": true
+  },
+  "/docs.aspx": {
+    "destination": "/docs",
+    "permanent": true
+  },
+  "/docspace.aspx": {
+    "destination": "/docspace",
+    "permanent": true
+  },
+  "/workspace.aspx": {
+    "destination": "/workspace",
+    "permanent": true
+  },
+  "/desktop.aspx": {
+    "destination": "/desktop",
+    "permanent": true
+  },
+  "/mobile.aspx": {
+    "destination": "/mobile",
+    "permanent": true
+  },
+  "/docs/userguides.aspx": {
+    "destination": "/docs/userguides",
+    "permanent": true
+  },
+  "/docs/installation.aspx": {
+    "destination": "/docs/installation",
+    "permanent": true
+  },
+  "/docs/development.aspx": {
+    "destination": "/docs/development",
+    "permanent": true
+  },
+  "/docs/contribution.aspx": {
+    "destination": "/docs/contribution",
+    "permanent": true
+  },
+  "/desktop/development.aspx": {
+    "destination": "/desktop/development",
+    "permanent": true
+  },
+  "/desktop/installation.aspx": {
+    "destination": "/desktop/installation",
+    "permanent": true
+  },
+  "/docspace/administration.aspx": {
+    "destination": "/docspace/administration",
+    "permanent": true
+  },
+  "/docspace/configuration.aspx": {
+    "destination": "/docspace/configuration",
+    "permanent": true
+  },
+  "/docspace/contribution.aspx": {
+    "destination": "/docspace/contribution",
+    "permanent": true
+  },
+  "/docspace/development.aspx": {
+    "destination": "/docspace/development",
+    "permanent": true
+  },
+  "/docspace/installation.aspx": {
+    "destination": "/docspace/installation",
+    "permanent": true
+  },
+  "/mobile/android.aspx": {
+    "destination": "/mobile/android",
+    "permanent": true
+  },
+  "/mobile/ios.aspx": {
+    "destination": "/mobile/ios",
+    "permanent": true
+  },
+  "/workspace/administration.aspx": {
+    "destination": "/workspace/administration",
+    "permanent": true
+  },
+  "/workspace/development.aspx": {
+    "destination": "/workspace/development",
+    "permanent": true
+  },
+  "/workspace/installation.aspx": {
+    "destination": "/workspace/installation",
+    "permanent": true
+  },
+  "/workspace/userguides.aspx": {
+    "destination": "/workspace/userguides",
+    "permanent": true
+  },
+  "/docs/userguides/document_editor.aspx": {
+    "destination": "/docs/userguides/document_editor",
+    "permanent": true
+  },
+  "/docs/userguides/form_builder.aspx": {
+    "destination": "/docs/userguides/form_builder",
+    "permanent": true
+  },
+  "/docs/userguides/pdf_editor.aspx": {
+    "destination": "/docs/userguides/pdf_editor",
+    "permanent": true
+  },
+  "/docs/userguides/plugins.aspx": {
+    "destination": "/docs/userguides/plugins",
+    "permanent": true
+  },
+  "/docs/userguides/presentation_editor.aspx": {
+    "destination": "/docs/userguides/presentation_editor",
+    "permanent": true
+  },
+  "/docs/userguides/spreadsheet_editor.aspx": {
+    "destination": "/docs/userguides/spreadsheet_editor",
+    "permanent": true
+  },
+  "/docs/userguides/accessibility.aspx": {
+    "destination": "/docs/userguides/accessibility",
+    "permanent": true
+  },
+  "/docs/userguides/ai.aspx": {
+    "destination": "/docs/userguides/ai",
+    "permanent": true
+  },
+  "/docs/installation/cloud.aspx": {
+    "destination": "/docs/installation/cloud",
+    "permanent": true
+  },
+  "/docs/installation/community.aspx": {
+    "destination": "/docs/installation/community",
+    "permanent": true
+  },
+  "/docs/installation/developer.aspx": {
+    "destination": "/docs/installation/developer",
+    "permanent": true
+  },
+  "/docs/userguides/diagram_viewer.aspx": {
+    "destination": "/docs/userguides/diagram_viewer",
+    "permanent": true
+  },
+  "/docs/installation/docs-securityguide.aspx": {
+    "destination": "/docs/installation/docs-securityguide",
+    "permanent": true
+  },
+  "/docs/installation/enterprise.aspx": {
+    "destination": "/docs/installation/enterprise",
+    "permanent": true
+  },
+  "/docs/userguides/troubleshooting.aspx": {
+    "destination": "/docs/userguides/troubleshooting",
+    "permanent": true
+  },
+  "/docspace/installation/community.aspx": {
+    "destination": "/docspace/installation/community",
+    "permanent": true
+  },
+  "/docspace/installation/developer.aspx": {
+    "destination": "/docspace/installation/developer",
+    "permanent": true
+  },
+  "/docspace/installation/enterprise.aspx": {
+    "destination": "/docspace/installation/enterprise",
+    "permanent": true
+  },
+  "/docspace/installation/various-questions.aspx": {
+    "destination": "/docspace/installation/various-questions",
+    "permanent": true
+  },
+  "/mobile/ios/documents.aspx": {
+    "destination": "/mobile/ios/documents",
+    "permanent": true
+  },
+  "/mobile/android/documents.aspx": {
+    "destination": "/mobile/android/documents",
+    "permanent": true
+  },
+  "/mobile/ios/web.aspx": {
+    "destination": "/mobile/ios/web",
+    "permanent": true
+  },
+  "/mobile/android/web.aspx": {
+    "destination": "/mobile/android/web",
+    "permanent": true
+  },
+  "/mobile/ios/projects.aspx": {
+    "destination": "/mobile/ios/projects",
+    "permanent": true
+  },
+  "/mobile/android/projects.aspx": {
+    "destination": "/mobile/android/projects",
+    "permanent": true
+  },
+  "/workspace/userguides/calendar-module.aspx": {
+    "destination": "/workspace/userguides/calendar-module",
+    "permanent": true
+  },
+  "/workspace/installation/community.aspx": {
+    "destination": "/workspace/installation/community",
+    "permanent": true
+  },
+  "/workspace/userguides/community-module.aspx": {
+    "destination": "/workspace/userguides/community-module",
+    "permanent": true
+  },
+  "/workspace/administration/configuring-modules-and-tools.aspx": {
+    "destination": "/workspace/administration/configuring-modules-and-tools",
+    "permanent": true
+  },
+  "/workspace/administration/connecting-external-services.aspx": {
+    "destination": "/workspace/administration/connecting-external-services",
+    "permanent": true
+  },
+  "/workspace/userguides/crm-module.aspx": {
+    "destination": "/workspace/userguides/crm-module",
+    "permanent": true
+  },
+  "/workspace/administration/customizing-modules-and-tools.aspx": {
+    "destination": "/workspace/administration/customizing-modules-and-tools",
+    "permanent": true
+  },
+  "/workspace/userguides/documents-module.aspx": {
+    "destination": "/workspace/userguides/documents-module",
+    "permanent": true
+  },
+  "/workspace/installation/enterprise.aspx": {
+    "destination": "/workspace/installation/enterprise",
+    "permanent": true
+  },
+  "/workspace/userguides/feed-tool.aspx": {
+    "destination": "/workspace/userguides/feed-tool",
+    "permanent": true
+  },
+  "/workspace/userguides/general-questions.aspx": {
+    "destination": "/workspace/userguides/general-questions",
+    "permanent": true
+  },
+  "/workspace/userguides/mail-module.aspx": {
+    "destination": "/workspace/userguides/mail-module",
+    "permanent": true
+  },
+  "/workspace/administration/managing-portals.aspx": {
+    "destination": "/workspace/administration/managing-portals",
+    "permanent": true
+  },
+  "/workspace/administration/managing-users.aspx": {
+    "destination": "/workspace/administration/managing-users",
+    "permanent": true
+  },
+  "/workspace/userguides/people-module.aspx": {
+    "destination": "/workspace/userguides/people-module",
+    "permanent": true
+  },
+  "/workspace/userguides/projects-module.aspx": {
+    "destination": "/workspace/userguides/projects-module",
+    "permanent": true
+  },
+  "/workspace/administration/reinforcing-security.aspx": {
+    "destination": "/workspace/administration/reinforcing-security",
+    "permanent": true
+  },
+  "/workspace/userguides/talk-tool.aspx": {
+    "destination": "/workspace/userguides/talk-tool",
+    "permanent": true
+  },
+  "/workspace/administration/ONLYOFFICE-Control-Panel.aspx": {
+    "destination": "/workspace/administration/ONLYOFFICE-Control-Panel",
+    "permanent": true
+  },
+  "/docs/installation/enterprise/cloudron.aspx": {
+    "destination": "/docs/installation/enterprise/cloudron",
+    "permanent": true
+  },
+  "/docs/installation/community/cloudron.aspx": {
+    "destination": "/docs/installation/community/cloudron",
+    "permanent": true
+  },
+  "/docs/installation/developer/cluster.aspx": {
+    "destination": "/docs/installation/developer/cluster",
+    "permanent": true
+  },
+  "/docs/installation/enterprise/cluster.aspx": {
+    "destination": "/docs/installation/enterprise/cluster",
+    "permanent": true
+  },
+  "/docs/installation/developer/docker.aspx": {
+    "destination": "/docs/installation/developer/docker",
+    "permanent": true
+  },
+  "/docs/installation/enterprise/docker.aspx": {
+    "destination": "/docs/installation/enterprise/docker",
+    "permanent": true
+  },
+  "/docs/installation/community/docker.aspx": {
+    "destination": "/docs/installation/community/docker",
+    "permanent": true
+  },
+  "/docs/installation/community/hosted-solutions.aspx": {
+    "destination": "/docs/installation/community/hosted-solutions",
+    "permanent": true
+  },
+  "/docs/installation/developer/hosted-solutions.aspx": {
+    "destination": "/docs/installation/developer/hosted-solutions",
+    "permanent": true
+  },
+  "/docs/installation/enterprise/hosted-solutions.aspx": {
+    "destination": "/docs/installation/enterprise/hosted-solutions",
+    "permanent": true
+  },
+  "/docs/installation/enterprise/linux.aspx": {
+    "destination": "/docs/installation/enterprise/linux",
+    "permanent": true
+  },
+  "/docs/installation/community/linux.aspx": {
+    "destination": "/docs/installation/community/linux",
+    "permanent": true
+  },
+  "/docs/installation/developer/linux.aspx": {
+    "destination": "/docs/installation/developer/linux",
+    "permanent": true
+  },
+  "/docs/installation/enterprise/univention.aspx": {
+    "destination": "/docs/installation/enterprise/univention",
+    "permanent": true
+  },
+  "/docs/installation/community/windows.aspx": {
+    "destination": "/docs/installation/community/windows",
+    "permanent": true
+  },
+  "/docs/installation/developer/windows.aspx": {
+    "destination": "/docs/installation/developer/windows",
+    "permanent": true
+  },
+  "/docs/installation/enterprise/windows.aspx": {
+    "destination": "/docs/installation/enterprise/windows",
+    "permanent": true
+  },
+  "/docspace/installation/community/hosted-solutions.aspx": {
+    "destination": "/docspace/installation/community/hosted-solutions",
+    "permanent": true
+  },
+  "/docspace/installation/enterprise/hosted-solutions.aspx": {
+    "destination": "/docspace/installation/enterprise/hosted-solutions",
+    "permanent": true
+  },
+  "/docspace/installation/developer/hosted-solutions.aspx": {
+    "destination": "/docspace/installation/developer/hosted-solutions",
+    "permanent": true
+  },
+  "/mobile/ios/documents/document-editor.aspx": {
+    "destination": "/mobile/ios/documents/document-editor",
+    "permanent": true
+  },
+  "/mobile/android/documents/document-editor.aspx": {
+    "destination": "/mobile/android/documents/document-editor",
+    "permanent": true
+  },
+  "/mobile/ios/web/document-editor.aspx": {
+    "destination": "/mobile/ios/web/document-editor",
+    "permanent": true
+  },
+  "/mobile/android/web/document-editor.aspx": {
+    "destination": "/mobile/android/web/document-editor",
+    "permanent": true
+  },
+  "/mobile/android/documents/pdf-editor.aspx": {
+    "destination": "/mobile/android/documents/pdf-editor",
+    "permanent": true
+  },
+  "/mobile/android/web/pdf-editor.aspx": {
+    "destination": "/mobile/android/web/pdf-editor",
+    "permanent": true
+  },
+  "/mobile/ios/web/pdf-editor.aspx": {
+    "destination": "/mobile/ios/web/pdf-editor",
+    "permanent": true
+  },
+  "/mobile/ios/documents/presentation-editor.aspx": {
+    "destination": "/mobile/ios/documents/presentation-editor",
+    "permanent": true
+  },
+  "/mobile/android/documents/presentation-editor.aspx": {
+    "destination": "/mobile/android/documents/presentation-editor",
+    "permanent": true
+  },
+  "/mobile/ios/web/presentation-editor.aspx": {
+    "destination": "/mobile/ios/web/presentation-editor",
+    "permanent": true
+  },
+  "/mobile/android/web/presentation-editor.aspx": {
+    "destination": "/mobile/android/web/presentation-editor",
+    "permanent": true
+  },
+  "/mobile/ios/documents/spreadsheet-editor.aspx": {
+    "destination": "/mobile/ios/documents/spreadsheet-editor",
+    "permanent": true
+  },
+  "/mobile/android/documents/spreadsheet-editor.aspx": {
+    "destination": "/mobile/android/documents/spreadsheet-editor",
+    "permanent": true
+  },
+  "/mobile/ios/web/spreadsheet-editor.aspx": {
+    "destination": "/mobile/ios/web/spreadsheet-editor",
+    "permanent": true
+  },
+  "/mobile/android/web/spreadsheet-editor.aspx": {
+    "destination": "/mobile/android/web/spreadsheet-editor",
+    "permanent": true
+  },
+  "/workspace/installation/community/docker.aspx": {
+    "destination": "/workspace/installation/community/docker",
+    "permanent": true
+  },
+  "/workspace/installation/enterprise/docker.aspx": {
+    "destination": "/workspace/installation/enterprise/docker",
+    "permanent": true
+  },
+  "/workspace/installation/community/hosting.aspx": {
+    "destination": "/workspace/installation/community/hosting",
+    "permanent": true
+  },
+  "/workspace/installation/enterprise/hosting.aspx": {
+    "destination": "/workspace/installation/enterprise/hosting",
+    "permanent": true
+  },
+  "/workspace/installation/community/linux.aspx": {
+    "destination": "/workspace/installation/community/linux",
+    "permanent": true
+  },
+  "/workspace/installation/enterprise/linux.aspx": {
+    "destination": "/workspace/installation/enterprise/linux",
+    "permanent": true
+  },
+  "/workspace/userguides/general-questions/user-profile-notifications.aspx": {
+    "destination": "/workspace/userguides/general-questions/user-profile-notifications",
+    "permanent": true
+  },
+  "/workspace/installation/community/windows.aspx": {
+    "destination": "/workspace/installation/community/windows",
+    "permanent": true
+  },
+  "/workspace/installation/enterprise/windows.aspx": {
+    "destination": "/workspace/installation/enterprise/windows",
+    "permanent": true
   }
 }
