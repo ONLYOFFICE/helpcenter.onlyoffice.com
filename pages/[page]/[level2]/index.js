@@ -60,6 +60,7 @@ const Level2Page = ({ locale, data, menuData, categorySlug }) => {
             videos={dataAttr?.videos}
             leftMenuIsOpen={leftMenuIsOpen}
             setLeftMenuIsOpen={setLeftMenuIsOpen}
+            isAIGenerated={dataAttr?.isAIGenerated}
           />
         ) : (
           dataAttr?.[`level_2_${categorySlugPlural}`]?.some(item => item?.[`level_3_${categorySlugPlural}`]?.length > 0) ? (
