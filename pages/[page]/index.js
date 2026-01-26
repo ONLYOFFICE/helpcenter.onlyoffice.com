@@ -57,14 +57,12 @@ const Level1Page = ({ locale, categoriesMenuData, data }) => {
 export const getServerSideProps = async ({ locale, params, preview }) => {
   const categoriesMenuData = await getCategoriesMenu(locale, preview);
   const data = await getLevel1Data(locale, params.page, preview);
-  const allowedLocales = ["en", "de", "fr"];
-  const zhAllowedPages = ["docspace", "docs"];
+  const allowedLocales = ["en", "de", "fr", "zh"];
   const ptAllowedPages = ["integration"];
 
   if (
     !allowedLocales.includes(locale) &&
-    !(locale === "zh" && zhAllowedPages.includes(params.page)) &&
-    !((locale === "pt-BR" || locale === "es") && ptAllowedPages.includes(params.page))
+    !((locale === "pt-BR" || locale === "es" || locale === "it") && ptAllowedPages.includes(params.page))
   ) {
     return {
       redirect: {
