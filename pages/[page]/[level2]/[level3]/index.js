@@ -128,7 +128,7 @@ export const getServerSideProps = async ({ locale, params, req, res, preview }) 
     return {
       notFound: true
     };
-  } else if (data[0]?.isFallback) {
+  } else if (data[0]?.isFallback && locale !== "zh") {
     return {
       redirect: {
         destination: `/${params.page}/${params.level2}/${params.level3}`,

@@ -8,6 +8,7 @@ import HeadSEO from "@components/screens/head";
 import Header from "@components/screens/header";
 import ArticleContent from "@components/screens/article-content";
 import Footer from "@components/screens/footer";
+import translateText from "@lib/strapi/translate";
 
 const Level6Page = ({ locale, data, categoriesMenuData, categorySlug }) => {
   const { t } = useTranslation();
@@ -50,6 +51,7 @@ const Level6Page = ({ locale, data, categoriesMenuData, categorySlug }) => {
           tags={articleData?.tags}
           leftMenuIsOpen={leftMenuIsOpen}
           setLeftMenuIsOpen={setLeftMenuIsOpen}
+          isAIGenerated={articleData?.isAIGenerated}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>
@@ -60,24 +62,35 @@ const Level6Page = ({ locale, data, categoriesMenuData, categorySlug }) => {
 };
 
 export const getServerSideProps = async ({ locale, params, preview }) => {
-  const data = await getArticle(locale, params.page, `${locale === "en"  ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}/${params.level4}/${params.level5}/${params.level6}`, preview);
   const categoriesMenuData = await getCategoriesMenu(locale, preview);
 
-  if (!data?.data?.length) {
-    if (locale !== "en") {
-      return {
-        redirect: {
-          destination: `/${params.page}/${params.level2}/${params.level3}/${params.level4}/${params.level5}/${params.level6}`,
-          permanent: false
-        }
-      };
+  const localeData = await getArticle(locale, params.page, `${locale === "en"  ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}/${params.level4}/${params.level5}/${params.level6}`, preview);
+  let data = null;
+    if (localeData?.data?.length === 0 && locale === "zh") {
+      const englishArticleData = await getArticle("en", params.page, `/${params.page}/${params.level2}/${params.level3}/${params.level4}/${params.level5}/${params.level6}`);
+      if (englishArticleData?.data?.length > 0) {
+        await translateText(englishArticleData.data[0].id, `article-${params.page === "docs" ? "docs" : `${params.page}`}`, locale);
+        data = await getArticle(locale, params.page, `${locale === "en"  ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}/${params.level4}/${params.level5}/${params.level6}`);
+      }
+    } else {
+      data = localeData;
     }
-    else  {
-      return {
-        notFound: true
-      };
-    }
-  } 
+
+    if (!data?.data?.length) {
+      if (locale !== "en" && locale !== "zh") {
+        return {
+          redirect: {
+            destination: `/${params.page}/${params.level2}/${params.level3}/${params.level4}/${params.level5}/${params.level6}`,
+            permanent: false
+          }
+        };
+      }
+      else  {
+        return {
+          notFound: true
+        };
+      }
+    } 
 
   return {
     props: {
