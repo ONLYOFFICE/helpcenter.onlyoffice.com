@@ -66,7 +66,7 @@ export const getServerSideProps = async ({ locale, params, preview }) => {
 
   const localeData = await getArticle(locale, params.page, `${locale === "en"  ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}/${params.level4}/${params.level5}`, preview);
   let data = null;
-  if (localeData?.data?.length === 0 && locale === "zh") {
+  if (localeData?.data?.length === 0 && ((params.page === "mobile" && locale === "de") || locale === "zh")) {
     const englishArticleData = await getArticle("en", params.page, `/${params.page}/${params.level2}/${params.level3}/${params.level4}/${params.level5}`);
 
     if (englishArticleData?.data?.length > 0) {

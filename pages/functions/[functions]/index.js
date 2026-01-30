@@ -13,7 +13,7 @@ const FunctionsPage = ({ locale, menuData, functions }) => {
   const { t } = useTranslation();
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
   const [leftMenuData, setLeftMenuData] = useState(menuData);
-  const { title, content, tags } = functions.data[0];
+  const { title, content, tags, videos } = functions.data[0];
 
   useEffect(() => {
     const loadData = async () => {
@@ -51,6 +51,7 @@ const FunctionsPage = ({ locale, menuData, functions }) => {
           pageName={title}
           leftMenuData={leftMenuData}
           setLeftMenuIsOpen={setLeftMenuIsOpen}
+          videos={videos}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>

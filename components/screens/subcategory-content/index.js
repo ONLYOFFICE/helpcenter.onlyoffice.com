@@ -14,6 +14,7 @@ import ReactHtmlParser from "react-html-parser";
 import ScrollToTopButton from "@components/screens/common/scroll-to-top-button";
 import ImagePopup from "@components/screens/article-content/sub-components/image-popup";
 import StyledRawHtml from "@components/screens/common/raw-html/styled-raw-html";
+import ConnectorsVideo from "@components/screens/article-content/sub-components/connectors-video";
 import { handleFaqAccordionClick, handleChangelogClick } from "@utils/handle-click-functions";
 import { handleImagePopupClick } from "@utils/handle-click-functions";
 
@@ -36,7 +37,8 @@ const SubCategoryContent = ({
   video,
   pageDescription,
   leftMenuData,
-  tags
+  tags,
+  videos
 }) => {
   const leftMenuRef = useRef(null);
   const containerRef = useRef(null);
@@ -49,6 +51,7 @@ const SubCategoryContent = ({
   const [tagName, setTagName] = useState();
   const [tagItems, setTagItems] = useState();
   const [hasMoreTags, setHasMoreTags] = useState(false);
+  const [videoOffsetTrigger, setVideoOffsetTrigger] = useState(0);
   const sortItems = (a, b) => (a.position ?? Infinity) - (b.position ?? Infinity) || (a.name || a.title).localeCompare(b.name || b.title);
 
   useEffect(() => {
@@ -174,6 +177,9 @@ const SubCategoryContent = ({
           </div>
           {video?.data &&
             <VideoBlock t={t} video={video} />
+          }
+          {videos?.length > 0 &&
+            <ConnectorsVideo t={t} videos={videos} setVideoOffsetTrigger={setVideoOffsetTrigger} />
           }
         </div>
         <ImagePopup
