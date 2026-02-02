@@ -10390,5 +10390,9 @@
   "/workspace/installation/enterprise/windows.aspx": {
     "destination": "/workspace/installation/enterprise/windows",
     "permanent": true
+  },
+  "/mobile/ios/document-editor/page-formatting/insert-page-breaks.aspx": {
+    "destination": "/mobile/ios/document-editor/insert-page-breaks.aspx",
+    "permanent": true
   }
 }
