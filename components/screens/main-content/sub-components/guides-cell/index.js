@@ -25,13 +25,13 @@ const GuidesCell = ({ data }) => {
         {data.url === null ? (
           <>
             <Heading className="guides-cell-title" level={4} >
-              <img className="guides-cell-icon" src={data.card_field_img?.url} alt={data.name} />
+              <img className="guides-cell-icon" src={data.card_field_img_x48 ? data.card_field_img_x48?.url : data.card_field_img?.url} alt={data.name} />
               {data.name}
             </Heading>
           </>
         ) : (
           <InternalLink className="guides-cell-title" href={data.url}>
-            <img className="guides-cell-icon" src={data.card_field_img?.url} alt={data.name} />
+            <img className="guides-cell-icon" src={data.card_field_img_x48 ? data.card_field_img_x48?.url : data.card_field_img?.url} alt={data.name} />
             {data.name}
           </InternalLink>
         )}
@@ -83,6 +83,7 @@ const GuidesCell = ({ data }) => {
                 {item[`article_${slugId}`]?.sort((a, b) => a.title.localeCompare(b.title)).map((itemLevel2, index) => {
                   return isClient && isExternalLink(itemLevel2?.url) ? (
                     <ExternalLink
+                      className="guides-cell-link"
                       label={itemLevel2.name || itemLevel2.title}
                       key={index}
                       href={itemLevel2?.url}
