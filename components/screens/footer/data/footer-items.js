@@ -6,32 +6,32 @@ const Items = [
       {
         localize: true,
         label: "Docs",
-        href: "/download-docs.aspx",
+        href: "/download-docs",
       },
       {
         localize: true,
         label: "DocSpace",
-        href: "/download-docspace.aspx",
+        href: "/download-docspace",
       },
       {
         localize: true,
         label: "Workspace",
-        href: "/download-workspace.aspx",
+        href: "/download-workspace",
       },
       {
         localize: true,
         label: "Connectors",
-        href: "/all-connectors.aspx",
+        href: "/all-connectors",
       },
       {
         localize: true,
         label: "DesktopApps",
-        href: "/download-desktop.aspx",
+        href: "/download-desktop",
       },
       {
         localize: true,
         label: "MobileApps",
-        href: "/download-desktop.aspx#mobile",
+        href: "/download-desktop#mobile",
       },
     ],
   },
@@ -42,7 +42,7 @@ const Items = [
       {
         localize: true,
         label: "ForContributors",
-        href: "/contribute.aspx",
+        href: "/contribute",
       },
       {
         isInternal: true,
@@ -53,12 +53,12 @@ const Items = [
       {
         localize: true,
         label: "ForInfluencers",
-        href: "/influencer-program.aspx",
+        href: "/influencer-program",
       },
       {
         localize: true,
         label: "Vacancies",
-        href: "/vacancies.aspx",
+        href: "/vacancies",
       },
     ],
   },
@@ -80,32 +80,32 @@ const Items = [
       {
         localize: false,
         label: "Forum",
-        href: "https://forum.onlyoffice.com/",
+        href: "https://community.onlyoffice.com/",
       },
       {
         localize: true,
         label: "TrainingCourses",
-        href: "/training-courses.aspx",
+        href: "/training-courses",
       },
       {
         localize: true,
         label: "Webinars",
-        href: "/webinars.aspx",
+        href: "/webinars",
       },
       {
         localize: true,
         label: "WhitePapers",
-        href: "/whitepapers.aspx",
+        href: "/whitepapers",
       },
       {
         localize: true,
         label: "SupportContactForm",
-        href: "/support-contact-form.aspx",
+        href: "/support-contact-form",
       },
       {
         localize: true,
         label: "OrderDemo",
-        href: "/demo-order.aspx",
+        href: "/demo-order",
       },
     ],
   },
@@ -134,7 +134,7 @@ const Items = [
       {
         localize: true,
         label: "RequestACall",
-        href: "/call-back-form.aspx",
+        href: "/call-back-form",
       }
     ],
   },
