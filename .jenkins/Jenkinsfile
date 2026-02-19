@@ -10,6 +10,7 @@ switch(BRANCH_NAME) {
     appServer="https://testnew-helpcenter.onlyoffice.com/"
     preview_url="https://testnew-helpcenter.onlyoffice.com/api/preview"
     main_site_base_domain="https://test-new.teamlab.info"
+    algolia_index="test_ARTICLES"
     break
   case "production.deploy":
     aws_region="us-east-1"
@@ -21,6 +22,7 @@ switch(BRANCH_NAME) {
     appServer="https://prodnew-helpcenter.onlyoffice.com/"
     preview_url="https://helpcenter.onlyoffice.com/api/preview"
     main_site_base_domain="https://onlyoffice.com"
+    algolia_index="prod_ARTICLES"
     break
   default:
     println("Branch: ${BRANCH_NAME} do not for deploy.")
@@ -58,29 +60,47 @@ pipeline {
         preview_url="${preview_url}"
         site_url="${site_url}"
         main_site_base_domain = "${main_site_base_domain}"
+        algolia_index = "${algolia_index}"
       }
       steps {
-        withCredentials([string(credentialsId: 'cms_helpcenter_test_preview_secret', 
-                          variable: 'cms_helpcenter_test_preview_secret'),
-                        string(credentialsId: 'cms_helpcenter_prod_preview_secret', 
-                          variable: 'cms_helpcenter_prod_preview_secret')]) {
+        withCredentials([
+                string(credentialsId: 'cms_helpcenter_test_preview_secret', variable: 'cms_helpcenter_test_preview_secret'),
+                string(credentialsId: 'cms_helpcenter_prod_preview_secret', variable: 'cms_helpcenter_prod_preview_secret'),
+                string(credentialsId: 'helpcenter_prod_algolia_app_id', variable: 'helpcenter_prod_algolia_app_id'),
+                string(credentialsId: 'helpcenter_test_algolia_app_id', variable: 'helpcenter_test_algolia_app_id'),
+                string(credentialsId: 'helpcenter_test_algolia_search_key', variable: 'helpcenter_test_algolia_search_key'),
+                string(credentialsId: 'helpcenter_prod_algolia_search_key', variable: 'helpcenter_prod_algolia_search_key'),
+                string(credentialsId: 'helpcenter_prod_algolia_assistant_id', variable: 'helpcenter_prod_algolia_assistant_id'),
+                string(credentialsId: 'helpcenter_test_algolia_assistant_id', variable: 'helpcenter_test_algolia_assistant_id'),
+                string(credentialsId: 'helpcenter_test_algolia_admin_key', variable: 'helpcenter_test_algolia_admin_key'),
+                string(credentialsId: 'helpcenter_prod_algolia_admin_key', variable: 'helpcenter_prod_algolia_admin_key')
+                        ]) {
         sh '''
-
-          if [[ "$region" == "com" ]]; then
-            cms_helpcenter_preview_secret="${cms_helpcenter_prod_preview_secret}"
-          else
-            cms_helpcenter_preview_secret="${cms_helpcenter_test_preview_secret}"
-          fi
 
           sed -i "s^var_notification_app_name^$site_url^" .jenkins/build.sh
           cp .jenkins/build.sh .jenkins/helpcenter_build.sh
+          mv .env.example .env
         
           sed -i "s^config_cms^$cms^" config/config.json
           sed -i "s^config_appServer^$appServer^" config/config.json
-          sed -i "s^preview_secret_key^$cms_helpcenter_preview_secret^" config/config.json
           sed -i "s^preview_url_placeholder^$preview_url^" config/config.json
-
           sed -i "s^var_main_site_base_domain^$main_site_base_domain^" .env
+          sed -i "s^var_algolia_index_name^$algolia_index^" .env
+
+          if [[ "$region" == "com" ]]; then
+            sed -i "s^preview_secret_key^$cms_helpcenter_prod_preview_secret^" config/config.json
+            sed -i "s^var_algolia_app_id^$helpcenter_prod_algolia_app_id^" .env
+            sed -i "s^var_algolia_search_key^$helpcenter_prod_algolia_search_key^" .env
+            sed -i "s^var_algolia_assistant_id^$helpcenter_prod_algolia_assistant_id^" .env
+            sed -i "s^var_algolia_admin_key^$helpcenter_prod_algolia_admin_key^" .env
+          else
+            sed -i "s^preview_secret_key^$cms_helpcenter_test_preview_secret^" config/config.json
+            sed -i "s^var_algolia_app_id^$helpcenter_test_algolia_app_id^" .env
+            sed -i "s^var_algolia_search_key^$helpcenter_test_algolia_search_key^" .env
+            sed -i "s^var_algolia_assistant_id^$helpcenter_test_algolia_assistant_id^" .env
+            sed -i "s^var_algolia_admin_key^$helpcenter_test_algolia_admin_key^" .env
+            cp .jenkins/robots.txt ./
+          fi
 
           if [ "${region}" = "info" ]; then
             cp .jenkins/robots.txt ./
