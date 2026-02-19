@@ -1,6 +1,7 @@
 import StyledSearchArea from "./styled-search-area";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import AlgoliaAskAI from "@components/common/algolia-ask";
 
 const SearchArea = ({ query, className, placeholder, isLeftMenu }) => {
   const [inputValue, setInputValue] = useState("");
@@ -44,6 +45,7 @@ const SearchArea = ({ query, className, placeholder, isLeftMenu }) => {
       ) : (
         <div className="search-icon search"></div>
       )}
+      {!isLeftMenu && <AlgoliaAskAI />}
     </StyledSearchArea>
   );
 };

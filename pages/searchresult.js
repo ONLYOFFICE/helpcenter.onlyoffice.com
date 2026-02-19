@@ -4,12 +4,13 @@ import { useTranslation } from "next-i18next";
 import SearchResultsContent from "@components/screens/search-results-content";
 import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
 import getSearchResults from "@lib/strapi/getSearchResults";
+import getArticleBreadcrumbs from "@lib/strapi/getCrumbs";
 import Layout from "@components/layout";
 import HeadSEO from "@components/screens/head";
 import Header from "@components/screens/header";
 import Footer from "@components/screens/footer";
 
-const SearchResult = ({ locale, categoriesMenuData, searchResults, query, page }) => {
+const SearchResult = ({ locale, categoriesMenuData, searchResults, resultsWithBreadcrumbs, query, page }) => {
   const { t } = useTranslation("common");
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
 
@@ -38,6 +39,7 @@ const SearchResult = ({ locale, categoriesMenuData, searchResults, query, page }
           setLeftMenuIsOpen={setLeftMenuIsOpen}
           categoriesMenuData={categoriesMenuData}
           searchResults={searchResults}
+          resultsWithBreadcrumbs={resultsWithBreadcrumbs}
           query={query}
           page={page}
         />
@@ -55,12 +57,28 @@ export const getServerSideProps = async ({ locale, query, preview }) => {
   const categoriesMenuData = await getCategoriesMenu(locale, preview);
   const searchResults = await getSearchResults(locale, query.query, page, pageSize, preview);
 
+  const enrichedData = await Promise.all(
+    searchResults.data.map(async (item) => {
+      const breadcrumbsData = await getArticleBreadcrumbs(locale, item);
+      return {
+        ...item,
+        breadcrumbs: breadcrumbsData
+      };
+    })
+  );
+
+  const resultsWithBreadcrumbs = {
+    ...searchResults,
+    data: enrichedData
+  };
+
   return {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
       categoriesMenuData,
       searchResults,
+      resultsWithBreadcrumbs,
       page,
       query: query.query,
       preview: !!preview

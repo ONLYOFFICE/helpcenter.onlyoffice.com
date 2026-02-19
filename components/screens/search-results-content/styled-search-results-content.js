@@ -72,6 +72,34 @@ const StyledSearchResultsContent = styled(Section)`
     }
   }
 
+  .search-breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 0px;
+    margin-bottom: 8px;
+
+    .search-crumb,
+    .breadcrumb-separator {
+      background-color: #efefef;
+      padding: 4px 5px;
+    }
+
+    .search-crumb {
+      color: #666666;
+      font-size: 13px;
+    }
+
+    .search-crumb:first-child {
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
+    }
+
+    .search-crumb:last-of-type {
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+    }
+  }
+
   .search-results-link {
     color: ${globalColors.orangeMain};
 
@@ -102,7 +130,7 @@ const StyledSearchResultsContent = styled(Section)`
   }
 
   mark {
-    background: #FFED90;
+    background: #ffed90;
   }
 
   .search-results-not-found-title {

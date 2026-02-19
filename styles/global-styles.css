@@ -122,3 +122,39 @@ p {
     scroll-padding-top: 56px;
   }
 }
+
+.DocSearch-SidepanelButton.floating {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+
+.DocSearch-Menu, .DocSearch-Button {
+  display: none !important;
+}
+
+.DocSearch-Sidepanel-Container.is-open {
+  z-index: 1001 !important;
+}
+
+.DocSearch-Sidepanel-Action-expand,
+.DocSearch-Sidepanel-Action-close {
+  display: flex;
+  appearance: none;
+  border-radius: var(--docsearch-border-radius);
+  color: var(--docsearch-icon-color);
+  cursor: pointer;
+  stroke-width: var(--docsearch-icon-stroke-width);
+  background: 0 0;
+  border: none;
+  padding: 2px;
+  animation: 0.1s ease-in forwards fade-in;
+  inset-inline-end: 0;
+}
+
+.DocSearch-Sidepanel-Header-TitleIcon {
+  background: url("https://static-helpcenter.onlyoffice.com/images/icons/ask-ai.react.svg") no-repeat center / contain;
+  color: transparent !important;
+}
