@@ -33,5 +33,10 @@
     "key": "zh-ZH",
     "shortKey": "zh",
     "name": "中文"
+  },
+  {
+    "key": "ja-JP",
+    "shortKey": "ja",
+    "name": "日本語"
   }
 ]

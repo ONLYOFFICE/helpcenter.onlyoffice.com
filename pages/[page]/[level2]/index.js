@@ -91,6 +91,7 @@ const Level2Page = ({ locale, data, menuData, categorySlug }) => {
               leftMenuIsOpen={leftMenuIsOpen}
               pageDescription={dataAttr.description}
               setLeftMenuIsOpen={setLeftMenuIsOpen}
+              videos={dataAttr?.videos}
             />
           )
         )}

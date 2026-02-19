@@ -47,12 +47,12 @@ const DownloadArea = ({ slug, subcat, locale, ...rest }) => {
         <>
           <ExternalLink
             className="download-button"
-            href={`https://www.onlyoffice.com/${locale !== "en" ? locale + "/" : ""}download-${downloadHref}?from=helpcenter`}
+            href={`https://www.onlyoffice.com/${locale === "pt-BR" ? "pt/" : locale !== "en" ? locale + "/" :  ""}download-${downloadHref}?from=helpcenter`}
             label={t("GetItNow")}
           />
           <ExternalLink
             className="download-button"
-            href={`https://www.onlyoffice.com/${locale !== "en" ? locale + "/" : ""}${downloadHref}-registration?from=helpcenter`}
+            href={`https://www.onlyoffice.com/${locale === "pt-BR" ? "pt/" : locale !== "en" ? locale + "/" :  ""}${downloadHref}-registration?from=helpcenter`}
             label={locale === "zh" && matchedKey === "docspace" ? t("UseCloud") : t("UseInTheCloud")}
           />
         </>

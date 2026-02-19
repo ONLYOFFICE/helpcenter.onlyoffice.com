@@ -11,7 +11,7 @@ const currentYear = date.getFullYear();
 
 const Footer = ({ t, locale }) => {
   const [isClient, setIsClient] = useState(false);
-  const onlyoffice = `https://www.onlyoffice.com${locale === "en" ? "" : `/${locale}`}`;
+  const onlyoffice = `https://www.onlyoffice.com${locale === "en" ? "" : locale === "pt-BR" ? "/pt" : `/${locale}`}`;
 
   useEffect(() => {
     setIsClient(true);
