@@ -10394,5 +10394,25 @@
   "/mobile/ios/document-editor/page-formatting/insert-page-breaks.aspx": {
     "destination": "/mobile/ios/document-editor/insert-page-breaks.aspx",
     "permanent": true
+  },
+  "/docs/userguides/form_builder/CreatingManagingFormFields.aspx": {
+    "destination": "/docs/userguides/form_creator/CreatingManagingFormFields.aspx",
+    "permanent": true
+  },
+  "/docs/userguides/form_builder/FillingOutForm.aspx": {
+    "destination": "/docs/userguides/form_creator/FillingOutForm.aspx",
+    "permanent": true
+  },
+  "/docs/userguides/form_builder/ManagingRoles.aspx": {
+    "destination": "/docs/userguides/form_creator/ManagingRoles.aspx",
+    "permanent": true
+  },
+  "/docs/userguides/form_builder/NavigatingViewingSavingForms.aspx": {
+    "destination": "/docs/userguides/form_creator/NavigatingViewingSavingForms.aspx",
+    "permanent": true
+  },
+  "/docs/userguides/form_builder/third-party-editor.aspx": {
+    "destination": "/docs/userguides/form_creator/third-party-editor.aspx",
+    "permanent": true
   }
 }
