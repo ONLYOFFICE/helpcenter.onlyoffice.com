@@ -45,7 +45,7 @@ const SearchArea = ({ query, className, placeholder, isLeftMenu }) => {
       ) : (
         <div className="search-icon search"></div>
       )}
-      {!isLeftMenu && <AlgoliaAskAI />}
+      {!isLeftMenu && <AlgoliaAskAI locale={router.locale} key={router.locale} />}
     </StyledSearchArea>
   );
 };

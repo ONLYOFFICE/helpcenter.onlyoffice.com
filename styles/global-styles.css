@@ -158,3 +158,12 @@ p {
   background: url("https://static-helpcenter.onlyoffice.com/images/icons/ask-ai.react.svg") no-repeat center / contain;
   color: transparent !important;
 }
+
+@media (max-width: 768px) {
+  .DocSearch-Sidepanel-Header {
+    justify-content: start !important;
+}
+  .DocSearch-Sidepanel-Header--left {
+    display: none !important;
+  }
+}
