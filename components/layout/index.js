@@ -7,6 +7,7 @@ import Main from "./sub-components/main";
 import Footer from "./sub-components/footer";
 import Head from "./sub-components/head";
 import CookieBanner from "./sub-components/cookies/cookie-banner";
+import OOAdventAnnounce from "./sub-components/advent-announce";
 
 function PageHead() {
   return null;
@@ -67,6 +68,7 @@ class Layout extends React.Component {
       <StyledLayout id="page-layout" className="layout">
         {children}
         {headContent && <Head>{headContent.props.children}</Head>}
+        <OOAdventAnnounce />
         {headerContent && <Header>{headerContent.props.children}</Header>}
         <Main>{mainContent ? mainContent.props.children : null}</Main>
         {footerContent && (
