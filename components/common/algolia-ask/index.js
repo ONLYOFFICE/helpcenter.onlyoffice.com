@@ -15,7 +15,7 @@ const SidepanelButton = dynamic(
   { ssr: false },
 );
 
-export default function AlgoliaAskAI( { locale } ) {
+export default function AlgoliaAskAI( { t, locale } ) {
   return (
     <DocSearch>
       <button
@@ -28,7 +28,7 @@ export default function AlgoliaAskAI( { locale } ) {
           btn?.click();
         }}
       >
-        <span>Ask AI</span>
+        <span>{t("AskAI")}</span>
         <div className="ask-ai-button-icon"></div>
       </button>
       <SidepanelButton />

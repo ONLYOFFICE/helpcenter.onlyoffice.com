@@ -14,6 +14,7 @@ const StyledGuidesCell = styled.div`
   }
 
   .guides-cell-header {
+    border-bottom: 1px solid ${globalColors.grayLight};
     display: flex;
     flex-direction: column;
     padding: 32px;
@@ -108,7 +109,6 @@ const StyledGuidesCell = styled.div`
     grid-template-columns: 1fr 1fr;
     align-items: start;
     gap: 32px;
-    border-top: 1px solid ${globalColors.grayLight};
     padding: 24px 32px 32px;
   }
 
@@ -117,6 +117,40 @@ const StyledGuidesCell = styled.div`
     gap: ${(props) => (props.isCategoryPage ? "24px" : "32px")};
     .column {
       display: grid;
+      gap: 16px;
+    }
+  }
+
+  .guides-cell-featured-links {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 20px;
+    padding: 24px 32px 0;
+
+    .guides-cell-featured-link {
+      display: flex;
+      align-items: center;
+      letter-spacing: 0.04em;
+      color: ${globalColors.gray};
+      text-decoration: none;
+      transition: color 0.3s;
+
+      img {
+        margin-right: 8px;
+        width: 16px;
+        min-width: 16px;
+        height: 16px;
+        object-fit: contain;
+      }
+
+      &:hover {
+        color: ${globalColors.orangeMain};
+      }
+    }
+
+    @media ${device.mobile} {
       gap: 16px;
     }
   }
@@ -130,6 +164,12 @@ const StyledGuidesCell = styled.div`
 
     &.external-link {
       text-decoration: none;
+    }
+
+    &.more {
+      color: ${globalColors.orangeMain};
+      cursor: pointer;
+      text-decoration: underline;
     }
 
     @media ${device.mobile} {

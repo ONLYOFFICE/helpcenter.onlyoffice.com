@@ -30,6 +30,7 @@ const StyledSearchArea = styled.div`
     }
 
     @media ${device.mobile} {
+      font-size: 14px;
       height: 48px;
     }
   }
@@ -57,6 +58,11 @@ const StyledSearchArea = styled.div`
 
   .input-container {
     max-width: 624px;
+    position: relative;
+    width: 100%;
+  }
+
+  .search-input-area {
     position: relative;
     width: 100%;
   }

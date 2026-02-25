@@ -52,7 +52,7 @@ const MainContent = ({ t, locale, data, leftMenuIsOpen, setLeftMenuIsOpen }) => 
           <div className="info-content-header">
             <Heading className="info-content-title" level={1} label={t("WelcomeToHelpCenter")} />
           </div>
-          <SearchArea className="info-content-search" placeholder={t("HowCanWeHelp?")} />
+          <SearchArea t={t} className="info-content-search" placeholder={t("HowCanWeHelp?")} />
           <Category t={t} data={data} />
         </div>
 
