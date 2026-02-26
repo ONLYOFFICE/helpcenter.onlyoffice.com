@@ -90,6 +90,21 @@ const ArticleContent = ({
           element.appendChild(button);
         });
       }
+
+      containerRef.current.querySelectorAll("[id$='_block']").forEach((block) => {
+        const heading = block.querySelector("h4");
+        if (!heading || heading.querySelector(".anchor-copy-btn")) return;
+
+        const btn = document.createElement("button");
+        btn.className = "anchor-copy-btn";
+        btn.title = t("CopyLink");
+        btn.addEventListener("click", () => {
+          const url = `${window.location.origin}${window.location.pathname}#${block.id}`;
+          navigator.clipboard.writeText(url);
+        });
+
+        heading.appendChild(btn);
+      });
     }
 
     setHeadings(extractHeadings(wrapperContentRef.current, pageDescription, "h4"));

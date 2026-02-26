@@ -62,7 +62,7 @@ const MainContent = ({ t, locale, data, leftMenuIsOpen, setLeftMenuIsOpen }) => 
             className="guides-cards-items"
             columnClassName="guides-cards-items-column">
             {data.data.sort((a, b) => (a.position ?? Infinity) - (b.position ?? Infinity)).map((item, index) => (
-              <GuidesCell data={item} key={index} />
+              <GuidesCell t={t} data={item} key={index} />
             ))}
           </Masonry>
         </div>

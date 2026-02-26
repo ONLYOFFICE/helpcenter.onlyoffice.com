@@ -9,7 +9,7 @@ import { isExternalLink } from "@utils/helpers/System/isExternal";
 
 const VISIBLE_COUNT = 4;
 
-const GroupColumn = ({ item, slugId, isClient }) => {
+const GroupColumn = ({ t, item, slugId, isClient }) => {
   const [expanded, setExpanded] = useState(false);
 
   const level2Items = item[`level_2_${slugId}`]?.sort(
@@ -53,21 +53,22 @@ const GroupColumn = ({ item, slugId, isClient }) => {
           className="guides-cell-link more"
           onClick={() => setExpanded(!expanded)}
         >
-          {expanded ? "less" : "more"}
+          {expanded ? t("Less") : t("More")}
         </div>
       )}
     </div>
   );
 };
 
-const ConnectorsColumn = ({ connectorsArticles }) => {
+const ConnectorsColumn = ({ t, title, articles }) => {
   const [expanded, setExpanded] = useState(false);
 
-  const visibleItems = expanded ? connectorsArticles : connectorsArticles?.slice(0, VISIBLE_COUNT);
-  const hasMore = connectorsArticles?.length > VISIBLE_COUNT;
+  const visibleItems = expanded ? articles : articles?.slice(0, VISIBLE_COUNT);
+  const hasMore = articles?.length > VISIBLE_COUNT;
 
   return (
     <div className="column">
+      <div className="guides-cell-link guides-cell-header-link">{title}</div>
       {visibleItems?.map((item, index) => (
         <InternalLink className="guides-cell-link" label={item.title} href={item.url} key={index} />
       ))}
@@ -76,18 +77,22 @@ const ConnectorsColumn = ({ connectorsArticles }) => {
           className="guides-cell-link more"
           onClick={() => setExpanded(!expanded)}
         >
-          {expanded ? "less" : "more"}
+          {expanded ? t("Less") : t("More")}
         </div>
       )}
     </div>
   );
 };
 
-const GuidesCell = ({ data }) => {
+const GuidesCell = ({ t, data }) => {
   const [isClient, setIsClient] = useState(false);
   const slugId = data.slug_id === "docs" ? "docs" : `${data.slug_id}s`;
   const connectorsSlug = data.slug_id === "integration";
   const connectorsArticles = data.articles?.sort((a, b) => a.title.localeCompare(b.title));
+
+  const docsArticles = connectorsArticles?.filter(item => !item.url?.endsWith("-docspace.aspx")) || [];
+  const docspaceArticles = connectorsArticles?.filter(item => item.url?.endsWith("-docspace.aspx")) || [];
+
   const allCategories = data[`category_${slugId}`] || [];
 
   const topItems = allCategories
@@ -143,18 +148,20 @@ const GuidesCell = ({ data }) => {
       <div className="guides-cell-columns">
         <div className="guides-cell-column">
           {connectorsSlug ? (
-            <ConnectorsColumn connectorsArticles={connectorsArticles} />
+            <ConnectorsColumn t={t} title={t("ForDocs")} articles={docsArticles} />
           ) : (
             items?.slice(0, Math.ceil(items?.length / 2)).map((item, index) => (
-              <GroupColumn key={index} item={item} slugId={slugId} isClient={isClient} />
+              <GroupColumn t={t} key={index} item={item} slugId={slugId} isClient={isClient} />
             ))
           )}
         </div>
 
         <div className="guides-cell-column">
-          {!connectorsSlug && (
+          {connectorsSlug ? (
+            <ConnectorsColumn t={t} title={t("ForDocSpace")} articles={docspaceArticles} />
+          ) : (
             items?.slice(Math.ceil(items.length / 2)).map((item, index) => (
-              <GroupColumn key={index} item={item} slugId={slugId} isClient={isClient} />
+              <GroupColumn t={t} key={index} item={item} slugId={slugId} isClient={isClient} />
             ))
           )}
         </div>
