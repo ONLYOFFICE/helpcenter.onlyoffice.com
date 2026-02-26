@@ -46,6 +46,16 @@ export default function AlgoliaAskAI( { t, locale } ) {
           facetFilters: [`locale:${locale}`],
           distinct: false,
         }}
+        translations={{
+          newConversationScreen: {
+            titleText: t("AskAIHeader"),
+            introductionText: t("AskAIIntroduction"),
+          },
+          promptForm: {
+            promptDisclaimerText: t("AskAIMistakes"),
+            promptPlaceholderText: t("AskAIPlaceholder"),
+          },
+        }}
       />
     </DocSearch>
   );
