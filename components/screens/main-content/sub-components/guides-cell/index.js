@@ -133,7 +133,7 @@ const GuidesCell = ({ data }) => {
         <div className="guides-cell-featured-links">
           {topItems.map((item, index) => (
             <InternalLink className="guides-cell-featured-link" href={item.url} key={index}>
-              <img src={item.card_field_img?.url} alt={item.name} />
+              <img src={`https://static-helpcenter.onlyoffice.com/images/icons/${item.slug_id}.react.svg`} alt={item.name} />
               <div>{item.name}</div>
             </InternalLink>
           ))}
