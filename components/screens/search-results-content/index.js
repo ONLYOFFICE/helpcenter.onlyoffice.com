@@ -103,7 +103,7 @@ const SearchResultsContent = ({
       )}
       <StyledSearchResultsContent>
         <div className="search-results-header">
-          <SearchArea placeholder={t("HowCanWeHelp?")} query={query} />
+          <SearchArea t={t} placeholder={t("HowCanWeHelp?")} query={query} />
         </div>
 
         {resultsWithBreadcrumbs?.data?.length > 0 ? (

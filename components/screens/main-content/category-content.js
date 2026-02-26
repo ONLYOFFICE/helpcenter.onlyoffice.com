@@ -51,7 +51,7 @@ const Level1CategoryContent = ({ t, locale, categoriesMenuData, categoryName, ca
             <img className="info-content-icon" src={categoryImg} alt={categoryName} />
             <Heading className="info-content-title" level={1} label={categoryName} />
           </div>
-          <SearchArea placeholder={t("HowCanWeHelp?")} />
+          <SearchArea t={t} placeholder={t("HowCanWeHelp?")} />
         </div>
 
         <div className="guides-cards bg-gray">
