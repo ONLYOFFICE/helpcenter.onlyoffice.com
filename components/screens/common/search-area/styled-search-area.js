@@ -77,6 +77,7 @@ const StyledSearchArea = styled.div`
     width: 100%;
     height: ${(props) => (props.isLeftMenu ? "48px" : "64px")};
     outline: none;
+    max-width: 620px;
 
     &::placeholder {
       color: ${(props) => props.isLeftMenu ? globalColors.grayLight : globalColors.textGray};
