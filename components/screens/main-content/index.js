@@ -12,6 +12,8 @@ const MainContent = ({ t, locale, data, leftMenuIsOpen, setLeftMenuIsOpen }) => 
   const [leftMenuData, setLeftMenuData] = useState(data);
   const [showLeftMenu, setShowLeftMenu] = useState(false);
 
+  const categoriesData = data?.data?.filter(item => item.slug_id !== "ai");
+
   useEffect(() => {
     const loadData = async () => {
       const data = await getLeftMenu(locale);
@@ -61,7 +63,7 @@ const MainContent = ({ t, locale, data, leftMenuIsOpen, setLeftMenuIsOpen }) => 
             breakpointCols={{ default: 2, 592: 1 }}
             className="guides-cards-items"
             columnClassName="guides-cards-items-column">
-            {data.data.sort((a, b) => (a.position ?? Infinity) - (b.position ?? Infinity)).map((item, index) => (
+            {categoriesData.sort((a, b) => (a.position ?? Infinity) - (b.position ?? Infinity)).map((item, index) => (
               <GuidesCell t={t} data={item} key={index} />
             ))}
           </Masonry>

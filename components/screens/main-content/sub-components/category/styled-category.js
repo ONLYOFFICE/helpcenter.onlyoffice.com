@@ -4,10 +4,10 @@ import globalColors from "@components/utils/global-colors";
 
 const StyledCategory = styled.div`
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(7, 1fr);
   gap: 32px;
   margin: 0 auto;
-  max-width: 880px;
+  max-width: 1032px;
 
   .category-box {
     display: flex;
