@@ -1,0 +1,142 @@
+println("Branch name: ${BRANCH_NAME}")
+
+def aws_region = ""
+def app_dir = ""
+def build_docker_container_tag = ""
+def scan_project_name = ""
+def short_project_name = ""
+def oss_index_username = ""
+def target_branch = ""
+def reviewer = ""
+
+switch(BRANCH_NAME) {
+  case "test.deploy":
+    aws_region="us-east-1"
+    app_dir="/app/helpcenter.onlyoffice.com"
+    build_docker_container_tag="node:16-alpine"
+    scan_project_name="ONLYOFFICE/helpcenter.onlyoffice.com"
+    short_project_name="helpcenter.onlyoffice.com"
+    oss_index_username = "devops@onlyoffice.com"
+    target_branch = "test.deploy"
+    reviewer = "juli.vytnova"
+    break
+  default:
+    println("Branch: ${BRANCH_NAME} do not for deploy.")
+    break
+}
+
+pipeline {
+  agent { label 'ubuntu' }
+  triggers {
+    githubPush()
+  }
+  options {
+    disableConcurrentBuilds()
+    buildDiscarder (logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
+  }
+  stages {
+    
+    stage('security_scan') {
+      when { 
+        anyOf { branch 'test.deploy' }
+      }
+      environment {
+        awslogs_region = "${awslogs_region}"
+        app_dir = "${app_dir}"
+        build_docker_container_tag = "${build_docker_container_tag}"
+        scan_project_name = "${scan_project_name}"
+        short_project_name = "${short_project_name}"
+        oss_index_username = "${oss_index_username}"
+        target_branch = "${target_branch}"
+        reviewer = "${reviewer}"
+      }
+      steps {
+        withCredentials([
+                        string(credentialsId: 'onlyoffice_site_anthropic_api_key', variable: 'ANTHROPIC_API_KEY'),
+                        string(credentialsId: 'onlyoffice_site_gittea_access_token', variable: 'GITEA_ACCESS_TOKEN'),
+                        string(credentialsId: 'onlyoffice_site_gittea_host', variable: 'GITEA_HOST'),
+                        string(credentialsId: 'onlyoffice_site_nvd_api_key', variable: 'NVD_API_KEY'),
+                        string(credentialsId: 'onlyoffice_oss_index_password', variable: 'OSS_INDEX_PASSWORD'),
+                        string(credentialsId: 'onlyoffice_site_telegram_token', variable: 'TELEGRAM_TOKEN'),
+                        string(credentialsId: 'onlyoffice_site_telegram_chat_id', variable: 'TELEGRAM_CHAT_ID')]) {          
+        sh '''
+            rm package-lock.json
+
+            docker run --rm -e NODE_OPTIONS="--max-old-space-size=8192" \
+                -v "$PWD":"$app_dir" \
+                -w "$app_dir" "$build_docker_container_tag" sh -c "yarn install"
+
+            mkdir -p /home/jenkins/caches/odc-reports/$short_project_name
+            mkdir -p /home/jenkins/caches/odc-reports/$short_project_name/$target_branch
+
+            docker run --rm \
+                -v "$PWD":"$app_dir":ro \
+                -v "/home/jenkins/caches/odc-reports/$short_project_name/$target_branch":"/report" \
+                -v "/home/jenkins/caches/odc-database":"/usr/share/dependency-check/data" \
+                owasp/dependency-check:latest \
+                --scan "$app_dir" \
+                --format JSON \
+                --out /report \
+                --project "$scan_project_name" \
+                --disableAssembly \
+                --nodeAuditSkipDevDependencies \
+                --enableExperimental \
+                --nvdApiKey "$NVD_API_KEY" \
+                --ossIndexUsername "$oss_index_username" \
+                --ossIndexPassword "$OSS_INDEX_PASSWORD"
+
+            echo 'Shortening security report'
+
+            jq '
+              .dependencies |= (
+                map(select(.vulnerabilities and (.vulnerabilities | length) > 0))
+                | unique_by(.packages[0].id // .fileName)
+              )
+              | .dependencies[].evidenceCollected = {"vendorEvidence":[],"productEvidence":[],"versionEvidence":[]}
+              | del(.dependencies[].md5, .dependencies[].sha1, .dependencies[].sha256)
+              | .dependencies[].vulnerabilities[].references |= .[:3]
+            ' /home/jenkins/caches/odc-reports/$short_project_name/$target_branch/dependency-check-report.json > /home/jenkins/caches/odc-reports/$short_project_name/$target_branch/dependency-check-report.min.json
+
+            docker image inspect claude-cli > /dev/null 2>&1 || docker build -t claude-cli -f .jenkins/Dockerfile.claude-cli .jenkins
+
+            docker run --rm \
+                -e ANTHROPIC_API_KEY="$ANTHROPIC_API_KEY" \
+                -e GITEA_ACCESS_TOKEN="$GITEA_ACCESS_TOKEN" \
+                -e GITEA_HOST="$GITEA_HOST" \
+                -v "/home/jenkins/caches/odc-reports/$short_project_name/$target_branch":"/report":ro \
+                claude-cli \
+                --allowedTools "mcp__gitea__*,Read" \
+                -p "Repository you should work with is $scan_project_name. The security scan report is at /report/dependency-check-report.min.json.
+
+Read the report and fix ALL vulnerabilities found in it by updating package versions in package.json. Follow these rules:
+
+1. Use the Gitea MCP server to access the repository $scan_project_name.
+2. Read /report/dependency-check-report.min.json to get the full list of vulnerable packages.
+3. Check if PR with fixes related to this report already exists. If it exists - do nothing.
+4. For each vulnerable package, determine the minimum safe version from the CVE description or references in the report, then update package.json accordingly:
+   - Direct dependencies: bump the version in dependencies or devDependencies.
+   - Transitive-only dependencies (not present in package.json): add them to the overrides section in package.json to force the safe version.
+5. ONLY modify packages that are explicitly listed as vulnerable in the report. Do NOT change any other dependency entries.
+6. NEVER modify dependencies pinned to a git commit SHA (entries in the format owner/repo#sha). These must be preserved exactly as read. If such a package appears vulnerable, skip the fix and document it in the PR Notes section as requiring a manual upstream update.
+7. Do NOT run npm install or modify package-lock.json - only edit package.json.
+8. Create a new branch named fix/ai-security-$(date +%Y%m%d) from the $target_branch branch of the repository.
+9. Commit the package.json changes to that branch with commit message: fix: update vulnerable dependencies per OWASP dependency-check report.
+10. Open a Pull Request from that branch targeting $target_branch branch with:
+   - Title: fix: security vulnerabilities found by OWASP dependency-check
+   - Body: a markdown table listing each fixed package, its old version, new version, CVE(s) fixed, and severity. Add a Notes section for any packages where no patch exists yet explaining the status.
+11. After the PR is created, assign ${reviewer} as a reviewer on the PR using the Gitea MCP.
+12. Output the PR URL at the end." \
+                --output-format text > "$PWD/SECURITY_FIX_REPORT.md"
+
+            rm /home/jenkins/caches/odc-reports/$short_project_name/$target_branch/dependency-check-report.json
+            rm /home/jenkins/caches/odc-reports/$short_project_name/$target_branch/dependency-check-report.min.json
+
+            TELEGRAM_MSG=$(jq -n --arg text "AI Security scan report: $target_branch\n\n$(cat SECURITY_FIX_REPORT.md)" --arg chat_id "$TELEGRAM_CHAT_ID" '{chat_id: $chat_id, text: $text}')
+            curl -s -X POST -H "Content-Type: application/json" -d "$TELEGRAM_MSG" "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage"
+            rm SECURITY_FIX_REPORT.md
+        '''
+        } 
+      }
+    }  
+  } 
+}
