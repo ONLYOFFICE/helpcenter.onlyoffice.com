@@ -3,7 +3,7 @@ RUN go install gitea.com/gitea/gitea-mcp@latest
 
 FROM node:lts-slim
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates && rm -rf /var/lib/apt/lists/*
-RUN npm install -g @anthropic-ai/claude-code
+RUN npm install -g @anthropic-ai/claude-code brave-search-mcp
 COPY --from=gitea-mcp-build /go/bin/gitea-mcp /usr/local/bin/gitea-mcp
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh

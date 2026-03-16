@@ -13,7 +13,7 @@ switch(BRANCH_NAME) {
   case "test.deploy":
     aws_region="us-east-1"
     app_dir="/app/helpcenter.onlyoffice.com"
-    build_docker_container_tag="node:16-alpine"
+    build_docker_container_tag="node:lts-alpine"
     scan_project_name="ONLYOFFICE/helpcenter.onlyoffice.com"
     short_project_name="helpcenter.onlyoffice.com"
     oss_index_username = "devops@onlyoffice.com"
@@ -58,7 +58,8 @@ pipeline {
                         string(credentialsId: 'onlyoffice_site_nvd_api_key', variable: 'NVD_API_KEY'),
                         string(credentialsId: 'onlyoffice_oss_index_password', variable: 'OSS_INDEX_PASSWORD'),
                         string(credentialsId: 'onlyoffice_site_telegram_token', variable: 'TELEGRAM_TOKEN'),
-                        string(credentialsId: 'onlyoffice_site_telegram_chat_id', variable: 'TELEGRAM_CHAT_ID')]) {          
+                        string(credentialsId: 'onlyoffice_site_telegram_chat_id', variable: 'TELEGRAM_CHAT_ID'),
+                        string(credentialsId: 'onlyoffice_site_brave_api_key', variable: 'BRAVE_API_KEY')]) {          
         sh '''
             rm package-lock.json
 
@@ -103,29 +104,38 @@ pipeline {
                 -e ANTHROPIC_API_KEY="$ANTHROPIC_API_KEY" \
                 -e GITEA_ACCESS_TOKEN="$GITEA_ACCESS_TOKEN" \
                 -e GITEA_HOST="$GITEA_HOST" \
+                -e BRAVE_API_KEY="$BRAVE_API_KEY" \
                 -v "/home/jenkins/caches/odc-reports/$short_project_name/$target_branch":"/report":ro \
                 claude-cli \
-                --allowedTools "mcp__gitea__*,Read" \
-                -p "Repository you should work with is $scan_project_name. The security scan report is at /report/dependency-check-report.min.json.
+                --model claude-opus-4-6 \
+                --allowedTools "mcp__gitea__*,mcp__brave-search__brave_web_search,Read" \
+                -p "You are an automated security remediation agent.
 
-Read the report and fix ALL vulnerabilities found in it by updating package versions in package.json. Follow these rules:
+The repository you must work with is $scan_project_name.
+The OWASP Dependency-Check report is located at: /report/dependency-check-report.min.json
+Work from the branch $target_branch.
+
+Your task is to automatically fix HIGH and CRITICAL vulnerabilities reported in this file by updating dependency versions in package.json.
+
+Follow the instructions exactly.
 
 1. Use the Gitea MCP server to access the repository $scan_project_name.
 2. Read /report/dependency-check-report.min.json to get the full list of vulnerable packages.
 3. Check if PR with fixes related to this report already exists. If it exists - do nothing.
-4. For each vulnerable package, determine the minimum safe version from the CVE description or references in the report, then update package.json accordingly:
+4. For each vulnerable package, determine the minimum safe version from the CVE description or references in the report, use brave-search MCP to search at https://www.npmjs.com/ and verify if patched versions are available, then update package.json accordingly:
    - Direct dependencies: bump the version in dependencies or devDependencies.
    - Transitive-only dependencies (not present in package.json): add them to the overrides section in package.json to force the safe version.
 5. ONLY modify packages that are explicitly listed as vulnerable in the report. Do NOT change any other dependency entries.
 6. NEVER modify dependencies pinned to a git commit SHA (entries in the format owner/repo#sha). These must be preserved exactly as read. If such a package appears vulnerable, skip the fix and document it in the PR Notes section as requiring a manual upstream update.
-7. Do NOT run npm install or modify package-lock.json - only edit package.json.
-8. Create a new branch named fix/ai-security-$(date +%Y%m%d) from the $target_branch branch of the repository.
-9. Commit the package.json changes to that branch with commit message: fix: update vulnerable dependencies per OWASP dependency-check report.
-10. Open a Pull Request from that branch targeting $target_branch branch with:
+7. DO NOT REMOVE any packages from package.json file
+8. Do NOT run npm install or modify package-lock.json - only edit package.json.
+9. Create a new branch named fix/ai-security-$(date +%Y%m%d) from the $target_branch branch of the repository.
+10. Commit the package.json changes to that branch with commit message: fix: update vulnerable dependencies per OWASP dependency-check report.
+11. Open a Pull Request from that branch targeting $target_branch branch with:
    - Title: fix: security vulnerabilities found by OWASP dependency-check
    - Body: a markdown table listing each fixed package, its old version, new version, CVE(s) fixed, and severity. Add a Notes section for any packages where no patch exists yet explaining the status.
-11. After the PR is created, assign ${reviewer} as a reviewer on the PR using the Gitea MCP.
-12. Output the PR URL at the end." \
+12. After the PR is created, assign ${reviewer} as a reviewer on the PR using the Gitea MCP.
+13. Output the PR URL at the end. If brave search was not available, mention it in the output" \
                 --output-format text > "$PWD/SECURITY_FIX_REPORT.md"
 
             rm /home/jenkins/caches/odc-reports/$short_project_name/$target_branch/dependency-check-report.json
