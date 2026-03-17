@@ -16,7 +16,7 @@ const CategoryGuidesCell = ({ data, categorySlug, t }) => {
   }, []);
 
   return (
-    <StyledGuidesCell isCategoryPage={true}>
+    <StyledGuidesCell $isCategoryPage={true}>
       <div className="guides-cell-header">
         {(data.url === null || data.url_docspace) ? (
           <>
