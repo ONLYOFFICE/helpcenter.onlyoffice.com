@@ -35,11 +35,13 @@
   "ContactUs": "Contact us",
   "CookieSettings": "Cookie settings",
   "CookieText": "Our website uses cookies to provide you with a tailored experience. Cookies help us run the site, improve your browsing, and enable targeted marketing and ads. You can fully consent to our use of cookies or manage your preferences. <0>Learn more</0>",
+  "CopyLink": "Copy link to section",
   "Customize": "Customize",
   "Deny": "Deny",
   "DesktopApps": "Desktop apps",
   "Docs": "Docs",
   "DocSpace": "DocSpace",
+  "Download": "Download",
   "FAQ": "FAQ",
   "FooterCopyright": "© Ascensio System SIA {{currentYear}}. All rights reserved",
   "ForContributors": "For contributors",
@@ -102,6 +104,5 @@
   "Webinars": "Webinars",
   "WelcomeToHelpCenter": "Welcome to Help Center",
   "WhitePapers": "White papers",
-  "Workspace": "Workspace",
-  "CopyLink": "Copy link to section"
+  "Workspace": "Workspace"
 }

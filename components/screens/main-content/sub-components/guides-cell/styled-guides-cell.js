@@ -7,7 +7,7 @@ const StyledGuidesCell = styled.div`
   width: 544px;
   background-color: ${globalColors.white};
   box-shadow: rgba(85, 85, 85, 0.15) 0px 7px 25px;
-  margin-bottom: ${(props) => (props.isCategoryPage ? "32px" : "24px")};
+  margin-bottom: ${(props) => (props.$isCategoryPage ? "32px" : "24px")};
 
   &:last-child {
     margin-bottom: 0;
@@ -114,7 +114,7 @@ const StyledGuidesCell = styled.div`
 
   .guides-cell-column {
     display: grid;
-    gap: ${(props) => (props.isCategoryPage ? "24px" : "32px")};
+    gap: ${(props) => (props.$isCategoryPage ? "24px" : "32px")};
     .column {
       display: grid;
       gap: 16px;
@@ -197,7 +197,7 @@ const StyledGuidesCell = styled.div`
   @media ${device.tablet} {
     .guides-cell-columns {
       grid-template-columns: 1fr;
-      gap: ${(props) => (props.isCategoryPage && "24px")};
+      gap: ${(props) => (props.$isCategoryPage && "24px")};
     }
 
     .guides-cell-icon {
@@ -206,7 +206,7 @@ const StyledGuidesCell = styled.div`
   }
 
   @media ${device.mobile} {
-    margin-bottom: ${(props) => (props.isCategoryPage ? "24px" : "32px")};
+    margin-bottom: ${(props) => (props.$isCategoryPage ? "24px" : "32px")};
 
     .guides-cell-icon {
       margin-right: 24px;

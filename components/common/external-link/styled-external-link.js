@@ -4,7 +4,7 @@ import StyledText from "@components/common/text/styled-text";
 
 const hoverText = css`
   ${(props) =>
-    props.isHoverText &&
+    props.$isHoverText &&
     css`
       :hover {
         color: ${(props) =>

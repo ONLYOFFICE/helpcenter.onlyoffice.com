@@ -44,27 +44,25 @@ Text.propTypes = {
   /** Text cursor */
   cursor: PropTypes.string,
   /** Disables word wrapping */
-  truncate: PropTypes.bool,
-  /** Sets font weight value ​​to bold */
-  isBold: PropTypes.bool,
+  $isBold: PropTypes.bool,
   /** Sets the 'display: inline-block' property */
-  isInline: PropTypes.bool,
+  $isInline: PropTypes.bool,
   /** Sets the font style */
-  isItalic: PropTypes.bool,
+  $isItalic: PropTypes.bool,
   /** Sets the 'display' property */
   display: PropTypes.string,
   /** Text is hover  */
-  isHoverText: PropTypes.bool,
+  $isHoverText: PropTypes.bool,
   /** Text hover color */
-  hoverColor: PropTypes.string,
+  $hoverColor: PropTypes.string,
   /** Text hover transform */
-  hoverTextTransform: PropTypes.string,
+  $hoverTextTransform: PropTypes.string,
   /** Text hover shadow */
-  hoverTextShadow: PropTypes.string,
+  $hoverTextShadow: PropTypes.string,
   /** Text hover decoration */
-  hoverTextDecoration: PropTypes.string,
+  $hoverTextDecoration: PropTypes.string,
   /** Text hover cursor */
-  hoverCursor: PropTypes.string,
+  $hoverCursor: PropTypes.string,
   /** Change `html` tag */
   as: PropTypes.string,
   /** What the will trigger when clicked */
@@ -82,11 +80,10 @@ Text.propTypes = {
 Text.defaultProps = {
   color: globalColors.gray,
   fontSize: "14px",
-  isInline: true,
-  isHoverText: false,
-  isItalic: false,
-  isBold: false,
-  truncate: false,
+  $isInline: true,
+  $isHoverText: false,
+  $isItalic: false,
+  $isBold: false,
 };
 
 export default Text;

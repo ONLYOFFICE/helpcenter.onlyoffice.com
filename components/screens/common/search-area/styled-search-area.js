@@ -70,22 +70,22 @@ const StyledSearchArea = styled.div`
   .search-input {
     box-sizing: border-box;
     border: 1px solid ${globalColors.grayLight};
-    border-radius: ${(props) => (props.isLeftMenu ? "24px" : "32px")};
-    padding: ${(props) => props.isLeftMenu ? "14px 16px 14px 48px" : "20px 64px 20px 28px"};
-    font-size: ${(props) => (props.isLeftMenu ? "14px" : "16px")};
-    line-height: ${(props) => (props.isLeftMenu ? "20px" : "24px")};
+    border-radius: ${(props) => (props.$isLeftMenu ? "24px" : "32px")};
+    padding: ${(props) => props.$isLeftMenu ? "14px 16px 14px 48px" : "20px 64px 20px 28px"};
+    font-size: ${(props) => (props.$isLeftMenu ? "14px" : "16px")};
+    line-height: ${(props) => (props.$isLeftMenu ? "20px" : "24px")};
     width: 100%;
-    height: ${(props) => (props.isLeftMenu ? "48px" : "64px")};
+    height: ${(props) => (props.$isLeftMenu ? "48px" : "64px")};
     outline: none;
     max-width: 620px;
 
     &::placeholder {
-      color: ${(props) => props.isLeftMenu ? globalColors.grayLight : globalColors.textGray};
+      color: ${(props) => props.$isLeftMenu ? globalColors.grayLight : globalColors.textGray};
     }
 
     @media ${device.laptop} {
       ${(props) =>
-        props.isLeftMenu &&
+        props.$isLeftMenu &&
         css`
           padding: 14px 16px 14px 48px;
           line-height: 20px;
@@ -96,7 +96,7 @@ const StyledSearchArea = styled.div`
 
     @media ${device.mobile} {
       ${(props) =>
-        !props.isLeftMenu &&
+        !props.$isLeftMenu &&
         css`
           border-radius: 24px;
           padding: 13px 48px 13px 16px;
@@ -110,11 +110,11 @@ const StyledSearchArea = styled.div`
   .search-icon {
     position: absolute;
     top: 50%;
-    ${(props) => (props.isLeftMenu ? "left: 16px;" : "right: 24px;")};
+    ${(props) => (props.$isLeftMenu ? "left: 16px;" : "right: 24px;")};
     border: none;
     padding: 0;
-    width: ${(props) => (props.isLeftMenu ? "24px" : "16px")};
-    height: ${(props) => (props.isLeftMenu ? "24px" : "16px")};
+    width: ${(props) => (props.$isLeftMenu ? "24px" : "16px")};
+    height: ${(props) => (props.$isLeftMenu ? "24px" : "16px")};
     background-repeat: no-repeat;
     background-size: contain;
     background-color: transparent;
@@ -132,7 +132,7 @@ const StyledSearchArea = styled.div`
 
     @media ${device.laptop} {
       ${(props) =>
-        props.isLeftMenu &&
+        props.$isLeftMenu &&
         css`
           width: 24px;
           height: 24px;
@@ -141,7 +141,7 @@ const StyledSearchArea = styled.div`
 
     @media ${device.mobile} {
       ${(props) =>
-        !props.isLeftMenu &&
+        !props.$isLeftMenu &&
         css`
           right: 16px;
         `}

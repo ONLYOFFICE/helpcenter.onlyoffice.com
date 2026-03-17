@@ -87,7 +87,7 @@ const LeftMenu = forwardRef(({
         ref={ref}
         onMouseEnter={handleVisibility}
         onMouseLeave={() => setScrollVisible(false)}
-        isTransition={isTransition}
+        $isTransition={isTransition}
         className={`left-menu ${leftMenuIsOpen ? "active" : ""}`}
       >
         <div className="left-menu-wrapper">
@@ -124,7 +124,7 @@ const LeftMenu = forwardRef(({
           </Scrollbar>
         </div>
       </StyledLeftMenu>
-      <StyledOverlay leftMenuIsOpen={leftMenuIsOpen} isTransition={isTransition} />
+      <StyledOverlay $leftMenuIsOpen={leftMenuIsOpen} $isTransition={isTransition} />
     </>
   );
 });

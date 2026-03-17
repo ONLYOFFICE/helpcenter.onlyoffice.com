@@ -19,15 +19,19 @@ const FooterItem = ({ dis, children, heading }) => {
   };
 
   return (
-    <StyledFooterItem isOpen={isOpen} maxHeight={maxHeight} className="footer-item">
-      {heading && 
+    <StyledFooterItem
+      $isOpen={isOpen}
+      $maxHeight={maxHeight}
+      className="footer-item"
+    >
+      {heading && (
         <Heading
           className={`footer-item-heading ${isOpen ? "up" : ""}`}
           level={6}
           onClick={dis && onHandleClick}
           label={heading}
         />
-      }
+      )}
       <div ref={contentRef} className="footer-items-group">
         {children}
       </div>

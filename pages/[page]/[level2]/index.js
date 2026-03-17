@@ -52,6 +52,7 @@ const Level2Page = ({ locale, data, menuData, categorySlug }) => {
           <ArticleContent
             t={t}
             locale={locale}
+            categorySlug={categorySlug}
             categoryName={dataAttr.category?.name}
             categoryUrl={dataAttr.category?.url}
             pageName={dataAttr?.title}
@@ -124,7 +125,7 @@ export async function getServerSideProps({ locale, params, preview }) {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, "common")),
+      ...(await serverSideTranslations(locale, ["common"])),
       locale,
       data,
       menuData,

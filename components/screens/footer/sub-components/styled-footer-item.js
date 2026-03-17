@@ -21,15 +21,15 @@ const StyledFooterItem = styled.div`
       transition: max-height 0.3s ease;
 
       ${(props) =>
-    props.isOpen
-      ? css`
+        props.$isOpen
+          ? css`
               margin-bottom: 16px;
-              max-height: ${(props) => props.maxHeight};
+              max-height: ${(props) => props.$maxHeight};
             `
-      : css`
+          : css`
               margin-bottom: 0;
               max-height: 0;
-      `}
+            `}
     }
   }
 

@@ -4,8 +4,8 @@ import { CloseButton, StyledImagePopup } from "./styled-image-popup";
 const ImagePopup = ({ t, image, active, setActive, ...rest }) => {
   return (
     <StyledImagePopup
-       active={active}
-       onClick={() => setActive(false)}
+      $active={active}
+      onClick={() => setActive(false)}
       {...rest}
     >
       <div onClick={(e) => e.stopPropagation()} className="popup-content">

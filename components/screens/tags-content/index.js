@@ -8,7 +8,7 @@ import AlphabetContainer from "@components/screens/common/alphabet-container";
 import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import Heading from "@components/common/heading";
 
-const TagsContent = ({ t, locale, tagsData, leftMenuData, leftMenuIsOpen }) => {
+const TagsContent = ({ t, locale, tagsData, leftMenuData, leftMenuIsOpen, preview }) => {
   const [modalActive, setModalActive] = useState(false);
   const [tagName, setTagName] = useState();
   const [tagItems, setTagItems] = useState();

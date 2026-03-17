@@ -26,7 +26,7 @@ const LanguageSelector = ({ locale }) => {
   }, [isOpen]);
 
   return (
-    <StyledLanguageSelector isOpen={isOpen} className="language-selector">
+    <StyledLanguageSelector $isOpen={isOpen} className="language-selector">
       <button onClick={() => setIsOpen(!isOpen)} className="language-button">
         <span className={`language-link ${locale}`}></span>
       </button>

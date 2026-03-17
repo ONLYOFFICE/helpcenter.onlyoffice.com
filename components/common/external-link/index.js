@@ -24,14 +24,14 @@ ExternalLink.propTypes = {
   fontWeight: PropTypes.string,
   /** Link text text-transform */
   textTransform: PropTypes.string,
-  /** Disables word wrapping */
-  truncate: PropTypes.bool,
   /** Sets font weight value ​​to bold */
-  isBold: PropTypes.bool,
+  $isBold: PropTypes.bool,
   /** Sets the 'display: inline-block' property */
-  isInline: PropTypes.bool,
+  $isInline: PropTypes.bool,
   /** Sets the font style */
-  isItalic: PropTypes.bool,
+  $isItalic: PropTypes.bool,
+  /** Sets the hover text decoration */
+  $isHoverText: PropTypes.bool,
   /** Sets the 'display' property */
   display: PropTypes.string,
   /** Used as HTML 'href' property */
@@ -61,11 +61,10 @@ ExternalLink.defaultProps = {
   href: undefined,
   title: undefined,
   rel: "noopener noreferrer",
-  isInline: true,
-  isHoverText: true,
-  isItalic: false,
-  isBold: false,
-  truncate: false,
+  $isInline: true,
+  $isHoverText: true,
+  $isItalic: false,
+  $isBold: false,
   target: "_blank",
 };
 

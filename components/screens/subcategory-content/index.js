@@ -10,7 +10,7 @@ import InternalLink from "@components/common/internal-link";
 import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import VideoBlock from "@components/screens/common/video-block";
 import ArticlePopup from "@components/screens/common/article-popup";
-import ReactHtmlParser from "react-html-parser";
+import parse from "html-react-parser";
 import ScrollToTopButton from "@components/screens/common/scroll-to-top-button";
 import ImagePopup from "@components/screens/article-content/sub-components/image-popup";
 import StyledRawHtml from "@components/screens/common/raw-html/styled-raw-html";
@@ -135,7 +135,7 @@ const SubCategoryContent = ({
             </ul>
           }
           {pageDescription &&
-            <StyledRawHtml onClick={handleClick} ref={containerRef} className="subcategory-description">{ReactHtmlParser(pageDescription)}</StyledRawHtml>
+            <StyledRawHtml onClick={handleClick} ref={containerRef} className="subcategory-description">{parse(pageDescription)}</StyledRawHtml>
           }
           <div ref={contentRef}>
             {categoryData?.length > 0 ? (
@@ -199,7 +199,7 @@ const SubCategoryContent = ({
           setHasMoreTags={setHasMoreTags}
           setTagItems={setTagItems}
         />
-        <ScrollToTopButton showButton={showButton} />
+        <ScrollToTopButton $showButton={showButton} />
       </StyledWrapperContent>
     </StyledSubCategoryContent>
   );

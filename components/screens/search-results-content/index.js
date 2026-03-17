@@ -8,7 +8,6 @@ import LeftMenu from "@components/screens/common/left-menu";
 import InternalLink from "@components/common/internal-link";
 import Heading from "@components/common/heading";
 import Pagination from "@components/common/pagination";
-import AlgoliaAskAI from "@components/common/algolia-ask";
 
 const SearchResultsContent = ({
   t,

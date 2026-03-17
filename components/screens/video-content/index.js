@@ -77,7 +77,7 @@ const VideoContent = ({ t, videoData, leftMenuIsOpen, setLeftMenuIsOpen }) => {
             </div>
           ))}
         </div>
-        <ScrollToTopButton showButton={showButton} />
+        <ScrollToTopButton $showButton={showButton} />
       </StyledWrapperContent>
     </StyledVideoContent>
   );

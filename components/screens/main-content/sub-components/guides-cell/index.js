@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import topSlugIdData from "../../data/top-slugid.json";
 import InternalLink from "@components/common/internal-link";
 import ExternalLink from "@components/common/external-link";
-import ReactHtmlParser from "react-html-parser";
+import parse from "html-react-parser";
 import Heading from "@components/common/heading";
 import { isExternalLink } from "@utils/helpers/System/isExternal";
 
@@ -130,7 +130,7 @@ const GuidesCell = ({ t, data }) => {
           </InternalLink>
         )}
         {data.description && (
-          <div className="guides-cell-description">{ReactHtmlParser(data.description)}</div>
+          <div className="guides-cell-description">{parse(data.description)}</div>
         )}
       </div>
 

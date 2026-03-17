@@ -10,7 +10,7 @@ const ScrollToTopButton = ({ showButton }) => {
     <StyledScrollToTopButton
       onClick={() => topFunction()}
       className="scroll-to-top-button"
-      showButton={showButton}
+      $showButton={showButton}
     >
       <button></button>
     </StyledScrollToTopButton>

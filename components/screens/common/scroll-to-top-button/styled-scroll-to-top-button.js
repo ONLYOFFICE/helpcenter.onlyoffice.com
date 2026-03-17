@@ -12,8 +12,8 @@ const StyledScrollToTopButton = styled.div`
   width: 32px;
   height: 32px;
   z-index: 999;
-  opacity: ${(props) => (props.showButton ? 1 : 0)};
-  visibility: ${(props) => (props.showButton ? "visible" : "hidden")};
+  opacity: ${(props) => (props.$showButton ? 1 : 0)};
+  visibility: ${(props) => (props.$showButton ? "visible" : "hidden")};
 
   button {
     display: inline-flex;
@@ -65,6 +65,6 @@ const StyledScrollToTopButton = styled.div`
     bottom: 24px;
     margin: 0;
   }
-`
+`;
 
 export default StyledScrollToTopButton;

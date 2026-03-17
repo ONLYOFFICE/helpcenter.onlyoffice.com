@@ -30,6 +30,10 @@ const StyledDownloadArea = styled.div`
     text-align: center;
     color: ${globalColors.white};
     padding: 0;
+
+    > span {
+    display: block;
+    }
   }
 
   .download-buttons {

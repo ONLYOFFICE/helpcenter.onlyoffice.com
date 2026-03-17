@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import StyledGuidesCell from "./styled-guides-cell";
 import InternalLink from "@components/common/internal-link";
-import ReactHtmlParser from "react-html-parser";
+import parse from "html-react-parser";
 import Heading from "@components/common/heading";
 import ExternalLink from "@components/common/external-link";
 import { isExternalLink } from "@utils/helpers/System/isExternal";
@@ -42,7 +42,7 @@ const CategoryGuidesCell = ({ data, categorySlug, t }) => {
           </InternalLink>
         )}
         {data.description &&
-          <div className="guides-cell-description">{ReactHtmlParser(data.description)}</div>
+          <div className="guides-cell-description">{parse(data.description)}</div>
         }
         {data.url_docspace &&
           <div className="guides-cell-int-links">

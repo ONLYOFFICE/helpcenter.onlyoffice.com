@@ -13,7 +13,7 @@ const Button = ({
     <StyledButton
       disabled={isDisabled}
       type={isSubmit ? "submit" : undefined}
-      isScale={isScale ? isScale : undefined}
+      $isScale={isScale ? isScale : undefined}
       {...rest}
     >
       {label}
@@ -25,9 +25,9 @@ Button.propTypes = {
   /** Button text */
   label: PropTypes.string,
   /** Tells type of button style */
-  typeButton: PropTypes.oneOf(["primary", "secondary", "transparent", "white"]),
+  $typeButton: PropTypes.oneOf(["primary", "secondary", "transparent", "white"]),
   /** Tells when the button should present a disabled state */
-  isDisabled: PropTypes.bool,
+  $isDisabled: PropTypes.bool,
   /** Width of button */
   width: PropTypes.string,
   /** Height of button */
@@ -37,7 +37,7 @@ Button.propTypes = {
   /** Propority button hover */
   isHover: PropTypes.bool,
   /** Takes the path to the icon (the icon must be located in a static folder)  */
-  icon: PropTypes.string,
+  $icon: PropTypes.string,
   /** Button tab index */
   tabIndex: PropTypes.number,
   /** Accepts class */
@@ -47,7 +47,7 @@ Button.propTypes = {
   /** Accepts CSS style */
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   /** Sets the nim width of the button */
-  minwidth: PropTypes.string,
+  $minwidth: PropTypes.string,
   /** What the button will trigger when clicked */
   onClick: PropTypes.func,
   /** If the button should submit the form */
@@ -56,12 +56,12 @@ Button.propTypes = {
 
 Button.defaultProps = {
   label: "",
-  typeButton: "primary",
+  $typeButton: "primary",
   width: "auto",
   height: "56px",
-  icon: null,
-  minwidth: "unset",
-  isDisabled: false,
+  $icon: null,
+  $minwidth: "unset",
+  $isDisabled: false,
 };
 
 export default Button;

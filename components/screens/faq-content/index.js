@@ -6,7 +6,7 @@ import Heading from "@components/common/heading";
 import Tag from "@components/common/tag";
 import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import { AccordionItem } from "@components/common/accordion";
-import ReactHtmlParser from "react-html-parser";
+import parse from "html-react-parser";
 import getTagsArticle from "@lib/strapi/getTagsArticle";
 import ArticlePopup from "@components/screens/common/article-popup";
 
@@ -68,7 +68,7 @@ const FaqContent = ({ t, faqData, locale, leftMenuData, leftMenuIsOpen, setLeftM
               <div className="faq-items">
                 {item.faq_item.map((item, index) => (
                   <AccordionItem isExpanded={isExpanded} heading={item.question} key={index}>
-                    {ReactHtmlParser(item.answer)}
+                    {parse(item.answer)}
                   </AccordionItem>
                 ))}
               </div>

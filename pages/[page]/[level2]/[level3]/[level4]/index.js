@@ -53,6 +53,7 @@ const Level4Page = ({ locale, data, menuData, categorySlug }) => {
           <ArticleContent
             t={t}
             locale={locale}
+            categorySlug={categorySlug}
             categoryName={dataAttr[`category_${categorySlug}`]?.general_category.name || dataAttr[`level_2_${categorySlugSingular}`]?.[`category_${categorySlugSingular}`].general_category.name || dataAttr[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`][`category_${categorySlugSingular}`].general_category.name || dataAttr[`level_4_${categorySlugSingular}`]?.[`level_3_${categorySlugSingular}`][`level_2_${categorySlugSingular}`][`category_${categorySlugSingular}`].general_category.name}
             categoryUrl={dataAttr[`category_${categorySlug}`]?.general_category.url || dataAttr[`level_2_${categorySlugSingular}`]?.[`category_${categorySlugSingular}`].general_category.url || dataAttr[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`][`category_${categorySlugSingular}`].general_category.url || dataAttr[`level_4_${categorySlugSingular}`]?.[`level_3_${categorySlugSingular}`][`level_2_${categorySlugSingular}`][`category_${categorySlugSingular}`].general_category.url}
             level2CategoryName={dataAttr[`category_${categorySlug}`]?.name || dataAttr[`level_2_${categorySlugSingular}`]?.[`category_${categorySlugSingular}`].name || dataAttr[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`][`category_${categorySlugSingular}`].name || dataAttr[`level_4_${categorySlugSingular}`]?.[`level_3_${categorySlugSingular}`][`level_2_${categorySlugSingular}`][`category_${categorySlugSingular}`].name}
@@ -125,7 +126,7 @@ export const getServerSideProps = async ({ locale, params, req, preview }) => {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, "common")),
+      ...(await serverSideTranslations(locale, ["common"])),
       locale,
       data,
       menuData,

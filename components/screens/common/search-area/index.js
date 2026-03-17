@@ -29,7 +29,7 @@ const SearchArea = ({ t, query, className, placeholder, isLeftMenu }) => {
 
   return (
     <StyledSearchArea
-      isLeftMenu={isLeftMenu}
+      $isLeftMenu={isLeftMenu}
       className={`search-area ${className ? className : ""}`}
     >
       <div className="search-input-area">

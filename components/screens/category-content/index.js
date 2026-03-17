@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import StyledCategoryContent from "./styled-category-content";
 import StyledRawHtml from "@components/screens/common/raw-html/styled-raw-html";
-import ReactHtmlParser from "react-html-parser";
+import parse from "html-react-parser";
 import Cookies from "universal-cookie";
 import { tableBuilder } from "@utils/helpers/TableBuilder/table-builder";
 import getTagsArticle from "@lib/strapi/getTagsArticle";
@@ -113,7 +113,7 @@ const CategoryContent = ({
             </ul>
           }
           {pageDescription &&
-            <StyledRawHtml ref={descriptionRef} className="wrapper-description">{ReactHtmlParser(pageDescription)}</StyledRawHtml>
+            <StyledRawHtml ref={descriptionRef} className="wrapper-description">{parse(pageDescription)}</StyledRawHtml>
           }
           {articleData?.length > 0 && (
             <div className="category-articles">
@@ -154,7 +154,7 @@ const CategoryContent = ({
           />
         </div>
       </StyledWrapperContent>
-      <ScrollToTopButton showButton={showButton} />
+      <ScrollToTopButton $showButton={showButton} />
     </StyledCategoryContent>
   );
 };

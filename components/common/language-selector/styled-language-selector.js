@@ -29,7 +29,7 @@ const StyledLanguageSelector = styled.div`
       background-repeat: no-repeat;
       background-position-x: -8px;
       background-position-y: -8px;
-      transform: ${(props) => (props.isOpen ? "rotate(180deg)" : "")};
+      transform: ${(props) => (props.$isOpen ? "rotate(180deg)" : "")};
       transition: 0.3s;
     }
   }
@@ -78,7 +78,7 @@ const StyledLanguageSelector = styled.div`
     height: 24px;
     background-image: url("https://static-helpcenter.onlyoffice.com/images/icons/globe.react.svg");
     background-repeat: no-repeat;
-    background-position-y: ${(props) => (props.isOpen ? "-40px" : "0px")};
+    background-position-y: ${(props) => (props.$isOpen ? "-40px" : "0px")};
   }
 `;
 

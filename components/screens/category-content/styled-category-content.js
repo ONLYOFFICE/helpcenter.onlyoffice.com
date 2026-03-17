@@ -41,7 +41,7 @@ const StyledCategoryContent = styled(Section)`
       margin-bottom: 24px;
     }
 
-    a {
+    div {
       display: flex;
       align-items: center;
       color: ${globalColors.orangeMain};

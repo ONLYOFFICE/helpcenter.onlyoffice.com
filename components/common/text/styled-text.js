@@ -3,31 +3,22 @@ import { Base } from "@components/themes";
 
 const display = css`
   display: ${(props) =>
-    props.isInline ? props.theme.text.display : props.display || "block"};
+    props.$isInline ? props.theme.text.display : props.display || "block"};
 `;
 
 const fontText = css`
   font-family: ${(props) => props.theme.text.fontFamily};
   font-size: ${(props) => props.fontSize || props.theme.text.fontSize};
   font-weight: ${(props) =>
-    props.isBold ? "bold" : props.fontWeight || props.theme.text.fontWeight};
+    props.$isBold ? "bold" : props.fontWeight || props.theme.text.fontWeight};
   font-style: ${(props) =>
-    props.isItalic ? "italic" : props.fontStyle || props.theme.text.fontStyle};
+    props.$isItalic ? "italic" : props.fontStyle || props.theme.text.fontStyle};
 `;
 
-const trancate = css`
-  ${(props) =>
-    !props.truncate &&
-    css`
-      white-space: ${(props) => props.theme.text.whiteSpace};
-      text-overflow: ${(props) => props.theme.text.textOverflow};
-      overflow: ${(props) => props.theme.text.overflow};
-    `}
-`;
 
 const hoverText = css`
   ${(props) =>
-    props.isHoverText &&
+    props.$isHoverText &&
     css`
       :hover {
         color: ${(props) => props.hoverColor || props.theme.text.hoverColor};
@@ -57,7 +48,6 @@ const StyledText = styled.span`
   text-decoration: ${(props) =>
     props.textDecoration || props.theme.text.textDecoration};
   text-shadow: ${(props) => props.textShadow || props.theme.text.textShadow};
-  ${trancate}
   ${hoverText}    
     cursor: ${(props) => props.cursor || props.theme.text.cursor};
 `;

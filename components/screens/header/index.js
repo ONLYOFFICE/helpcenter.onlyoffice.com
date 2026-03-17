@@ -57,7 +57,7 @@ const Header = ({ t, locale, data, isMain, leftMenuIsOpen, setLeftMenuIsOpen }) 
   }, []);
 
   return (
-    <StyledHeader locale={locale}>
+    <StyledHeader $locale={locale}>
       <div className="header-container">
         <button
           onClick={() => {

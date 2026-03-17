@@ -74,7 +74,7 @@ export const getServerSideProps = async ({ locale, query, preview }) => {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, "common")),
+      ...(await serverSideTranslations(locale, ["common"])),
       locale,
       categoriesMenuData,
       searchResults,

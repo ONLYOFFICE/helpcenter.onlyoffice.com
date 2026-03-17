@@ -4,7 +4,7 @@ import getTagsArticle from "@lib/strapi/getTagsArticle";
 import InternalLink from "@components/common/internal-link";
 import Button from "@components/common/button";
 
-const ArticlePopup = ({ t, locale, tagName, tagItems, setTagItems, modalActive, setModalActive, hasMoreTags, setHasMoreTags }) => {
+const ArticlePopup = ({ t, locale, tagName, tagItems, setTagItems, modalActive, setModalActive, hasMoreTags, setHasMoreTags, preview }) => {
   const [page, setPage] = useState(2);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -64,7 +64,7 @@ const ArticlePopup = ({ t, locale, tagName, tagItems, setTagItems, modalActive, 
               onClick={() => loadMoreTags()}
               className={`article-popup-more-btn ${isLoading ? "loading" : ""}`}
               label={t("MoreArticles")}
-              typeButton="transparent"
+              $typeButton="transparent"
               isDisabled={isLoading}
             />
           }

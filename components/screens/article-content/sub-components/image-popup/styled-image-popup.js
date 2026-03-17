@@ -14,11 +14,13 @@ const StyledImagePopup = styled.div`
   background-color: rgba(0, 0, 0, 0.4);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s, visibility 0.3s;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
   z-index: 1001;
 
   ${(props) =>
-    props.active &&
+    props.$active &&
     css`
       opacity: 1;
       visibility: visible;
@@ -27,7 +29,7 @@ const StyledImagePopup = styled.div`
   .popup-content {
     position: relative;
 
-    > img { 
+    > img {
       max-width: 90vw;
       max-height: 90vh;
       background-color: ${globalColors.white};
@@ -71,7 +73,7 @@ const CloseButton = styled.div`
   &::before {
     transform: translate(-50%, -50%) rotate(45deg);
   }
-  
+
   &::after {
     transform: translate(-50%, -50%) rotate(-45deg);
   }

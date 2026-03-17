@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import getTagsArticle from "@lib/strapi/getTagsArticle";
 import LeftMenu from "@components/screens/common/left-menu";
 import StyledWrapperContent from "@components/screens/common/wrapper-content/styled-wrapper-content";
-import ReactHtmlParser from "react-html-parser";
+import parse from "html-react-parser";
 import Heading from "@components/common/heading";
 import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import Tag from "@components/common/tag";
@@ -23,6 +23,7 @@ import { extractHeadings, handleArticleScroll } from "@utils/scroll-highlight-fu
 const ArticleContent = ({
   t,
   locale,
+  categorySlug,
   categoryName,
   categoryUrl,
   level2CategoryName,
@@ -197,12 +198,12 @@ const ArticleContent = ({
             </ul>
           }
           <div ref={wrapperContentRef}>
-            <StyledRawHtml onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</StyledRawHtml>
+            <StyledRawHtml onClick={handleClick} ref={containerRef}>{parse(pageDescription)}</StyledRawHtml>
             {videos && videos.length > 0 &&
               <ConnectorsVideo t={t} videos={videos} setVideoOffsetTrigger={setVideoOffsetTrigger} />
             }
           </div>
-          <DownloadArea className="download-area" slug={categoryName} subcat={level2CategoryName} locale={locale}/>
+          <DownloadArea className="download-area" slug={categorySlug} subcat={level2CategoryName} locale={locale}/>
           <ArticlePopup
             t={t}
             locale={locale}
@@ -223,7 +224,7 @@ const ArticleContent = ({
           <Tooltip />
         </div>
       </StyledWrapperContent>
-      <ScrollToTopButton showButton={showButton} />
+      <ScrollToTopButton $showButton={showButton} />
     </StyledArticleContent>
   );
 };
