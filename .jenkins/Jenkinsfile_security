@@ -61,11 +61,9 @@ pipeline {
                         string(credentialsId: 'onlyoffice_site_telegram_chat_id', variable: 'TELEGRAM_CHAT_ID'),
                         string(credentialsId: 'onlyoffice_site_brave_api_key', variable: 'BRAVE_API_KEY')]) {          
         sh '''
-            rm package-lock.json
-
             docker run --rm -e NODE_OPTIONS="--max-old-space-size=8192" \
                 -v "$PWD":"$app_dir" \
-                -w "$app_dir" "$build_docker_container_tag" sh -c "yarn install"
+                -w "$app_dir" "$build_docker_container_tag" sh -c "npm ci"
 
             mkdir -p /home/jenkins/caches/odc-reports/$short_project_name
             mkdir -p /home/jenkins/caches/odc-reports/$short_project_name/$target_branch
