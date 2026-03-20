@@ -25,12 +25,10 @@ const AccordionContent = ({ t }) => {
         <Trans
           i18nKey="AccordionDescriptionRequestAssistance"
           components={{ 
-            1: <ExternalLink href="https://forum.onlyoffice.com/" />,
-            2: <ExternalLink href="https://www.onlyoffice.com/support.aspx" />
+            1: <ExternalLink href="https://community.onlyoffice.com/" />,
           }}
           values={{
             "AccordionDescriptionRequestAssistanceForumLink": t("AccordionDescriptionRequestAssistanceForumLink"),
-            "AccordionDescriptionRequestAssistanceSupportLink": t("AccordionDescriptionRequestAssistanceSupportLink")
           }}
         />
       </AccordionItem>
@@ -49,7 +47,7 @@ const AccordionContent = ({ t }) => {
         <Trans
           i18nKey="AccordionDescriptionContributeOO"
           components={{ 
-            1: <ExternalLink href="https://testnew-helpcenter.onlyoffice.com/docs/contribution" />
+            1: <ExternalLink href="https://helpcenter.onlyoffice.com/docs/contribution" />
           }}
           values={{
             "AccordionDescriptionContributeOOLink": t("AccordionDescriptionContributeOOLink")

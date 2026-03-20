@@ -8,7 +8,7 @@
   "AccordionDescriptionIntegrateOOLink": "ONLYOFFICE API",
   "AccordionDescriptionOOLicense": "ONLYOFFICE offers free and open source community versions as well as commercial builds. Learn more: <1>{{AccordionDescriptionOOLicenseLink}}</1>.",
   "AccordionDescriptionOOLicenseLink": "ONLYOFFICE Legal Notices and Terms of Use",
-  "AccordionDescriptionRequestAssistance": "Home users can ask for help on <1>{{AccordionDescriptionRequestAssistanceForumLink}}</1>. The Enterprise solutions include one-year support from our team and provide access to our help desk and consulting services. If necessary, you can buy <2>{{AccordionDescriptionRequestAssistanceSupportLink}}</2> subscription.",
+  "AccordionDescriptionRequestAssistance": "Home users can ask for help on <1>{{AccordionDescriptionRequestAssistanceForumLink}}</1>. The Enterprise solutions include one-year support from our team and provide access to our help desk and consulting services.",
   "AccordionDescriptionRequestAssistanceForumLink": "our forum",
   "AccordionDescriptionRequestAssistanceSupportLink": "Premium Support",
   "AccordionHeadingContributeOO": "How to contribute to the ONLYOFFICE projects?",
