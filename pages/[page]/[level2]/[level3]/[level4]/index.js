@@ -106,14 +106,7 @@ export const getServerSideProps = async ({ locale, params, req, preview }) => {
     return {
       notFound: true
     };
-  } else if (data.data[0]?.isFallback) {
-    return {
-      redirect: {
-        destination: `/${params.page}/${params.level2}/${params.level3}/${params.level4}`,
-        permanent: false
-      }
-    };
-  }
+  } 
 
   const menuData = data.data[0]?.article ? await getCategoriesMenu(locale, preview) : await getLeftMenu(locale, params.page, preview);
   const cookies = new Cookies(req.headers.cookie, { path: "/" });

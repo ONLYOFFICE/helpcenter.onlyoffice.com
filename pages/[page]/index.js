@@ -57,19 +57,8 @@ const Level1Page = ({ locale, categoriesMenuData, data }) => {
 export const getServerSideProps = async ({ locale, params, preview }) => {
   const categoriesMenuData = await getCategoriesMenu(locale, preview);
   const data = await getLevel1Data(locale, params.page, preview);
-  const allowedLocales = ["en", "de", "fr", "zh"];
 
-  if (
-    !allowedLocales.includes(locale) &&
-    params.page !== "integration"
-  ) {
-    return {
-      redirect: {
-        destination: `/${params.page}`,
-        permanent: false,
-      },
-    };
-  } else if (data.length === 0) {
+  if (data.length === 0) {
     return { notFound: true };
   }
 

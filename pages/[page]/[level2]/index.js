@@ -112,13 +112,6 @@ export async function getServerSideProps({ locale, params, preview }) {
     return {
       notFound: true
     };
-  } else if (data.data[0]?.isFallback) {
-    return {
-      redirect: {
-        destination: `/${params.page}/${params.level2}`,
-        permanent: false
-      }
-    };
   }
   
   const menuData = data.data[0].article ? await getCategoriesMenu(locale, preview) : await getLeftMenu(locale, params.page, preview);
