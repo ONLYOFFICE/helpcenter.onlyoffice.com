@@ -107,11 +107,17 @@ const Level2Page = ({ locale, data, menuData, categorySlug }) => {
 export async function getServerSideProps({ locale, params, preview }) {
   const pathUrl = `${locale === "en" ? "" : `/${locale}`}/${params.page}/${params.level2}`;
   const data = await getLevel2Data(locale, params.page, pathUrl, preview);
+  const allowedLocales = ["en", "de", "fr", "zh", "ja"];
 
-  if (!data?.data?.length) {
+  if (!allowedLocales.includes(locale)) {
     return {
-      notFound: true
+      redirect: {
+        destination: `/${params.page}/${params.level2}`,
+        permanent: false,
+      },
     };
+  } else if (!data?.data?.length) {
+    return { notFound: true };
   }
   
   const menuData = data.data[0].article ? await getCategoriesMenu(locale, preview) : await getLeftMenu(locale, params.page, preview);

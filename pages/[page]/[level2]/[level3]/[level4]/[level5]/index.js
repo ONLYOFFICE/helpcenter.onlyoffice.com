@@ -77,12 +77,17 @@ export const getServerSideProps = async ({ locale, params, preview }) => {
   // } else {
   //   data = localeData;
   // }
-
-  if (!data?.data?.length) {
+  const allowedLocales = ["en", "de", "fr", "zh", "ja"];
+  if (!allowedLocales.includes(locale)) {
     return {
-      notFound: true
+      redirect: {
+        destination: `/${params.page}/${params.level2}/${params.level3}/${params.level4}/${params.level5}`,
+        permanent: false,
+      },
     };
-  } 
+  } else if (!data?.data?.length) {
+    return { notFound: true };
+  }
 
   return {
     props: {

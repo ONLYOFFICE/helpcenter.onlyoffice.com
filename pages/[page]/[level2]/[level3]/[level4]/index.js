@@ -101,12 +101,18 @@ const Level4Page = ({ locale, data, menuData, categorySlug }) => {
 export const getServerSideProps = async ({ locale, params, req, preview }) => {
   const pathUrl = `${locale === "en" ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}/${params.level4}`;
   const data = await getLevel4Data(locale, params.page, pathUrl, preview);
+  const allowedLocales = ["en", "de", "fr", "zh", "ja"];
 
-  if (!data?.data?.length) {
+  if (!allowedLocales.includes(locale)) {
     return {
-      notFound: true
+      redirect: {
+        destination: `/${params.page}/${params.level2}/${params.level3}/${params.level4}`,
+        permanent: false,
+      },
     };
-  } 
+  } else if (!data?.data?.length) {
+    return { notFound: true };
+  }
 
   const menuData = data.data[0]?.article ? await getCategoriesMenu(locale, preview) : await getLeftMenu(locale, params.page, preview);
   const cookies = new Cookies(req.headers.cookie, { path: "/" });
