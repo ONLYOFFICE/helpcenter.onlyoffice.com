@@ -10414,5 +10414,17 @@
   "/docs/userguides/form_builder/third-party-editor.aspx": {
     "destination": "/docs/userguides/form_creator/third-party-editor.aspx",
     "permanent": true
+  },
+  "/server/document/document-server-proxy.aspx": {
+    "destination": "/docs/installation/docs-community-proxy.aspx",
+    "permanent": true
+  },
+  "/server/docker/document/add-interface-language.aspx": {
+    "destination": "/docs/installation/docs-community-add-language-docker.aspx",
+    "permanent": true
+  },
+  "/server/linux/document/add-interface-language.aspx": {
+    "destination": "/docs/installation/docs-community-add-language-linux.aspx",
+    "permanent": true
   }
 }

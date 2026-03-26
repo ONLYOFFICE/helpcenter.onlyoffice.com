@@ -15,12 +15,12 @@ const SidepanelButton = dynamic(
   { ssr: false },
 );
 
-export default function AlgoliaAskAI( { t, locale } ) {
+export default function AlgoliaAskAI( { t, locale, $isLeftMenu } ) {
   return (
     <DocSearch>
       <button
         type="button"
-        className="ask-ai-button"
+        className={`ask-ai-button ${$isLeftMenu ? "left" : ""}`}
         onClick={() => {
           const btn = document.querySelector(
             ".DocSearch-SidepanelButton.floating",
@@ -28,7 +28,7 @@ export default function AlgoliaAskAI( { t, locale } ) {
           btn?.click();
         }}
       >
-        <span>{t("AskAI")}</span>
+       {!$isLeftMenu && <span>{t("AskAI")}</span>}
         <div className="ask-ai-button-icon"></div>
       </button>
       <SidepanelButton />

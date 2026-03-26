@@ -15,6 +15,7 @@ const StyledAccordionContent = styled(Section)`
 
   .accordion-btn {
     gap: 16px;
+    padding: 0;
   }
 
   .accordion-text {

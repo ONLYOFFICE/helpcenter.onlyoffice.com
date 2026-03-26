@@ -95,6 +95,7 @@ const LeftMenu = forwardRef(({
             className="left-menu-search"
             placeholder={t("SearchInHelpCenter")}
             isLeftMenu={true}
+            t={t}
           />
           <Scrollbar scrollTop={scrollTopHeight} onScroll={handleVisibility} className={scrollVisible ? "scroll-visible" : ""}>
             {headings && headings.length !== 0 && pageName && (

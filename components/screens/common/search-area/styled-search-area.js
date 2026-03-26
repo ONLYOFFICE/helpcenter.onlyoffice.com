@@ -14,13 +14,13 @@ const StyledSearchArea = styled.div`
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background-color: #f1fbff;
+    background-color: #f9f9f9;
     height: 64px;
     width: fit-content;
     color: #333333;
     border-radius: 32px;
     padding: 20px 28px;
-    border: none;
+    border: 1px solid #cccccc;
     cursor: pointer;
     font-size: 16px;
     font-weight: 600;
@@ -33,21 +33,17 @@ const StyledSearchArea = styled.div`
       font-size: 14px;
       height: 48px;
     }
-  }
 
-  .ask-ai-button::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    padding: 1px;
-    border-radius: 32px;
-    background: linear-gradient(100.05deg, #71c4ff 14.53%, #666666 88.53%);
-    -webkit-mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
+    &.left {
+      height: 48px;
+      padding: 10px 11px;
+
+    .ask-ai-button-icon {
+      width: 24px;
+      height: 24px;
+      background: url("/images/icons/ai-left-menu.react.svg") no-repeat center / contain;
+      }
+    }
   }
 
   .ask-ai-button-icon {
