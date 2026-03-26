@@ -49,6 +49,56 @@ const StyledAccordionItem = styled.div`
     padding-top: 16px;
     padding-left: 34px;
 
+          
+    table {
+      border-spacing: 0;
+      margin: 10px 0 20px;
+      text-align: center;
+      width: 100%;
+
+      th {
+        border-bottom: 1px solid #d7d8dc;
+        color: #333333;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 8px;
+        vertical-align: middle;
+        word-break: keep-all;
+        white-space: normal;
+      }
+      td {
+          border-bottom: 1px solid #d7d8dc;
+          padding: 8px;
+          color: ${globalColors.gray};
+          font-size: 16px;
+          font-weight: 600;
+          vertical-align: middle;
+          width: 12%;
+
+          span {
+            font-size: 16px;
+            font-weight: 600;
+
+            &.yes, &.no {
+              background-image: url(https://static-helpcenter.onlyoffice.com/images/icons/faq_check_icons.react.svg);
+              background-repeat: no-repeat;
+              background-position: 100% 0;
+              content: "";
+              display: inline-block;
+              height: 24px;
+              margin-top: -4px;
+              position: relative;
+              width: 24px;
+              vertical-align: middle;
+            }
+
+            &.no {
+              background-position: -48px 0;
+            }
+          }
+      }
+    }
+
     > ul {
       padding-left: 16px;
     }

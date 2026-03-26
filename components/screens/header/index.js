@@ -10,10 +10,8 @@ const Header = ({ t, locale, data, isMain, leftMenuIsOpen, setLeftMenuIsOpen }) 
   const [menuMobile, setMenuMobile] = useState(false);
   const router = useRouter();
 
-  const categoriesData = data?.data?.filter(item => item.slug_id !== "ai");
-
   useEffect(() => {
-    const currentCategory = categoriesData.find((item) => item.url === `/${router.query.category}`);
+    const currentCategory = data?.data?.find((item) => item.url === `/${router.query.category}`);
 
     if (currentCategory) {
       setMenuName(currentCategory.name);
@@ -76,7 +74,7 @@ const Header = ({ t, locale, data, isMain, leftMenuIsOpen, setLeftMenuIsOpen }) 
         </button>
         <nav className={`nav ${menuMobile ? "open" : ""}`}>
           <ul className="nav-list">
-            {categoriesData.sort((a, b) => (a.position ?? Infinity) - (b.position ?? Infinity)).map((item, index) => (
+            {data?.data?.sort((a, b) => (a.position ?? Infinity) - (b.position ?? Infinity)).map((item, index) => (
               <li className="nav-item" key={index}>
                 <InternalLink
                   className={`nav-link ${`/${router.query.page}` === item.url ? "active" : ""}`}

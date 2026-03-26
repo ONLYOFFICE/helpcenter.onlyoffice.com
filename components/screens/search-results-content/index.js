@@ -148,7 +148,7 @@ const SearchResultsContent = ({
                       searchWords={[query]}
                       textToHighlight={
                         item?.description?.replace(/<[^>]*>/g, "") ||
-                        item?.content.replace(/<[^>]*>/g, "")
+                        item?.content?.replace(/<[^>]*>/g, "")
                       }
                     />
                   </p>
