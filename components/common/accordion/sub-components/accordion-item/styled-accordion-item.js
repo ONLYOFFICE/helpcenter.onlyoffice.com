@@ -21,7 +21,8 @@ const StyledAccordionItem = styled.div`
     border: none;
     cursor: pointer;
     align-items: center;
-    gap: 10px;
+    gap: 16px;
+    padding: 0;
     width: 100%;
     background-color: transparent;
   }
@@ -47,7 +48,7 @@ const StyledAccordionItem = styled.div`
     font-size: 14px;
     line-height: 22px;
     padding-top: 16px;
-    padding-left: 34px;
+    padding-left: 40px;
 
           
     table {
