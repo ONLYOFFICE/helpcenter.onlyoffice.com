@@ -63,7 +63,7 @@ const FaqContent = ({ t, faqData, locale, leftMenuData, leftMenuIsOpen, setLeftM
           <div className="switcher" onClick={() => setIsExpanded(!isExpanded)}>{isExpanded ? t("Collapse all") : t("Expand all")}</div>
           {faq_block.map((item, index) => (
             <div className="faq-block" key={index}>
-              {item.name &&
+              {faq_block.length > 1 && item.name &&
                 <Heading className="faq-title" level={4} label={item.name} />
               }
               <div className="faq-items">

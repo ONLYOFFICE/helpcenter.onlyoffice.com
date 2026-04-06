@@ -139,7 +139,7 @@ const SubCategoryContent = ({
           {faq && 
           <div className="faq-item">
             <img src="https://static-helpcenter.onlyoffice.com/info_8cda7a20fa.svg" alt="faq" />
-            <InternalLink href={faq.url} label={faq.name} />
+            <InternalLink href={faq.url} label={t("FAQ")} />
           </div>}
           {pageDescription &&
             <StyledRawHtml onClick={handleClick} ref={containerRef} className="subcategory-description">{parse(pageDescription)}</StyledRawHtml>
