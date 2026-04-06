@@ -663,6 +663,10 @@ const StyledRawHtml = styled.div`
     h4 {
       font-size: 18px;
 
+      &.small_size {
+        font-size: 16px;
+      }
+
       @media ${device.mobile} {
         font-size: 16px;
       }
