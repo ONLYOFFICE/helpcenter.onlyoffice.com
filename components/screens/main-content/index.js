@@ -2,7 +2,7 @@ import StyledMainContent from "./styled-main-content";
 import { useState, useEffect } from "react";
 import getLeftMenu from "@lib/strapi/getLeftMenu";
 import LeftMenu from "@components/screens/common/left-menu";
-import SearchArea from "@components/screens/common/search-area";
+import AlgoliaAsk from "@components/common/algolia-ask";
 import Category from "./sub-components/category";
 import GuidesCell from "./sub-components/guides-cell";
 import Masonry from "react-masonry-css";
@@ -42,6 +42,7 @@ const MainContent = ({ t, locale, data, leftMenuIsOpen, setLeftMenuIsOpen }) => 
       {showLeftMenu && (
         <LeftMenu
           t={t}
+          locale={locale}
           leftMenuData={leftMenuData}
           leftMenuIsOpen={leftMenuIsOpen}
           setLeftMenuIsOpen={setLeftMenuIsOpen}
@@ -52,7 +53,7 @@ const MainContent = ({ t, locale, data, leftMenuIsOpen, setLeftMenuIsOpen }) => 
           <div className="info-content-header">
             <Heading className="info-content-title" level={1} label={t("WelcomeToHelpCenter")} />
           </div>
-          <SearchArea t={t} className="info-content-search" placeholder={t("HowCanWeHelp?")} />
+          <AlgoliaAsk t={t} className="info-content-search" locale={locale} />
           <Category t={t} data={data} />
         </div>
 

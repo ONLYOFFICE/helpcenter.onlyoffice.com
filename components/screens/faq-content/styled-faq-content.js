@@ -13,6 +13,13 @@ const StyledFaqContent = styled(Section)`
       text-decoration: none;
     }
   }
+
+  .faq-items {
+      padding: 0 0 32px;
+  }
+  .faq-title {
+      padding: 0 0 16px;
+  }
 `;
 
 export default StyledFaqContent;

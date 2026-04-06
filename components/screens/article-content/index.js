@@ -165,6 +165,7 @@ const ArticleContent = ({
       <StyledWrapperContent>
         <LeftMenu
           t={t}
+          locale={locale}
           ref={leftMenuRef}
           pageName={pageName}
           headings={headings ? headings : []}

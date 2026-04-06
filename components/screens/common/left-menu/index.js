@@ -3,12 +3,13 @@ import { forwardRef, useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { Scrollbar } from "react-scrollbars-custom";
 import InternalLink from "@components/common/internal-link";
-import SearchArea from "@components/screens/common/search-area";
+import AlgoliaAsk from "@components/common/algolia-ask";
 import Heading from "@components/common/heading";
 import TreeView from "@components/screens/common/left-menu/sub-components/treeview";
 
 const LeftMenu = forwardRef(({
   t,
+  locale,
   pageName,
   headings,
   leftMenuIsOpen,
@@ -91,11 +92,11 @@ const LeftMenu = forwardRef(({
         className={`left-menu ${leftMenuIsOpen ? "active" : ""}`}
       >
         <div className="left-menu-wrapper">
-          <SearchArea
+          <AlgoliaAsk
             className="left-menu-search"
-            placeholder={t("SearchInHelpCenter")}
-            isLeftMenu={true}
+            $isLeftMenu={true}
             t={t}
+            locale={locale}
           />
           <Scrollbar scrollTop={scrollTopHeight} onScroll={handleVisibility} className={scrollVisible ? "scroll-visible" : ""}>
             {headings && headings.length !== 0 && pageName && (

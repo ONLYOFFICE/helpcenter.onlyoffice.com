@@ -8,7 +8,7 @@ import Heading from "@components/common/heading";
 import ScrollToTopButton from "@components/screens/common/scroll-to-top-button";
 import { extractHeadings, handleArticleScroll } from "@utils/scroll-highlight-functions";
 
-const VideoContent = ({ t, videoData, leftMenuIsOpen, setLeftMenuIsOpen }) => {
+const VideoContent = ({ t, locale, videoData, leftMenuIsOpen, setLeftMenuIsOpen }) => {
   const [headings, setHeadings] = useState([]);
   const [showButton, setShowButton] = useState(false);
   const contentRef = useRef(null);
@@ -59,6 +59,7 @@ const VideoContent = ({ t, videoData, leftMenuIsOpen, setLeftMenuIsOpen }) => {
       <StyledWrapperContent>
         <LeftMenu
           t={t}
+          locale={locale}
           ref={leftMenuRef}
           headings={headings}
           leftMenuIsOpen={leftMenuIsOpen}

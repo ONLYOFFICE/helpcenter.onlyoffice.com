@@ -131,8 +131,13 @@ p {
   height: 0;
 }
 
-.DocSearch-Menu, .DocSearch-Button {
+.DocSearch-Menu, .DocSearch-Button, .DocSearch-AskAiScreen-Actions {
   display: none !important;
+}
+
+.DocSearch-Logo a {
+    display: flex;
+    gap: 8px;
 }
 
 .DocSearch-Sidepanel-Container.is-open {

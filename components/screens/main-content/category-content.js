@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import getLeftMenu from "@lib/strapi/getLeftMenu";
 import topSlugIdData from "./data/top-slugid.json";
 import LeftMenu from "@components/screens/common/left-menu";
-import SearchArea from "@components/screens/common/search-area";
+import AlgoliaAsk from "@components/common/algolia-ask";
 import InternalLink from "@components/common/internal-link";
 import Heading from "@components/common/heading";
 import Masonry from "react-masonry-css";
@@ -13,6 +13,25 @@ const Level1CategoryContent = ({ t, locale, categoriesMenuData, categoryName, ca
   const [leftMenuData, setLeftMenuData] = useState(categoriesMenuData);
   const [showLeftMenu, setShowLeftMenu] = useState(false);
   const topData = data.filter(item => topSlugIdData.includes(item.slug_id));
+  const isIntegrations = categorySlug === "integrations";
+
+  const docspaceItems = isIntegrations
+    ? data
+      .filter(item => item.url?.endsWith("-docspace.aspx"))
+      .sort((a, b) => (a.position ?? Infinity) - (b.position ?? Infinity) || (a.name || a.title).localeCompare(b.name || b.title))
+    : [];
+
+  const docsItems = isIntegrations
+    ? data
+      .filter(item => !item.url?.endsWith("-docspace.aspx"))
+      .sort((a, b) => (a.position ?? Infinity) - (b.position ?? Infinity) || (a.name || a.title).localeCompare(b.name || b.title))
+    : [];
+
+  const regularItems = !isIntegrations
+    ? data
+      .filter(item => !topSlugIdData.includes(item.slug_id))
+      .sort((a, b) => (a.position ?? Infinity) - (b.position ?? Infinity) || (a.name || a.title).localeCompare(b.name || b.title))
+    : [];
 
   useEffect(() => {
     const loadData = async () => {
@@ -35,11 +54,28 @@ const Level1CategoryContent = ({ t, locale, categoriesMenuData, categoryName, ca
     };
   }, [locale]);
 
+  const renderMasonry = (items) => (
+    <Masonry
+      breakpointCols={{ default: 2, 592: 1 }}
+      className="guides-cards-items"
+      columnClassName="guides-cards-items-column">
+      {items.map((item, index) => (
+        <CategoryGuidesCell
+          data={item}
+          categorySlug={categorySlug}
+          key={index}
+          t={t}
+        />
+      ))}
+    </Masonry>
+  );
+
   return (
     <>
       {showLeftMenu && (
         <LeftMenu
           t={t}
+          locale={locale}
           leftMenuData={leftMenuData}
           leftMenuIsOpen={leftMenuIsOpen}
           setLeftMenuIsOpen={setLeftMenuIsOpen}
@@ -51,39 +87,41 @@ const Level1CategoryContent = ({ t, locale, categoriesMenuData, categoryName, ca
             <img className="info-content-icon" src={categoryImg} alt={categoryName} />
             <Heading className="info-content-title" level={1} label={categoryName} />
           </div>
-          <SearchArea t={t} placeholder={t("HowCanWeHelp?")} />
+          <AlgoliaAsk t={t} locale={locale} />
         </div>
 
         <div className="guides-cards bg-gray">
-          {topData.length > 0 &&
+          {topData.length > 0 && (
             <div className="guides-cards-top">
               {topData
-              ?.sort((a, b) => (a.position ?? Infinity) - (b.position ?? Infinity) || (a.name || a.title).localeCompare(b.name || b.title))
-              ?.map((item, index) => (
-                <InternalLink className="guides-cards-top-link" href={item.url} key={index}>
-                  <img src={item.card_field_img?.url} alt={item.name} />
-                  <div>{item.name}</div>
-                </InternalLink>
-              ))}
+                .sort((a, b) => (a.position ?? Infinity) - (b.position ?? Infinity) || (a.name || a.title).localeCompare(b.name || b.title))
+                .map((item, index) => (
+                  <InternalLink className="guides-cards-top-link" href={item.url} key={index}>
+                    <img src={item.card_field_img?.url} alt={item.name} />
+                    <div>{item.name}</div>
+                  </InternalLink>
+                ))}
             </div>
-          }
-          <Masonry
-            breakpointCols={{ default: 2, 592: 1 }}
-            className="guides-cards-items"
-            columnClassName="guides-cards-items-column">
-            {data
-              .filter(item => !topSlugIdData.includes(item.slug_id))
-              .sort((a, b) => (a.position ?? Infinity) - (b.position ?? Infinity) || (a.name || a.title).localeCompare(b.name || b.title))
-              .map((item, index) => (
-                <CategoryGuidesCell
-                  data={item}
-                  categorySlug={categorySlug}
-                  key={index}
-                  t={t}
-                />
-              ))
-            }
-          </Masonry>
+          )}
+
+          {isIntegrations ? (
+            <>
+              {docsItems?.length > 0 && (
+                <div className="guides-cards-section">
+                  <Heading className="guides-cards-section-title" level={2} label={t("ForDocs")} />
+                  {renderMasonry(docsItems)}
+                </div>
+              )}
+              {docspaceItems.length > 0 && (
+                <div className="guides-cards-section">
+                  <Heading className="guides-cards-section-title" level={2} label={t("ForDocSpace")} />
+                  {renderMasonry(docspaceItems)}
+                </div>
+              )}
+            </>
+          ) : (
+            renderMasonry(regularItems)
+          )}
         </div>
       </StyledMainContent>
     </>

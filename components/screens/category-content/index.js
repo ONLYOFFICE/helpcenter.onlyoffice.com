@@ -89,6 +89,7 @@ const CategoryContent = ({
       <StyledWrapperContent>
         <LeftMenu
           t={t}
+          locale={locale}
           leftMenuData={leftMenuData}
           leftMenuIsOpen={leftMenuIsOpen}
           setLeftMenuIsOpen={setLeftMenuIsOpen}

@@ -12,6 +12,7 @@ const GlossaryContent = ({ t, glossaryData, leftMenuData, leftMenuIsOpen, setLef
       <StyledWrapperContent>
         <LeftMenu
           t={t}
+          locale={locale}
           pageName={t("Glossary")}
           leftMenuData={leftMenuData}
           leftMenuIsOpen={leftMenuIsOpen}

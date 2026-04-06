@@ -39,6 +39,7 @@ const TagsContent = ({ t, locale, tagsData, leftMenuData, leftMenuIsOpen, previe
       <StyledWrapperContent>
         <LeftMenu
           t={t}
+          locale={locale}
           leftMenuData={leftMenuData}
           leftMenuIsOpen={leftMenuIsOpen}
         />

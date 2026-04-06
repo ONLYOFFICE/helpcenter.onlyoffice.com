@@ -42,6 +42,7 @@ const FaqContent = ({ t, faqData, locale, leftMenuData, leftMenuIsOpen, setLeftM
       <StyledWrapperContent>
         <LeftMenu
           t={t}
+          locale={locale}
           pageName={name}
           leftMenuData={leftMenuData}
           leftMenuIsOpen={leftMenuIsOpen}
@@ -62,8 +63,8 @@ const FaqContent = ({ t, faqData, locale, leftMenuData, leftMenuIsOpen, setLeftM
           <div className="switcher" onClick={() => setIsExpanded(!isExpanded)}>{isExpanded ? t("Collapse all") : t("Expand all")}</div>
           {faq_block.map((item, index) => (
             <div className="faq-block" key={index}>
-              {faq_block.name &&
-                <Heading className="faq-title" level={4} label={faq_block.name} />
+              {item.name &&
+                <Heading className="faq-title" level={4} label={item.name} />
               }
               <div className="faq-items">
                 {item.faq_item.map((item, index) => (
