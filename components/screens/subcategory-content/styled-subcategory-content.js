@@ -74,6 +74,21 @@ const StyledSubCategoryContent = styled(Section)`
   .video-block {
     margin-top: 40px;
   }
+
+  .faq-item {
+    display: flex;
+    align-items: center;
+    color: #ff6f3d;
+    margin-bottom: 24px;
+    text-decoration: underline;
+
+    > img {
+        margin-right: 8px;
+        width: 16px;
+        height: 16px;
+        object-fit: contain;
+    }
+  }
 `;
 
 export default StyledSubCategoryContent;

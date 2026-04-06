@@ -110,6 +110,7 @@ const Level3Page = ({ locale, menuData, data, categorySlug, preview }) => {
               setLeftMenuIsOpen={setLeftMenuIsOpen}
               pageDescription={dataAttr.description}
               tags={dataAttr?.tags}
+              faq={dataAttr?.faq}
             />
           )
         )}
