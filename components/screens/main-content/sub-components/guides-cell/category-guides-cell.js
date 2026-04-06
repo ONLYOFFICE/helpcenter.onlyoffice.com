@@ -8,7 +8,7 @@ import { isExternalLink } from "@utils/helpers/System/isExternal";
 
 const CategoryGuidesCell = ({ data, categorySlug, t }) => {
   const [isClient, setIsClient] = useState(false);
-  const connectorsSlug = data.connector_img;
+  const connectorsSlug = categorySlug === "integrations";
   const items = [...data[`level_2_${categorySlug}`] ?? [], ...data[`article_${categorySlug}`] ?? []];
 
   useEffect(() => {
@@ -17,8 +17,8 @@ const CategoryGuidesCell = ({ data, categorySlug, t }) => {
 
   return (
     <StyledGuidesCell $isCategoryPage={true}>
-      <div className="guides-cell-header">
-        {(data.url === null || data.url_docspace) ? (
+      <div className={`guides-cell-header ${connectorsSlug ? "integration" : ""}`}>
+        {(data.url === null) ? (
           <>
             <Heading className={`guides-cell-title ${connectorsSlug ? "integration" : ""}`} level={4}>
               {!connectorsSlug &&
@@ -43,12 +43,6 @@ const CategoryGuidesCell = ({ data, categorySlug, t }) => {
         )}
         {data.description &&
           <div className="guides-cell-description">{parse(data.description)}</div>
-        }
-        {data.url_docspace &&
-          <div className="guides-cell-int-links">
-            <InternalLink className="guides-cell-int-link docs" label={t("Docs")} href={data.url} />
-            <InternalLink className="guides-cell-int-link docspace" label={t("DocSpace")} href={data.url_docspace} />
-          </div>
         }
       </div>
       {!connectorsSlug &&

@@ -118,6 +118,17 @@ const StyledMainContent = styled(Section)`
       }
     }
 
+    .guides-cards-section {
+      &:first-child {
+        padding-bottom: 48px;
+      }
+
+       h2 {
+        padding: 0 0 32px;
+        text-align: center;
+        }
+    }
+
     @media ${device.laptop} {
       padding: 80px 0 88px;
     }

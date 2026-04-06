@@ -18,6 +18,10 @@ const StyledGuidesCell = styled.div`
     display: flex;
     flex-direction: column;
     padding: 32px;
+
+    &.integration {
+      border-bottom: none;
+    }
   }
 
   .guides-cell-icon {
@@ -69,37 +73,6 @@ const StyledGuidesCell = styled.div`
 
       &:hover {
         text-decoration: none;
-      }
-    }
-  }
-
-  .guides-cell-int-links {
-    display: flex;
-    gap: 32px;
-    padding-top: 32px;
-
-    .guides-cell-int-link {
-      color: ${globalColors.orangeMain};
-      display: flex;
-      gap: 8px;
-      align-items: center;
-
-      &:before {
-        content: "";
-        height: 16px;
-        width: 16px;
-      }
-
-      &.docs:before {
-        background-image: url("https://static-helpcenter.onlyoffice.com/images/icons/16px_docs.react.svg");
-      }
-
-      &.docspace:before {
-        background-image: url("https://static-helpcenter.onlyoffice.com/images/icons/16px_docspace.react.svg");
-      }
-
-      &:hover {
-        text-decoration: underline;
       }
     }
   }

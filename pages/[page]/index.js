@@ -53,7 +53,6 @@ const Level1Page = ({ locale, categoriesMenuData, data }) => {
     </Layout>
   );
 };
-
 export const getServerSideProps = async ({ locale, params, preview }) => {
   const categoriesMenuData = await getCategoriesMenu(locale, preview);
   const data = await getLevel1Data(locale, params.page, preview);
@@ -66,27 +65,8 @@ export const getServerSideProps = async ({ locale, params, preview }) => {
         permanent: false,
       },
     };
-  } else if (data.length === 0) {
+  } else if (!data || !data.data || data.error || data.data.length === 0) {
     return { notFound: true };
-  }
-
-  if (data.data[0].slug_id === "integration") {
-    const updatedArticles = [];
-    const indxToRemove = new Set();
-
-    data.data[0].articles.forEach((article, index, arr) => {
-      const { url } = article;
-      const docspaceUrl = url.replace('.aspx', '-docspace.aspx');
-      const docspaceArticleIndex = arr.findIndex(a => a.url === docspaceUrl);
-
-      if (docspaceArticleIndex !== -1) {
-        article.url_docspace = docspaceUrl;
-        indxToRemove.add(docspaceArticleIndex);
-      }
-      updatedArticles.push(article);
-    });
-
-    data.data[0].articles = updatedArticles.filter((_, index) => !indxToRemove.has(index));
   }
 
   return {
