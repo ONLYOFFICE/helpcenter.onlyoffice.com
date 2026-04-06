@@ -38,7 +38,8 @@ const SubCategoryContent = ({
   pageDescription,
   leftMenuData,
   tags,
-  videos
+  videos,
+  faq
 }) => {
   const leftMenuRef = useRef(null);
   const containerRef = useRef(null);
@@ -103,6 +104,7 @@ const SubCategoryContent = ({
       <StyledWrapperContent>
         <LeftMenu
           t={t}
+          locale={locale}
           ref={leftMenuRef}
           leftMenuData={leftMenuData}
           leftMenuIsOpen={leftMenuIsOpen}
@@ -134,6 +136,11 @@ const SubCategoryContent = ({
               ))}
             </ul>
           }
+          {faq && 
+          <div className="faq-item">
+            <img src="https://static-helpcenter.onlyoffice.com/info_8cda7a20fa.svg" alt="faq" />
+            <InternalLink href={faq.url} label={faq.name} />
+          </div>}
           {pageDescription &&
             <StyledRawHtml onClick={handleClick} ref={containerRef} className="subcategory-description">{parse(pageDescription)}</StyledRawHtml>
           }
