@@ -135,9 +135,10 @@ p {
   display: none !important;
 }
 
-.DocSearch-Logo a {
-    display: flex;
-    gap: 8px;
+.DocSearch-Sidepanel .DocSearch-Logo a {
+  color: #333;
+  display: flex;
+  gap: 8px;
 }
 
 .DocSearch-Sidepanel-Container.is-open {
@@ -162,6 +163,61 @@ p {
 .DocSearch-Sidepanel-Header-TitleIcon {
   background: url("https://static-helpcenter.onlyoffice.com/images/icons/ask-ai.react.svg") no-repeat center / contain;
   color: transparent !important;
+}
+
+.DocSearch-AskAiScreen-MessageContent-Tool.Tool--Result {
+  font-size: 12px;
+  color: #666;
+}
+
+.DocSearch-AskAiScreen-RelatedSources {
+  .DocSearch-AskAiScreen-RelatedSources-Title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  svg {
+    color: #ff6f3d;
+    width: 12px;
+    height: 12px;
+  }
+
+  .DocSearch-AskAiScreen-RelatedSources-List {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.DocSearch-Sidepanel {
+  color: #333;
+
+  a {
+    color: #ff6f3d;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.DocSearch-Sidepanel-Prompt--submit {
+  background-color: #ff6f3d !important;
+
+  &[aria-disabled="true"] {
+    background-color: #ccc !important;
+  }
+}
+
+.DocSearch-Sidepanel-Prompt--form {
+  border-color: #ff6f3d !important;
+}
+
+.DocSearch-AskAiScreen-Message.DocSearch-AskAiScreen-Message--user {
+  padding-bottom: 16px;
+}
+
+.DocSearch-Sidepanel-Content {
+  scrollbar-color: #aaaaaa #E2E2E2 !important;
 }
 
 @media (max-width: 768px) {

@@ -17,7 +17,6 @@ const SidepanelButton = dynamic(
   { ssr: false },
 );
 
-
 export default function AlgoliaAsk({ t, locale, $isLeftMenu, className }) {
   const iconRef = useRef(null);
   const [inputValue, setInputValue] = useState("");
@@ -26,6 +25,8 @@ export default function AlgoliaAsk({ t, locale, $isLeftMenu, className }) {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isSidepanelOpen, setIsSidepanelOpen] = useState(false);
+  const [sidepanelKey, setSidepanelKey] = useState(0);
 
   const questions = [
     t("SearchInputQuestion1"),
@@ -74,13 +75,29 @@ export default function AlgoliaAsk({ t, locale, $isLeftMenu, className }) {
 
   const onKeyDownHandle = async (e) => {
     if (e.key === "Enter") {
-      const btn = document.querySelector(
-        ".DocSearch-SidepanelButton.floating",
-      );
-      btn?.click();
+      if (!isSidepanelOpen) {
+        const btn = document.querySelector(".DocSearch-SidepanelButton.floating");
+        btn?.click();
+        setIsSidepanelOpen(true);
+      }
       handleAskAI(inputValue);
     }
   };
+
+  useEffect(() => {
+    if (!isSidepanelOpen) return;
+
+    const timeout = setTimeout(() => {
+      const closeBtn = document.querySelector(".DocSearch-Sidepanel-CloseButton");
+      if (closeBtn) {
+        const handler = () => setIsSidepanelOpen(false);
+        closeBtn.addEventListener("click", handler);
+        return () => closeBtn.removeEventListener("click", handler);
+      }
+    }, 300);
+
+    return () => clearTimeout(timeout);
+  }, [isSidepanelOpen]);
 
   const handleSearchInput = (e) => {
     e.preventDefault();
@@ -121,7 +138,13 @@ export default function AlgoliaAsk({ t, locale, $isLeftMenu, className }) {
   }, []);
 
   const handleAskAI = (value) => {
-    setSidepanelInputValue(value);
+    if (!isSidepanelOpen) {
+      const btn = document.querySelector(".DocSearch-SidepanelButton.floating");
+      btn?.click();
+      setIsSidepanelOpen(true);
+    }
+    setSidepanelKey(prev => prev + 1);
+    setTimeout(() => setSidepanelInputValue(value), 200);
   };
 
   return (
@@ -149,6 +172,7 @@ export default function AlgoliaAsk({ t, locale, $isLeftMenu, className }) {
       </StyledSearchArea>
       <SidepanelButton />
       <Sidepanel
+        key={sidepanelKey}
         appId={process.env.NEXT_PUBLIC_ALGOLIA_APP_ID}
         getToken={async () => {
           const res = await fetch("/api/ask-ai/token", { method: "POST", body: JSON.stringify({ locale: locale }) });
