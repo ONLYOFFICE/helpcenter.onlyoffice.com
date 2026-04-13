@@ -2,7 +2,7 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
 import getArticle from "@lib/strapi/getArticle";
-import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
+import getMainPageData from "@lib/strapi/getMainPageData";
 import Layout from "@components/layout";
 import HeadSEO from "@components/screens/head";
 import Header from "@components/screens/header";
@@ -63,7 +63,7 @@ const Level6Page = ({ locale, data, categoriesMenuData, categorySlug }) => {
 };
 
 export const getServerSideProps = async ({ locale, params, preview }) => {
-  const categoriesMenuData = await getCategoriesMenu(locale, preview);
+  const categoriesMenuData = await getMainPageData(locale, preview);
 
   const data = await getArticle(locale, params.page, `${locale === "en"  ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}/${params.level4}/${params.level5}/${params.level6}`, preview);
   // let data = null;

@@ -3,13 +3,14 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState, useEffect } from "react";
 import getGlossary from "@lib/strapi/getGlossary";
 import getLeftMenu from "@lib/strapi/getLeftMenu";
+import getMainPageData from "@lib/strapi/getMainPageData";
 import Layout from "@components/layout";
 import Header from "@components/screens/header";
 import Footer from "@components/screens/footer";
 import HeadSEO from "@components/screens/head";
 import GlossaryContent from "@components/screens/glossary-content";
 
-const GlossaryPage = ({ locale, menuData, glossaryData }) => {
+const GlossaryPage = ({ locale, menuData, glossaryData, fullMenuData }) => {
   const { t } = useTranslation();
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
   const [leftMenuData, setLeftMenuData] = useState(menuData);
@@ -35,7 +36,7 @@ const GlossaryPage = ({ locale, menuData, glossaryData }) => {
         <Header
           t={t}
           locale={locale}
-          data={menuData}
+          data={fullMenuData}
           leftMenuIsOpen={leftMenuIsOpen}
           setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
@@ -59,6 +60,7 @@ const GlossaryPage = ({ locale, menuData, glossaryData }) => {
 
 export const getServerSideProps = async ({ locale, preview }) => {
   const menuData = await getLeftMenu(locale, true, preview);
+  const fullMenuData = await getMainPageData(locale, preview);
   const glossaryData = await getGlossary(locale, preview);
 
   if (glossaryData.data === null || glossaryData.data.length === 0) {
@@ -73,6 +75,7 @@ export const getServerSideProps = async ({ locale, preview }) => {
       locale,
       menuData,
       glossaryData,
+      fullMenuData,
       preview: !!preview
     },
   };

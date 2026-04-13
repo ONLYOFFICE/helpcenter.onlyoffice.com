@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import getLevel3Data from "@lib/strapi/getLevel3Data";
 import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
 import getLeftMenu from "@lib/strapi/getLeftMenu";
+import getMainPageData from "@lib/strapi/getMainPageData";
 import Layout from "@components/layout";
 import HeadSEO from "@components/screens/head";
 import Header from "@components/screens/header";
@@ -13,7 +14,7 @@ import ArticleContent from "@components/screens/article-content";
 import Footer from "@components/screens/footer";
 import Cookies from "universal-cookie";
 
-const Level3Page = ({ locale, menuData, data, categorySlug, preview }) => {
+const Level3Page = ({ locale, menuData, data, categorySlug, preview, fullMenuData }) => {
   const { t } = useTranslation();
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
   const [leftMenuData, setLeftMenuData] = useState(menuData);
@@ -45,7 +46,7 @@ const Level3Page = ({ locale, menuData, data, categorySlug, preview }) => {
         <Header
           t={t}
           locale={locale}
-          data={menuData}
+          data={fullMenuData}
           leftMenuIsOpen={leftMenuIsOpen}
           setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
@@ -125,6 +126,7 @@ const Level3Page = ({ locale, menuData, data, categorySlug, preview }) => {
 export const getServerSideProps = async ({ locale, params, req, res, preview }) => {
   const pathUrl = `${locale === "en" ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}`;
   const data = await getLevel3Data(locale, params.page, pathUrl, preview);  
+  const fullMenuData = await getMainPageData(locale, preview);
   const allowedLocales = ["en", "de", "fr", "zh", "ja"];
 
   if (!allowedLocales.includes(locale)) {
@@ -157,6 +159,7 @@ export const getServerSideProps = async ({ locale, params, req, res, preview }) 
       data,
       menuData,
       categorySlug: params.page,
+      fullMenuData,
       preview: !!preview
     },
   };

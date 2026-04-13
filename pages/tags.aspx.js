@@ -3,13 +3,14 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState, useEffect } from "react";
 import getTags from "@lib/strapi/getTags";
 import getLeftMenu from "@lib/strapi/getLeftMenu";
+import getMainPageData from "@lib/strapi/getMainPageData";
 import Layout from "@components/layout";
 import Header from "@components/screens/header";
 import Footer from "@components/screens/footer";
 import HeadSEO from "@components/screens/head";
 import TagsContent from "@components/screens/tags-content";
 
-const TagsPage = ({ locale, menuData, tagsData }) => {
+const TagsPage = ({ locale, menuData, tagsData, fullMenuData }) => {
   const { t } = useTranslation();
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
   const [leftMenuData, setLeftMenuData] = useState(menuData);
@@ -35,7 +36,7 @@ const TagsPage = ({ locale, menuData, tagsData }) => {
         <Header
           t={t}
           locale={locale}
-          data={menuData}
+          data={fullMenuData}
           leftMenuIsOpen={leftMenuIsOpen}
           setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
@@ -58,6 +59,7 @@ const TagsPage = ({ locale, menuData, tagsData }) => {
 
 export const getServerSideProps = async ({ locale, preview }) => {
   const menuData = await getLeftMenu(locale, true, preview);
+  const fullMenuData = await getMainPageData(locale, preview);
   const tagsData = await getTags(locale, preview);
 
   if (tagsData.data === null || tagsData.data.length === 0) {
@@ -72,6 +74,7 @@ export const getServerSideProps = async ({ locale, preview }) => {
       locale,
       menuData,
       tagsData,
+      fullMenuData,
       preview: !!preview
     },
   };

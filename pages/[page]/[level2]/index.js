@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import getLevel2Data from "@lib/strapi/getLevel2Data";
 import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
 import getLeftMenu from "@lib/strapi/getLeftMenu";
+import getMainPageData from "@lib/strapi/getMainPageData";
 import Layout from "@components/layout";
 import HeadSEO from "@components/screens/head";
 import Header from "@components/screens/header";
@@ -12,7 +13,7 @@ import SubCategoryContent from "@components/screens/subcategory-content";
 import ArticleContent from "@components/screens/article-content";
 import Footer from "@components/screens/footer";
 
-const Level2Page = ({ locale, data, menuData, categorySlug }) => {
+const Level2Page = ({ locale, data, menuData, categorySlug, fullMenuData }) => {
   const { t } = useTranslation();
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
   const [leftMenuData, setLeftMenuData] = useState(menuData);
@@ -42,7 +43,7 @@ const Level2Page = ({ locale, data, menuData, categorySlug }) => {
         <Header
           t={t}
           locale={locale}
-          data={menuData}
+          data={fullMenuData}
           leftMenuIsOpen={leftMenuIsOpen}
           setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
@@ -106,6 +107,7 @@ const Level2Page = ({ locale, data, menuData, categorySlug }) => {
 
 export async function getServerSideProps({ locale, params, preview }) {
   const pathUrl = `${locale === "en" ? "" : `/${locale}`}/${params.page}/${params.level2}`;
+  const fullMenuData = await getMainPageData(locale, preview);
   const data = await getLevel2Data(locale, params.page, pathUrl, preview);
   const allowedLocales = ["en", "de", "fr", "zh", "ja"];
 
@@ -129,6 +131,7 @@ export async function getServerSideProps({ locale, params, preview }) {
       data,
       menuData,
       categorySlug: params.page,
+      fullMenuData,
       preview: !!preview
     },
   };

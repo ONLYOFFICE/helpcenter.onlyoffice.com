@@ -3,13 +3,14 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState, useEffect } from "react";
 import getLeftMenu from "@lib/strapi/getLeftMenu";
 import getFaq from "@lib/strapi/getFaq";
+import getMainPageData from "@lib/strapi/getMainPageData";
 import Layout from "@components/layout";
 import HeadSEO from "@components/screens/head";
 import Header from "@components/screens/header";
 import Footer from "@components/screens/footer";
 import FaqContent from "@components/screens/faq-content";
 
-const FaqPage = ({ locale, menuData, faqData }) => {
+const FaqPage = ({ locale, menuData, faqData, fullMenuData }) => {
   const { t } = useTranslation();
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
   const [leftMenuData, setLeftMenuData] = useState(menuData);
@@ -39,7 +40,7 @@ const FaqPage = ({ locale, menuData, faqData }) => {
         <Header
           t={t}
           locale={locale}
-          data={menuData}
+          data={fullMenuData}
           leftMenuIsOpen={leftMenuIsOpen}
           setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
@@ -64,6 +65,7 @@ const FaqPage = ({ locale, menuData, faqData }) => {
 export async function getServerSideProps({ locale, params, preview }) {
   const menuData = await getLeftMenu(locale, true, preview);
   const faqData = await getFaq(locale, `/faq/${params.faq}`, preview);
+  const fullMenuData = await getMainPageData(locale, preview);
 
   if (faqData.data === null || faqData.data.length === 0) {
     return {
@@ -77,6 +79,7 @@ export async function getServerSideProps({ locale, params, preview }) {
       locale,
       menuData,
       faqData,
+      fullMenuData,
       preview: !!preview
     },
   };

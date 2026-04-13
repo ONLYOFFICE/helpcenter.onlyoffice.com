@@ -3,12 +3,14 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import LanguageSelector from "@components/common/language-selector";
 import InternalLink from "@components/common/internal-link";
+import DropdownMenu from "./sub-components/dropdown-menu";
 
 const Header = ({ t, locale, data, isMain, leftMenuIsOpen, setLeftMenuIsOpen }) => {
   const menu = t("Menu");
   const [menuName, setMenuName] = useState(menu);
   const [menuMobile, setMenuMobile] = useState(false);
   const router = useRouter();
+  const [openIndex, setOpenIndex] = useState(null);
 
   useEffect(() => {
     const currentCategory = data?.data?.find((item) => item.url === `/${router.query.category}`);
@@ -74,15 +76,25 @@ const Header = ({ t, locale, data, isMain, leftMenuIsOpen, setLeftMenuIsOpen }) 
         </button>
         <nav className={`nav ${menuMobile ? "open" : ""}`}>
           <ul className="nav-list">
-            {data?.data?.sort((a, b) => (a.position ?? Infinity) - (b.position ?? Infinity)).map((item, index) => (
-              <li className="nav-item" key={index}>
-                <InternalLink
-                  className={`nav-link ${`/${router.query.page}` === item.url ? "active" : ""}`}
-                  href={item.url}
-                  label={item.name}
-                />
-              </li>
-            ))}
+            {data?.data
+              ?.sort((a, b) => (a.position ?? Infinity) - (b.position ?? Infinity))
+              .map((item, index) => (
+                <li className="nav-item" key={index} onMouseEnter={() => setOpenIndex(index)}
+                  onMouseLeave={() => setOpenIndex(null)}>
+                  {menuMobile ? (
+                    <InternalLink
+                      className={`nav-link ${`/${router.query.page}` === item.url ? "active" : ""}`}
+                      href={item.url}
+                      label={item.name}
+                    />
+                  ) : (
+                    <div className={`nav-link ${`/${router.query.page}` === item.url ? "active" : ""}`}>
+                      {item.name}
+                    </div>
+                  )}
+                  {!menuMobile && openIndex === index && <DropdownMenu item={item} />}
+                </li>
+              ))}
           </ul>
         </nav>
         <LanguageSelector locale={locale} />

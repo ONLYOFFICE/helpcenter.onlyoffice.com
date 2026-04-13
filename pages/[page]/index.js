@@ -3,13 +3,14 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
 import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
 import getLevel1Data from "@lib/strapi/getLevel1Data";
+import getMainPageData from "@lib/strapi/getMainPageData";
 import Layout from "@components/layout";
 import HeadSEO from "@components/screens/head";
 import Header from "@components/screens/header";
 import CategoryContent from "@components/screens/main-content/category-content";
 import Footer from "@components/screens/footer";
 
-const Level1Page = ({ locale, categoriesMenuData, data }) => {
+const Level1Page = ({ locale, categoriesMenuData, data, fullMenuData }) => {
   const { t } = useTranslation();
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
 
@@ -28,7 +29,7 @@ const Level1Page = ({ locale, categoriesMenuData, data }) => {
         <Header
           t={t}
           locale={locale}
-          data={categoriesMenuData}
+          data={fullMenuData}
           leftMenuIsOpen={leftMenuIsOpen}
           setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
@@ -55,6 +56,7 @@ const Level1Page = ({ locale, categoriesMenuData, data }) => {
 };
 export const getServerSideProps = async ({ locale, params, preview }) => {
   const categoriesMenuData = await getCategoriesMenu(locale, preview);
+  const fullMenuData = await getMainPageData(locale, preview);
   const data = await getLevel1Data(locale, params.page, preview);
   const allowedLocales = ["en", "de", "fr", "zh", "ja"];
 
@@ -75,6 +77,7 @@ export const getServerSideProps = async ({ locale, params, preview }) => {
       locale,
       categoriesMenuData,
       data,
+      fullMenuData,
       preview: !!preview
     },
   };

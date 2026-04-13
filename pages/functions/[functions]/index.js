@@ -3,13 +3,14 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState, useEffect } from "react";
 import getLeftMenu from "@lib/strapi/getLeftMenu";
 import getFunctions from "@lib/strapi/getFunctions";
+import getMainPageData from "@lib/strapi/getMainPageData";
 import Layout from "@components/layout";
 import Header from "@components/screens/header";
 import Footer from "@components/screens/footer";
 import HeadSEO from "@components/screens/head";
 import ArticleContent from "@components/screens/article-content";
 
-const FunctionsPage = ({ locale, menuData, functions }) => {
+const FunctionsPage = ({ locale, menuData, functions, fullMenuData }) => {
   const { t } = useTranslation();
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
   const [leftMenuData, setLeftMenuData] = useState(menuData);
@@ -36,7 +37,7 @@ const FunctionsPage = ({ locale, menuData, functions }) => {
         <Header
           t={t}
           locale={locale}
-          data={menuData}
+          data={fullMenuData}
           leftMenuIsOpen={leftMenuIsOpen}
           setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
@@ -65,6 +66,7 @@ const FunctionsPage = ({ locale, menuData, functions }) => {
 export async function getServerSideProps({ locale, params, preview }) {
   const menuData = await getLeftMenu(locale, true, preview);
   const functions = await getFunctions(locale, locale === "en" ? `functions/${params.functions}` : `/${locale}/functions/${params.functions}`, preview);
+  const fullMenuData = await getMainPageData(locale, preview);
 
   if (functions.data.length === 0) {
     return {
@@ -78,6 +80,7 @@ export async function getServerSideProps({ locale, params, preview }) {
       locale,
       menuData,
       functions,
+      fullMenuData,
       preview: !!preview
     },
   };
