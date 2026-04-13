@@ -9,6 +9,7 @@ const StyledCategory = styled.div`
   margin: 0 auto;
   max-width: 1032px;
 
+
   .category-box {
     display: flex;
     flex-direction: column;
@@ -52,6 +53,10 @@ const StyledCategory = styled.div`
     transition: color 0.3s;
   }
 
+  @media ${device.laptopM} {
+     gap: 16px;
+  }
+  
   @media ${device.laptop} {
     grid-template-columns: repeat(3, 1fr);
   }

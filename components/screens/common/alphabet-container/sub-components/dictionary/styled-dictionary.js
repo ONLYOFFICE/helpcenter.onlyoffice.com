@@ -23,7 +23,7 @@ const StyledDictionary = styled(StyledText)`
     }
   }
 
-  ol {
+  ol, ul {
     padding: 0 0 0 20px;
     li a {
       color: ${globalColors.orangeLetters};

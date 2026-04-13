@@ -794,6 +794,11 @@ const StyledRawHtml = styled.div`
       max-width: -webkit-fill-available;
       vertical-align: middle;
       width: initial;
+
+      @media ${device.mobile} {
+        max-width: 100%;      
+        height: auto;
+      }
     }
 
     img.width-content {
