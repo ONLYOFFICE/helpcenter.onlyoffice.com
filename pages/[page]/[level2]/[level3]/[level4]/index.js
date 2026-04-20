@@ -103,9 +103,9 @@ export const getServerSideProps = async ({ locale, params, req, preview }) => {
   const pathUrl = `${locale === "en" ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}/${params.level4}`;
   const data = await getLevel4Data(locale, params.page, pathUrl, preview);
   const fullMenuData = await getMainPageData(locale, preview);
-  const allowedLocales = ["en", "de", "fr", "zh", "ja"];
+  const disallowedLocales = ["es", "pt-BR"];
 
-  if (!allowedLocales.includes(locale)) {
+  if (disallowedLocales.includes(locale)) {
     return {
       redirect: {
         destination: `/${params.page}/${params.level2}/${params.level3}/${params.level4}`,

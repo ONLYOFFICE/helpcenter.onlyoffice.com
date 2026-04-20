@@ -77,8 +77,9 @@ export const getServerSideProps = async ({ locale, params, preview }) => {
   //     data = localeData;
   //   }
 
-  const allowedLocales = ["en", "de", "fr", "zh", "ja"];
-  if (!allowedLocales.includes(locale)) {
+  const disallowedLocales = ["es", "pt-BR"];
+
+  if (disallowedLocales.includes(locale)) {
     return {
       redirect: {
         destination: `/${params.page}/${params.level2}/${params.level3}/${params.level4}/${params.level5}/${params.level6}`,

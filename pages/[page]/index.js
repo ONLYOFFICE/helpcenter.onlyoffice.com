@@ -58,9 +58,9 @@ export const getServerSideProps = async ({ locale, params, preview }) => {
   const categoriesMenuData = await getCategoriesMenu(locale, preview);
   const fullMenuData = await getMainPageData(locale, preview);
   const data = await getLevel1Data(locale, params.page, preview);
-  const allowedLocales = ["en", "de", "fr", "zh", "ja"];
+  const disallowedLocales = ["es", "pt-BR"];
 
-  if (!allowedLocales.includes(locale) && params.page !== "integration") {
+  if (disallowedLocales.includes(locale)) {
     return {
       redirect: {
         destination: `/${params.page}`,
