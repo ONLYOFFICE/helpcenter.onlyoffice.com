@@ -11567,10 +11567,6 @@
     "destination": "/mobile/android/documents/presentation-editor/set-line-spacing.aspx",
     "permanent": false
   },
-  "/mobile/android/documents/common-operations.aspx": {
-    "destination": "/mobile/android/documents/common-operations.aspx",
-    "permanent": false
-  },
   "/mobile/android/documents/document-editor/operations-on-objects/drawing-operations.aspx": {
     "destination": "/mobile/android/documents/document-editor/drawing-operations.aspx",
     "permanent": false
@@ -11813,26 +11809,6 @@
   },
   "/mobile/ios/mobile_web_editors/spreadsheet_editor/manipulate-objects-in-spreadsheets.aspx#arrangeseveralobjects_block": {
     "destination": "/mobile/ios/mobile-web-editors/spreadsheet-editor/manipulate-objects-in-spreadsheets.aspx#arrangeseveralobjects_block",
-    "permanent": false
-  },
-  "/mobile/ios/projects/available-languages.aspx": {
-    "destination": "/mobile/ios/projects/available-languages.aspx",
-    "permanent": false
-  },
-  "/mobile/ios/projects/common-operations.aspx": {
-    "destination": "/mobile/ios/projects/common-operations.aspx",
-    "permanent": false
-  },
-  "/mobile/ios/projects/overview.aspx": {
-    "destination": "/mobile/ios/projects/overview.aspx",
-    "permanent": false
-  },
-  "/mobile/ios/projects/project-management.aspx": {
-    "destination": "/mobile/ios/projects/project-management.aspx",
-    "permanent": false
-  },
-  "/mobile/ios/projects/tasks.aspx": {
-    "destination": "/mobile/ios/projects/tasks.aspx",
     "permanent": false
   },
   "/mobile/mobile/ios/documents": {
