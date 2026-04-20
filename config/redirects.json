@@ -8035,10 +8035,6 @@
     "destination": "/mobile/android/documents/presentation-editor/insert-autoshapes.aspx",
     "permanent": true
   },
-  "/mobile-applications/documents/android/android-pe/operations-on-objects/insert-charts.aspx": {
-    "destination": "/mobile/android/documents/presentation-editor/operations-on-objects/insert-charts.aspx",
-    "permanent": true
-  },
   "/mobile-applications/documents/android/android-pe/operations-on-objects/insert-images.aspx": {
     "destination": "/mobile/android/documents/presentation-editor/insert-images.aspx",
     "permanent": true
@@ -8191,10 +8187,6 @@
     "destination": "/mobile/android/documents/spreadsheet-editor/index.aspx.aspx",
     "permanent": true
   },
-  "/mobile-applications/documents/android/android-se/operations-on-objects/insert-autoshapes-in-spreadsheets.aspx": {
-    "destination": "/mobile/android/documents/spreadsheet-editor/operations-on-objects/insert-autoshapes-in-spreadsheets.aspx",
-    "permanent": true
-  },
   "/mobile-applications/documents/android/android-se/operations-on-objects/insert-charts-in-spreadsheets.aspx": {
     "destination": "/mobile/android/documents/spreadsheet-editor/insert-charts-in-spreadsheets.aspx",
     "permanent": true
@@ -8281,10 +8273,6 @@
   },
   "/mobile-applications/documents/android/changelog.aspx": {
     "destination": "/mobile/android/documents/changelog.aspx",
-    "permanent": true
-  },
-  "/mobile-applications/documents/android/common-operations.aspx": {
-    "destination": "/mobile/android/documents/common-operations.aspx",
     "permanent": true
   },
   "/mobile-applications/documents/android/index.aspx": {
@@ -11881,6 +11869,110 @@
   },
   "/operations-on-objects/manipulate-objects.aspx#ArrangeSeveralObjects": {
     "destination": "/mobile/android/documents/pdf-editor/manipulate-objects.aspx#arrangeseveralobjects_block",
+    "permanent": false
+  },
+  "/mobile-applications/documents/android/common-operations.aspx": {
+    "destination": "/mobile/android/documents/common-operations.aspx",
+    "permanent": false
+  },
+  "/mobile-applications/documents/android/android-se/operations-on-objects/insert-autoshapes-in-spreadsheets.aspx": {
+    "destination": "/mobile/android/documents/spreadsheet-editor/insert-autoshapes.aspx",
+    "permanent": false
+  },
+  "/mobile-applications/documents/android/android-pe/operations-on-objects/insert-charts.aspx": {
+    "destination": "/mobile/android/documents/presentation-editor/insert-charts.aspx",
+    "permanent": false
+  },
+  "/mobile/android/documents/operations-on-objects/manipulate-objects.aspx": {
+    "destination": "/mobile/android/documents/presentation-editor/manipulate-objects.aspx",
+    "permanent": false
+  },
+  "/mobile/android/mobile-web-editors/operations-on-objects/manipulate-objects.aspx": {
+    "destination": "/mobile/android/mobile-web-editors/document-editor/manipulate-objects.aspx",
+    "permanent": false
+  },
+  "/mobile/android/mobile-web-editors/spreadsheet-editor/tools-and-settings/appllication-settings.aspx": {
+    "destination": "/mobile/android/mobile-web-editors/spreadsheet-editor/change-app-settings.aspx",
+    "permanent": false
+  },
+  "/mobile-applications/documents/android/android-pe/presentation-editor/manipulate-objects.aspx": {
+    "destination": "/mobile/android/documents/presentation-editor/manipulate-objects.aspx",
+    "permanent": false
+  },
+  "/mobile-applications/documents/android/android-pe/presentation-editor/set-font-type-size-color.aspx": {
+    "destination": "/mobile/android/documents/presentation-editor/set-font-type-size-color.aspx",
+    "permanent": false
+  },
+  "/mobile-applications/documents/android/android-pe/presentation-editor/apply-font-decoration-styles.aspx": {
+    "destination": "/mobile/android/documents/presentation-editor/apply-font-decoration-styles.aspx",
+    "permanent": false
+  },
+  "/mobile-applications/documents/android/android-pe/presentation-editor/align-text.aspx": {
+    "destination": "/mobile/android/documents/presentation-editor/align-text.aspx",
+    "permanent": false
+  },
+  "/mobile-applications/documents/android/android-pe/presentation-editor/set-line-spacing.aspx": {
+    "destination": "/mobile/android/documents/presentation-editor/set-line-spacing.aspx",
+    "permanent": false
+  },
+  "/mobile-applications/documents/android/android-pe/presentation-editor/create-lists.aspx": {
+    "destination": "/mobile/android/documents/presentation-editor/create-lists.aspx",
+    "permanent": false
+  },
+  "/mobile/ios/mobile/ios/mobile_web_editors/document_editor/manipulate-objects.aspx": {
+    "destination": "/mobile/ios/mobile-web-editors/document-editor/manipulate-objects.aspx",
+    "permanent": false
+  },
+  "/mobile/ios/mobile_web_editors/spreadsheet_editor/manipulate-objects-in-spreadsheets.aspx": {
+    "destination": "/mobile/ios/mobile-web-editors/spreadsheet-editor/manipulate-objects-in-spreadsheets.aspx",
+    "permanent": false
+  },
+  "/mobile/ios/mobile/ios/mobile_web_editors/spreadsheet_editor/manipulate-objects-in-spreadsheets.aspx": {
+    "destination": "/mobile/ios/mobile-web-editors/spreadsheet-editor/manipulate-objects-in-spreadsheets.aspx",
+    "permanent": false
+  },
+  "/mobile/ios/mobile/ios/mobile_web_editors/presentation_editor/manipulate-objects.aspx": {
+    "destination": "/mobile/ios/mobile-web-editors/presentation-editor/manipulate-objects.aspx",
+    "permanent": false
+  },
+  "/mobile/mobile/ios/mobile/ios/mobile_web_editors/document_editor/spell-checking.aspx": {
+    "destination": "/mobile/ios/mobile-web-editors/document-editor/spell-checking.aspx",
+    "permanent": false
+  },
+  "/mobile/mobile/ios/mobile/ios/mobile_web_editors/document_editor/macros-settings.aspx": {
+    "destination": "/mobile/ios/mobile-web-editors/document-editor/macros-settings.aspx",
+    "permanent": false
+  },
+  "/mobile/ios/mobile/ios/mobile/ios/documents/spreadsheet_editor/change-text-wrapping.aspx": {
+    "destination": "/mobile/ios/documents/spreadsheet-editor/wrap-text.aspx",
+    "permanent": false
+  },
+  "/mobile/ios/mobile/ios/mobile/ios/documents/spreadsheet_editor/manipulate-objects.aspx": {
+    "destination": "/mobile/ios/documents/spreadsheet-editor/manipulate-objects.aspx",
+    "permanent": false
+  },
+  "/mobile/ios/mobile/ios/mobile/ios/mobile_web_editors/document_editor/spell-checking.aspx": {
+    "destination": "/mobile/ios/mobile-web-editors/document-editor/spell-checking.aspx",
+    "permanent": false
+  },
+  "/mobile/ios/mobile/ios/mobile/ios/mobile_web_editors/document_editor/macros-settings.aspx": {
+    "destination": "/mobile/ios/mobile-web-editors/document-editor/macros-settings.aspx",
+    "permanent": false
+  },
+  "/mobile/ios/mobile/ios/mobile/ios/mobile_web_editors/spreadsheet_editor/macros-settings.aspx": {
+    "destination": "/mobile/ios/mobile-web-editors/spreadsheet-editor/macros-settings.aspx",
+    "permanent": false
+  },
+  "/mobile-applications/documents/mobile-web-editors/ios/mobile/ios/mobile/ios/mobile_web_editors/document_editor/spell-checking.aspx": {
+    "destination": "/mobile/ios/mobile-web-editors/document-editor/spell-checking.aspx",
+    "permanent": false
+  },
+  "/mobile-applications/documents/mobile-web-editors/ios/mobile/ios/mobile/ios/mobile_web_editors/document_editor/macros-settings.aspx": {
+    "destination": "/mobile/ios/mobile-web-editors/document-editor/macros-settings.aspx",
+    "permanent": false
+  },
+  "/mobile-applications/documents/android/android-pe/presentation-editor/manipulate-objects.aspx#arrangeseveralobjects_block": {
+    "destination": "/mobile/android/documents/presentation-editor/manipulate-objects.aspx#arrangeseveralobjects_block",
     "permanent": false
   }
 }
