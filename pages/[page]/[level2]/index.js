@@ -107,7 +107,7 @@ const Level2Page = ({ locale, data, menuData, categorySlug }) => {
 export async function getServerSideProps({ locale, params, preview }) {
   const pathUrl = `${locale === "en" ? "" : `/${locale}`}/${params.page}/${params.level2}`;
   const data = await getLevel2Data(locale, params.page, pathUrl, preview);
-  const disallowedLocales = ["es", "pt-BR"];
+  const disallowedLocales = ["es"];
 
   if (disallowedLocales.includes(locale)) {
     return {

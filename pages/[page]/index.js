@@ -57,7 +57,7 @@ const Level1Page = ({ locale, categoriesMenuData, data }) => {
 export const getServerSideProps = async ({ locale, params, preview }) => {
   const categoriesMenuData = await getCategoriesMenu(locale, preview);
   const data = await getLevel1Data(locale, params.page, preview);
-  const disallowedLocales = ["es", "pt-BR"];
+  const disallowedLocales = ["es"];
 
   if (disallowedLocales.includes(locale) && params.page !== "integration") {
     return {

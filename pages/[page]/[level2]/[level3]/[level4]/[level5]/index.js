@@ -77,7 +77,7 @@ export const getServerSideProps = async ({ locale, params, preview }) => {
   // } else {
   //   data = localeData;
   // }
-  const disallowedLocales = ["es", "pt-BR"];
+  const disallowedLocales = ["es"];
 
   if (disallowedLocales.includes(locale)) {
     return {

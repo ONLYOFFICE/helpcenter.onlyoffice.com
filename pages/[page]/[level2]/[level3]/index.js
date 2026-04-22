@@ -124,7 +124,7 @@ const Level3Page = ({ locale, menuData, data, categorySlug, preview }) => {
 export const getServerSideProps = async ({ locale, params, req, res, preview }) => {
   const pathUrl = `${locale === "en" ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}`;
   const data = await getLevel3Data(locale, params.page, pathUrl, preview);  
-  const disallowedLocales = ["es", "pt-BR"];
+  const disallowedLocales = ["es"];
 
   if (disallowedLocales.includes(locale)) {
     return {
