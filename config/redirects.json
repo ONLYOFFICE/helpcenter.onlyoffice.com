@@ -8920,7 +8920,7 @@
     "permanent": true
   },
   "/mobile-applications/documents/mobile-web-editors/ios/web-de/fill-forms/fill-forms.aspx": {
-    "destination": "/mobile/ios/mobile-web-editors/document-editor/fill-forms.aspx",
+    "destination": "/mobile/ios/documents/pdf-editor/filling-out-form.aspx",
     "permanent": true
   },
   "/mobile-applications/documents/mobile-web-editors/ios/web-de/index.aspx": {
@@ -11820,7 +11820,7 @@
     "permanent": false
   },
   "/mobile/mobile/ios/mobile_web_editors/document_editor/fill-forms.aspx": {
-    "destination": "/mobile/ios/mobile-web-editors/document-editor/fill-forms.aspx",
+    "destination": "/mobile/ios/documents/pdf-editor/filling-out-form.aspx",
     "permanent": false
   },
   "/mobile/mobile/ios/mobile_web_editors/share-files.aspx": {
@@ -11950,5 +11950,213 @@
   "/mobile-applications/documents/android/android-pe/presentation-editor/manipulate-objects.aspx#arrangeseveralobjects_block": {
     "destination": "/mobile/android/documents/presentation-editor/manipulate-objects.aspx#arrangeseveralobjects_block",
     "permanent": false
+  },
+  "/administration/calendar.aspx": {
+    "destination": "/workspace/administration/calendar.aspx",
+    "permanent": true
+  },
+  "/administration/connect-clickatell.aspx": {
+    "destination": "/workspace/administration/connect-clickatell.aspx",
+    "permanent": true
+  },
+  "/administration/connect-smsc.aspx": {
+    "destination": "/workspace/administration/connect-smsc.aspx",
+    "permanent": true
+  },
+  "/administration/connect-twilio.aspx": {
+    "destination": "/workspace/administration/connect-twilio.aspx",
+    "permanent": true
+  },
+  "/administration/connecting-external-services": {
+    "destination": "/workspace/administration/connecting-external-services#connecting_third-party_services_block",
+    "permanent": true
+  },
+  "/docs/integration": {
+    "destination": "/it/integration",
+    "permanent": true
+  },
+  "/docs/userguides/document_editor/InsertFieldCodes.aspx": {
+    "destination": "/docs/document_editor/InsertFieldCodes.aspx",
+    "permanent": true
+  },
+  "/docs/userguides/form_builder/Password.aspx": {
+    "destination": "/docs/userguides/form_creator/password.aspx",
+    "permanent": true
+  },
+  "/docs/userguides/plugins/plugin-manager.aspx": {
+    "destination": "/docs/userguides/plugins/PluginManager.aspx",
+    "permanent": true
+  },
+  "/docspace/installation/community/hosted-solutions": {
+    "destination": "/docspace/installation/community#hosted_solutions_block",
+    "permanent": true
+  },
+  "/docspace/installation/developer/hosted-solutions": {
+    "destination": "/docspace/installation/developer#hosted_solutions_block",
+    "permanent": true
+  },
+  "/docspace/installation/enterprise/hosted-solutions": {
+    "destination": "/docspace/installation/enterprise#hosted_solutions_block",
+    "permanent": true
+  },
+  "/userguides/calendar-add-all-day-event.aspx": {
+    "destination": "/workspace/userguides/calendar-add-all-day-event.aspx",
+    "permanent": true
+  },
+  "/userguides/calendar-add-recurring-event.aspx": {
+    "destination": "/workspace/userguides/calendar-add-recurring-event.aspx",
+    "permanent": true
+  },
+  "/userguides/crm-create-case.aspx": {
+    "destination": "/workspace/userguides/crm-create-case.aspx",
+    "permanent": true
+  },
+  "/userguides/crm-group-operations.aspx": {
+    "destination": "/workspace/userguides/crm-group-operations.aspx",
+    "permanent": true
+  },
+  "/userguides/crm-import-contacts.aspx": {
+    "destination": "/workspace/userguides/crm-import-contacts.aspx",
+    "permanent": true
+  },
+  "/userguides/crm-use-voip.aspx": {
+    "destination": "/workspace/administration/crm.aspx#usingvoip_block",
+    "permanent": true
+  },
+  "/userguides/calendar-feed.aspx": {
+    "destination": "/workspace/userguides/calendar-feed.aspx",
+    "permanent": true
+  },
+  "/userguides/talk-mailinglist.aspx": {
+    "destination": "/workspace/userguides/talk-mailinglist.aspx",
+    "permanent": true
+  },
+  "/userguides/export-calendars-to-devices.aspx": {
+    "destination": "/workspace/userguides/export-calendars-to-devices.aspx",
+    "permanent": true
+  },
+  "/userguides/mail-email-templates.aspx": {
+    "destination": "/workspace/userguides/mail-email-templates.aspx",
+    "permanent": true
+  },
+  "/userguides/managing-subscriptions.aspx": {
+    "destination": "/workspace/userguides/manageable-notifications.aspx",
+    "permanent": true
+  },
+  "/userguides/projects-gantt-chart.aspx": {
+    "destination": "/workspace/userguides/projects-gantt-chart.aspx",
+    "permanent": true
+  },
+  "/userguides/projects-link-with-contact.aspx": {
+    "destination": "/workspace/userguides/projects-link-with-contact.aspx",
+    "permanent": true
+  },
+  "/userguides/projects-report-templates.aspx": {
+    "destination": "/workspace/userguides/projects-report-templates.aspx",
+    "permanent": true
+  },
+  "/userguides/projects-similar-projects.aspx": {
+    "destination": "/workspace/userguides/projects-similar-projects.aspx",
+    "permanent": true
+  },
+  "/userguides/projects-task-statuses.aspx": {
+    "destination": "/workspace/userguides/projects-task-statuses.aspx",
+    "permanent": true
+  },
+  "/userguides/talk-chatroom.aspx": {
+    "destination": "/workspace/userguides/talk-chatroom.aspx",
+    "permanent": true
+  },
+  "/userguides/projects-report-types.aspx": {
+    "destination": "/workspace/userguides/projects-report-types.aspx#configurethereport_block",
+    "permanent": true
+  },
+  "/mobile/android/mobile-web-editors/open-create-files.aspx": {
+    "destination": "/mobile/android/mobile-web-editors/open-create-files.aspx",
+    "permanent": true
+  },
+  "/mobile/ios/documents/insert-section-breaks.aspx": {
+    "destination": "/mobile/ios/documents/document-editor/insert-section-breaks.aspx",
+    "permanent": true
+  },
+  "/mobile/ios/mobile/ios/documents/common-operations.aspx": {
+    "destination": "/mobile/ios/documents/common-operations.aspx",
+    "permanent": true
+  },
+  "/mobile/mobile/ios/projects/overview.aspx": {
+    "destination": "/mobile/ios/projects/overview.aspx#connectingtoaportal_block",
+    "permanent": true
+  },
+  "/onlyoffice-editors/installation/docs-developer-change-theme.aspx": {
+    "destination": "/docs/installation/docs-developer-change-theme.aspx",
+    "permanent": true
+  },
+  "/onlyoffice-editors/onlyoffice-document-editor/document_editor/AdvancedSettings.aspx": {
+    "destination": "/docs/userguides/document_editor/AdvancedSettings.aspx",
+    "permanent": true
+  },
+  "/onlyoffice-editors/onlyoffice-document-editor/document_editor/BackgroundColor.aspx": {
+    "destination": "/docs/userguides/document_editor/BackgroundColor.aspx",
+    "permanent": true
+  },
+  "/onlyoffice-editors/onlyoffice-document-editor/document_editor/ChangeColorScheme.aspx": {
+    "destination": "/docs/userguides/document_editor/ChangeColorScheme.aspx",
+    "permanent": true
+  },
+  "/onlyoffice-editors/onlyoffice-document-editor/document_editor/Commenting.aspx": {
+    "destination": "/docs/userguides/document_editor/Commenting.aspx",
+    "permanent": true
+  },
+  "/onlyoffice-editors/onlyoffice-document-editor/document_editor/FontTypeSizeColor.aspx": {
+    "destination": "/docs/userguides/document_editor/FontTypeSizeColor.aspx",
+    "permanent": true
+  },
+  "/onlyoffice-editors/onlyoffice-document-editor/document_editor/InsertAutoshapes.aspx": {
+    "destination": "/docs/userguides/document_editor/InsertAutoshapes.aspx",
+    "permanent": true
+  },
+  "/onlyoffice-editors/onlyoffice-document-editor/document_editor/InsertCharts.aspx": {
+    "destination": "/docs/userguides/document_editor/InsertCharts.aspx",
+    "permanent": true
+  },
+  "/onlyoffice-editors/onlyoffice-document-editor/document_editor/InsertSymbols.aspx": {
+    "destination": "/docs/userguides/document_editor/InsertSymbols.aspx",
+    "permanent": true
+  },
+  "/onlyoffice-editors/onlyoffice-document-editor/document_editor/InsertTables.aspx": {
+    "destination": "/docs/userguides/document_editor/InsertTables.aspx",
+    "permanent": true
+  },
+  "/onlyoffice-editors/onlyoffice-document-editor/document_editor/KeyboardShortcuts.aspx": {
+    "destination": "/docs/userguides/document_editor/KeyboardShortcuts.aspx#textselection",
+    "permanent": true
+  },
+  "/onlyoffice-editors/onlyoffice-document-editor/document_editor/LineSpacing.aspx": {
+    "destination": "/docs/userguides/document_editor/LineSpacing.aspx",
+    "permanent": true
+  },
+  "/onlyoffice-editors/onlyoffice-document-editor/document_editor/MathAutoCorrect.aspx": {
+    "destination": "/docs/userguides/document_editor/MathAutoCorrect.aspx",
+    "permanent": true
+  },
+  "/onlyoffice-editors/onlyoffice-document-editor/document_editor/ParagraphIndents.aspx": {
+    "destination": "/docs/userguides/document_editor/ParagraphIndents.aspx",
+    "permanent": true
+  },
+  "/userguides/documents-context-menu.aspx": {
+    "destination": "/workspace/userguides/documents-context-menu.aspx",
+    "permanent": true
+  },
+  "/userguides/documents-document-versions.aspx": {
+    "destination": "/workspace/userguides/documents-document-versions.aspx",
+    "permanent": true
+  },
+  "/userguides/documents-share-documents.aspx": {
+    "destination": "/workspace/userguides/documents-share-documents.aspx#sharingwithindividualusersorgroups_block",
+    "permanent": true
+  },
+  "/workspace/installation/community/migrating": {
+    "destination": "/workspace/installation/community/migrating",
+    "permanent": true
   }
 }
