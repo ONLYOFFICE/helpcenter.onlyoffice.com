@@ -11972,12 +11972,12 @@
     "permanent": true
   },
   "/docs/integration": {
-    "destination": "/it/integration",
+    "destination": "/integration",
     "permanent": true
   },
-  "/docs/userguides/document_editor/InsertFieldCodes.aspx": {
+  "/it/docs/userguides/document_editor/InsertFieldCodes.aspx": {
     "destination": "/docs/document_editor/InsertFieldCodes.aspx",
-    "permanent": true
+    "permanent": false
   },
   "/docs/userguides/form_builder/Password.aspx": {
     "destination": "/docs/userguides/form_creator/password.aspx",
@@ -12071,10 +12071,6 @@
     "destination": "/workspace/userguides/projects-report-types.aspx#configurethereport_block",
     "permanent": true
   },
-  "/mobile/android/mobile-web-editors/open-create-files.aspx": {
-    "destination": "/mobile/android/mobile-web-editors/open-create-files.aspx",
-    "permanent": true
-  },
   "/mobile/ios/documents/insert-section-breaks.aspx": {
     "destination": "/mobile/ios/documents/document-editor/insert-section-breaks.aspx",
     "permanent": true
@@ -12153,10 +12149,6 @@
   },
   "/userguides/documents-share-documents.aspx": {
     "destination": "/workspace/userguides/documents-share-documents.aspx#sharingwithindividualusersorgroups_block",
-    "permanent": true
-  },
-  "/workspace/installation/community/migrating": {
-    "destination": "/workspace/installation/community/migrating",
     "permanent": true
   }
 }
