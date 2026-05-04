@@ -8,7 +8,6 @@ import HeadSEO from "@components/screens/head";
 import Header from "@components/screens/header";
 import ArticleContent from "@components/screens/article-content";
 import Footer from "@components/screens/footer";
-import translateText from "@lib/strapi/translate";
 
 const Level6Page = ({ locale, data, categoriesMenuData, categorySlug }) => {
   const { t } = useTranslation();
@@ -38,7 +37,7 @@ const Level6Page = ({ locale, data, categoriesMenuData, categorySlug }) => {
         <ArticleContent
           t={t}
           locale={locale}
-            categorySlug={categorySlug}
+          categorySlug={categorySlug}
           categoryName={articleData[`category_${categorySlug}`]?.general_category.name || articleData[`level_2_${categorySlugSingular}`]?.[`category_${categorySlugSingular}`].general_category.name || articleData[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`][`category_${categorySlugSingular}`].general_category.name || articleData[`level_4_${categorySlugSingular}`]?.[`level_3_${categorySlugSingular}`][`level_2_${categorySlugSingular}`][`category_${categorySlugSingular}`].general_category.name}
           categoryUrl={articleData[`category_${categorySlug}`]?.general_category.url || articleData[`level_2_${categorySlugSingular}`]?.[`category_${categorySlugSingular}`].general_category.url || articleData[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`][`category_${categorySlugSingular}`].general_category.url || articleData[`level_4_${categorySlugSingular}`]?.[`level_3_${categorySlugSingular}`][`level_2_${categorySlugSingular}`][`category_${categorySlugSingular}`].general_category.url}
           level2CategoryName={articleData[`category_${categorySlug}`]?.name || articleData[`level_2_${categorySlugSingular}`]?.[`category_${categorySlugSingular}`].name || articleData[`level_3_${categorySlugSingular}`]?.[`level_2_${categorySlugSingular}`][`category_${categorySlugSingular}`].name || articleData[`level_4_${categorySlugSingular}`]?.[`level_3_${categorySlugSingular}`][`level_2_${categorySlugSingular}`][`category_${categorySlugSingular}`].name}
@@ -64,29 +63,9 @@ const Level6Page = ({ locale, data, categoriesMenuData, categorySlug }) => {
 
 export const getServerSideProps = async ({ locale, params, preview }) => {
   const categoriesMenuData = await getMainPageData(locale, preview);
+  const data = await getArticle(locale, params.page, `${locale === "en" ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}/${params.level4}/${params.level5}/${params.level6}`, preview);
 
-  const data = await getArticle(locale, params.page, `${locale === "en"  ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}/${params.level4}/${params.level5}/${params.level6}`, preview);
-  // let data = null;
-  //   if (localeData?.data?.length === 0 && ((params.page === "mobile" && locale === "de") || locale === "zh")) {
-  //     const englishArticleData = await getArticle("en", params.page, `/${params.page}/${params.level2}/${params.level3}/${params.level4}/${params.level5}/${params.level6}`);
-  //     if (englishArticleData?.data?.length > 0) {
-  //       await translateText(englishArticleData.data[0].id, `article-${params.page === "docs" ? "docs" : `${params.page}`}`, locale);
-  //       data = await getArticle(locale, params.page, `${locale === "en"  ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}/${params.level4}/${params.level5}/${params.level6}`);
-  //     }
-  //   } else {
-  //     data = localeData;
-  //   }
-
-  const disallowedLocales = ["es", "pt-BR"];
-
-  if (disallowedLocales.includes(locale)) {
-    return {
-      redirect: {
-        destination: `/${params.page}/${params.level2}/${params.level3}/${params.level4}/${params.level5}/${params.level6}`,
-        permanent: false,
-      },
-    };
-  } else if (!data?.data?.length) {
+  if (!data?.data?.length) {
     return { notFound: true };
   }
 

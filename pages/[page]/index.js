@@ -58,16 +58,8 @@ export const getServerSideProps = async ({ locale, params, preview }) => {
   const categoriesMenuData = await getCategoriesMenu(locale, preview);
   const fullMenuData = await getMainPageData(locale, preview);
   const data = await getLevel1Data(locale, params.page, preview);
-  const disallowedLocales = ["es", "pt-BR"];
 
-  if (disallowedLocales.includes(locale)) {
-    return {
-      redirect: {
-        destination: `/${params.page}`,
-        permanent: false,
-      },
-    };
-  } else if (!data || !data.data || data.error || data.data.length === 0) {
+  if (!data || !data.data || data.error || data.data.length === 0) {
     return { notFound: true };
   }
 

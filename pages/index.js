@@ -50,16 +50,6 @@ const MainPage = ({ locale, data }) => {
 
 export const getServerSideProps = async ({ locale, preview }) => {
   const data = await getMainPageData(locale, preview);
-  const disallowedLocales = ["es", "pt-BR"];
-
-  if (disallowedLocales.includes(locale)) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
-  }
 
   return {
     props: {

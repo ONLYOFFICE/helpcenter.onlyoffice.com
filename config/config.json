@@ -2,7 +2,7 @@
     "defaultLanguage": "en",
     "docEditorUrl": "config_docEditorUrlg",
     "api": {
-        "cms": "config_cms",
+        "cms": "https://cmshelpcenter.teamlab.info",
         "url": "",
         "timeout": "30000"
     },

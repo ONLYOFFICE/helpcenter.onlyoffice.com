@@ -127,16 +127,8 @@ export const getServerSideProps = async ({ locale, params, req, res, preview }) 
   const pathUrl = `${locale === "en" ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}`;
   const data = await getLevel3Data(locale, params.page, pathUrl, preview);  
   const fullMenuData = await getMainPageData(locale, preview);
-  const disallowedLocales = ["es", "pt-BR"];
-
-  if (disallowedLocales.includes(locale)) {
-    return {
-      redirect: {
-        destination: `/${params.page}/${params.level2}/${params.level3}`,
-        permanent: false,
-      },
-    };
-  } else if (!data?.data?.length) {
+  
+  if (!data?.data?.length) {
     return { notFound: true };
   }
 
