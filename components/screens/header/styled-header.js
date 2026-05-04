@@ -185,7 +185,7 @@ const StyledHeader = styled.div`
     display: flex;
     border-bottom: 1px solid transparent;
     padding: 27px 16px 26px;
-    font-size: ${(props) => (props.$locale === "de" ? "12px" : "13px")};
+    font-size: 12px;
     font-weight: 600;
     line-height: 18px;
     letter-spacing: 0.04em;
