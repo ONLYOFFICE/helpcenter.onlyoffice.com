@@ -88,7 +88,7 @@ export default function AlgoliaAsk({ t, locale, $isLeftMenu, className }) {
     if (!isSidepanelOpen) return;
 
     const timeout = setTimeout(() => {
-      const closeBtn = document.querySelector(".DocSearch-Sidepanel-CloseButton");
+      const closeBtn = document.querySelector(".DocSearch-Sidepanel-Action-close");
       if (closeBtn) {
         const handler = () => setIsSidepanelOpen(false);
         closeBtn.addEventListener("click", handler);

@@ -14,6 +14,7 @@ const StyledWrapperContent = styled.div`
     width: 100%;
     max-width: 864px;
     color: ${globalColors.gray};
+    background-color: #fff;
     
     @media ${device.laptop} {
       padding: 32px 0 64px;
