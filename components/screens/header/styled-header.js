@@ -196,7 +196,7 @@ const StyledHeader = styled.div`
       color 0.3s;
 
     @media ${device.laptopM} {
-      font-size: ${(props) => (props.$locale === "de" ? "11px" : "13px")};
+      font-size: 11px;
     }
 
     &:after {

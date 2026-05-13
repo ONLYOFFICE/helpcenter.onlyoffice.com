@@ -62,8 +62,8 @@ const Level6Page = ({ locale, data, categoriesMenuData, categorySlug }) => {
 };
 
 export const getServerSideProps = async ({ locale, params, preview }) => {
-  const categoriesMenuData = await getMainPageData(locale, preview);
-  const data = await getArticle(locale, params.page, `${locale === "en" ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}/${params.level4}/${params.level5}/${params.level6}`, preview);
+  const categoriesMenuData = await getCategoriesMenu(locale, preview);
+  const data = await getArticle(locale, params.page, `${locale === "en"  ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}/${params.level4}/${params.level5}/${params.level6}`, preview);
 
   if (!data?.data?.length) {
     return { notFound: true };
