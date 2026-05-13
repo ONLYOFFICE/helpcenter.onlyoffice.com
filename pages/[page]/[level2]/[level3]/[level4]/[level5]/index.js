@@ -2,7 +2,7 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
 import getArticle from "@lib/strapi/getArticle";
-import getMainPageData from "@lib/strapi/getMainPageData";
+import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
 import Layout from "@components/layout";
 import HeadSEO from "@components/screens/head";
 import Header from "@components/screens/header";
