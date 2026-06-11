@@ -47,12 +47,12 @@ const DropdownMenu = ({ item }) => {
         (a) => !a.url?.includes("-docspace") &&
                !a.url?.includes("zapier") &&
                !a.url?.includes("zoom")
-    );
+    ).sort((a, b) => (a.name || a.title).localeCompare(b.name || b.title));
     const docspaceArticles = articles.filter(
         (a) => a.url?.includes("-docspace") ||
                a.url?.includes("zapier") ||
                a.url?.includes("zoom")
-    );
+    ).sort((a, b) => (a.name || a.title).localeCompare(b.name || b.title));
 
     const CHUNK_SIZE = 9;
 
