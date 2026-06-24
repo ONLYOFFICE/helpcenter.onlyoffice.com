@@ -17,7 +17,7 @@
     "jquery": "^3.7.1",
     "next": "^15.5.11",
     "next-i18next": "^15.4.3",
-    "onlyoffice-react-ui-kit": "ONLYOFFICE/onlyoffice-react-ui-kit#21042d933603e0c7ffa304e7c0022011e8d76714",
+    "onlyoffice-react-ui-kit": "ONLYOFFICE/onlyoffice-react-ui-kit#7540f0b82489f6fdfcda2a9082f82f055fd0e185",
     "prop-types": "^15.7.2",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
