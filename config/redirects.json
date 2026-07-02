@@ -12150,5 +12150,17 @@
   "/userguides/documents-share-documents.aspx": {
     "destination": "/workspace/userguides/documents-share-documents.aspx#sharingwithindividualusersorgroups_block",
     "permanent": true
+  },
+  "/docs/installation/docs-community-configuring.aspx": {
+    "destination": "https://api.onlyoffice.com/docs/docs-api/get-started/configuration/server-config/",
+    "permanent": true
+  },
+  "/docs/installation/docs-enterprise-configuring.aspx": {
+    "destination": "https://api.onlyoffice.com/docs/docs-api/get-started/configuration/server-config/",
+    "permanent": true
+  },
+  "/docs/installation/docs-developer-configuring.aspx": {
+    "destination": "https://api.onlyoffice.com/docs/docs-api/get-started/configuration/server-config/",
+    "permanent": true
   }
 }
