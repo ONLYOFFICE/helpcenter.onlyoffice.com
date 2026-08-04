@@ -47,6 +47,7 @@ const ArticleContent = ({
   const breadcrumbsRef = useRef(null);
   const headingRef = useRef(null);
   const tagsRef = useRef(null);
+  const pageActionsRef = useRef(null);
 
   const [modalActive, setModalActive] = useState(false);
   const [imageModalActive, setImageModalActive] = useState(false);
@@ -57,6 +58,7 @@ const ArticleContent = ({
   const [hasMoreTags, setHasMoreTags] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const [videoOffsetTrigger, setVideoOffsetTrigger] = useState(0);
+  const [isPageActionsMenuOpen, setIsPageActionsMenuOpen] = useState(false);
   const cookies = new Cookies(null, { path: "/" });
 
   useEffect(() => {
@@ -133,6 +135,71 @@ const ArticleContent = ({
     };
   }, [videoOffsetTrigger, pageDescription]);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (pageActionsRef.current && !pageActionsRef.current.contains(event.target)) {
+        setIsPageActionsMenuOpen(false);
+      }
+    };
+
+    if (isPageActionsMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isPageActionsMenuOpen]);
+
+  const toggleAskMenu = () => setIsPageActionsMenuOpen((prev) => !prev);
+
+  const openSidepanelWithQuery = (query) => {
+    const submitToTextarea = () => {
+      const textarea = document.querySelector(".DocSearch-Sidepanel-Prompt--textarea");
+      if (!textarea) return false;
+
+      const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, "value").set;
+      nativeSetter.call(textarea, query);
+      textarea.dispatchEvent(new Event("input", { bubbles: true }));
+      textarea.focus();
+
+      setTimeout(() => {
+        document.querySelector(".DocSearch-Sidepanel-Prompt--submit")?.click();
+      }, 100);
+      return true;
+    };
+
+    if (!document.querySelector(".DocSearch-Sidepanel-Container.is-open")) {
+      document.querySelector(".DocSearch-SidepanelButton.floating")?.click();
+    }
+
+    if (!submitToTextarea()) {
+      const observer = new MutationObserver(() => {
+        if (submitToTextarea()) observer.disconnect();
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+      setTimeout(() => observer.disconnect(), 3000);
+    }
+
+    setIsPageActionsMenuOpen(false);
+  };
+
+  const handleCopyPage = async () => {
+    setIsPageActionsMenuOpen(false);
+
+    try {
+      await navigator.clipboard.writeText(containerRef.current?.innerText || "");
+    } catch (error) {
+      console.error("Failed to copy page:", error);
+    }
+  };
+
+  const handleOpenInAI = (baseUrl) => {
+    const prompt = t("OpenInAIPrompt", { url: window.location.href });
+    window.open(`${baseUrl}?q=${encodeURIComponent(prompt)}`, "_blank", "noopener,noreferrer");
+    setIsPageActionsMenuOpen(false);
+  };
+
   const handleTagModal = async (tagName, preview) => {
     const data = await getTagsArticle(locale, tagName, 4, 1, preview);
 
@@ -188,7 +255,49 @@ const ArticleContent = ({
             pageName={pageName}
           />
           {isAIGenerated && <AiChips />}
-          <Heading ref={headingRef} className="wrapper-title" level={1}>{pageName}</Heading>
+          <div className="header-wrapper">
+            <Heading ref={headingRef} className="wrapper-title" level={1}>{pageName}</Heading>
+            <div
+              id="page_actions"
+              className={`dd-ask-button${isPageActionsMenuOpen ? " open" : ""}`}
+              ref={pageActionsRef}
+            >
+              <button type="button" className="ask-button" onClick={() => openSidepanelWithQuery(t("AskQuestionsPrompt", { title: pageName, url: window.location.href }))}>
+                <img src="https://static-helpcenter.onlyoffice.com/images/icons/ai-icon.react.svg" alt="" />
+                <span className="label">{t("AskAIPlaceholder")}</span>
+              </button>
+              <button
+                type="button"
+                className="ask-button toggle"
+                aria-haspopup="menu"
+                aria-expanded={isPageActionsMenuOpen}
+                aria-controls="split-menu"
+                onClick={toggleAskMenu}
+              >
+                <img src="https://static-helpcenter.onlyoffice.com/images/icons/arrow-down.react.svg" alt="" className="arrow-icon" />
+              </button>
+              {isPageActionsMenuOpen && (
+                <div id="split-menu" role="menu" className="split-menu">
+                  <button role="menuitem" className="menu-item" onClick={() => openSidepanelWithQuery(t("SummarizePagePrompt", { title: pageName, url: window.location.href }))}>
+                    <img src="https://static-helpcenter.onlyoffice.com/images/icons/ai-icon.react.svg" alt="" />
+                    <span className="label">{t("SummarizePage")}</span>
+                  </button>
+                  <button role="menuitem" className="menu-item" onClick={handleCopyPage}>
+                    <img src="https://static-helpcenter.onlyoffice.com/images/icons/copy.react.svg" alt="" />
+                    <span className="label">{t("CopyPage")}</span>
+                  </button>
+                  <button role="menuitem" className="menu-item" onClick={() => handleOpenInAI("https://claude.ai/new")}>
+                    <img src="https://static-helpcenter.onlyoffice.com/images/icons/claude.react.svg" alt="" />
+                    <span className="label">{t("OpenInClaude")}</span>
+                  </button>
+                  <button role="menuitem" className="menu-item" onClick={() => handleOpenInAI("https://chat.openai.com/")}>
+                    <img src="https://static-helpcenter.onlyoffice.com/images/icons/chatgpt.react.svg" alt="" />
+                    <span className="label">{t("OpenInChatGPT")}</span>
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
           {tags?.length > 0 &&
             <ul ref={tagsRef} className="tags">
               {tags?.map((item, index) => (
@@ -204,7 +313,7 @@ const ArticleContent = ({
               <ConnectorsVideo t={t} videos={videos} setVideoOffsetTrigger={setVideoOffsetTrigger} />
             }
           </div>
-          <DownloadArea className="download-area" slug={categorySlug} subcat={level2CategoryName} locale={locale}/>
+          <DownloadArea className="download-area" slug={categorySlug} subcat={level2CategoryName} locale={locale} />
           <ArticlePopup
             t={t}
             locale={locale}
