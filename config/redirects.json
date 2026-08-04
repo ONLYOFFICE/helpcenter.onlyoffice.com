@@ -12162,5 +12162,13 @@
   "/docs/installation/docs-developer-configuring.aspx": {
     "destination": "https://api.onlyoffice.com/docs/docs-api/get-started/configuration/server-config/",
     "permanent": true
+  },
+  "/docs-install-fonts-docker.aspx": {
+    "destination": "/docs/installation/docs-install-fonts-docker.aspx",
+    "permanent": true
+  },
+  "/docs-install-fonts-linux.aspx": {
+    "destination": "/docs/installation/docs-community-install-fonts-linux.aspx",
+    "permanent": true
   }
 }
