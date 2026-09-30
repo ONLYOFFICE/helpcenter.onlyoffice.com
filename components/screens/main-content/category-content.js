@@ -9,7 +9,7 @@ import Heading from "@components/common/heading";
 import Masonry from "react-masonry-css";
 import CategoryGuidesCell from "./sub-components/guides-cell/category-guides-cell";
 
-const Level1CategoryContent = ({ t, locale, categoriesMenuData, categoryName, categoryImg, data, categorySlug, leftMenuIsOpen, setLeftMenuIsOpen }) => {
+const Level1CategoryContent = ({ t, locale, categoriesMenuData, categoryName, categoryImg, data, categorySlug, leftMenuIsOpen, setLeftMenuIsOpen, preview }) => {
   const [leftMenuData, setLeftMenuData] = useState(categoriesMenuData);
   const [showLeftMenu, setShowLeftMenu] = useState(false);
   const topData = data.filter(item => topSlugIdData.includes(item.slug_id));
@@ -35,7 +35,7 @@ const Level1CategoryContent = ({ t, locale, categoriesMenuData, categoryName, ca
 
   useEffect(() => {
     const loadData = async () => {
-      const data = await getLeftMenu(locale);
+      const data = await getLeftMenu(locale, undefined, preview);
       setLeftMenuData(data);
     };
 

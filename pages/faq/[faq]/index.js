@@ -10,7 +10,7 @@ import Header from "@components/screens/header";
 import Footer from "@components/screens/footer";
 import FaqContent from "@components/screens/faq-content";
 
-const FaqPage = ({ locale, menuData, faqData, fullMenuData }) => {
+const FaqPage = ({ locale, menuData, faqData, fullMenuData, preview }) => {
   const { t } = useTranslation();
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
   const [leftMenuData, setLeftMenuData] = useState(menuData);
@@ -20,8 +20,9 @@ const FaqPage = ({ locale, menuData, faqData, fullMenuData }) => {
   const seoDescription = seo_description ? seo_description : t("ONLYOFFICEMeta");
 
   useEffect(() => {
+    setLeftMenuData(menuData);
     const loadData = async () => {
-      const data = await getLeftMenu(locale);
+      const data = await getLeftMenu(locale, undefined, preview);
       setLeftMenuData(data);
     };
 

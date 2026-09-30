@@ -10,14 +10,15 @@ import Footer from "@components/screens/footer";
 import HeadSEO from "@components/screens/head";
 import TagsContent from "@components/screens/tags-content";
 
-const TagsPage = ({ locale, menuData, tagsData, fullMenuData }) => {
+const TagsPage = ({ locale, menuData, tagsData, fullMenuData, preview }) => {
   const { t } = useTranslation();
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
   const [leftMenuData, setLeftMenuData] = useState(menuData);
 
   useEffect(() => {
+    setLeftMenuData(menuData);
     const loadData = async () => {
-      const data = await getLeftMenu(locale);
+      const data = await getLeftMenu(locale, undefined, preview);
       setLeftMenuData(data);
     };
 

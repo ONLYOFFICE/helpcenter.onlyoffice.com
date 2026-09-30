@@ -10,7 +10,7 @@ import Header from "@components/screens/header";
 import CategoryContent from "@components/screens/main-content/category-content";
 import Footer from "@components/screens/footer";
 
-const Level1Page = ({ locale, categoriesMenuData, data, fullMenuData }) => {
+const Level1Page = ({ locale, categoriesMenuData, data, fullMenuData, preview }) => {
   const { t } = useTranslation();
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
 
@@ -37,6 +37,7 @@ const Level1Page = ({ locale, categoriesMenuData, data, fullMenuData }) => {
       <Layout.SectionMain>
         <CategoryContent
           t={t}
+          preview={preview}
           locale={locale}
           categoriesMenuData={categoriesMenuData}
           categoryName={name}

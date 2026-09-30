@@ -10,15 +10,16 @@ import Footer from "@components/screens/footer";
 import HeadSEO from "@components/screens/head";
 import ArticleContent from "@components/screens/article-content";
 
-const FunctionsPage = ({ locale, menuData, functions, fullMenuData }) => {
+const FunctionsPage = ({ locale, menuData, functions, fullMenuData, preview }) => {
   const { t } = useTranslation();
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
   const [leftMenuData, setLeftMenuData] = useState(menuData);
   const { title, content, tags, videos } = functions.data[0];
 
   useEffect(() => {
+    setLeftMenuData(menuData);
     const loadData = async () => {
-      const data = await getLeftMenu(locale);
+      const data = await getLeftMenu(locale, undefined, preview);
       setLeftMenuData(data);
     };
 

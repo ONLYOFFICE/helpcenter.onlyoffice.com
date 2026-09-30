@@ -10272,15 +10272,15 @@
     "permanent": true
   },
   "/docspace/installation/community/hosted-solutions.aspx": {
-    "destination": "/docspace/installation/community/hosted-solutions",
+    "destination": "/docspace/installation/community#hosted_solutions_block",
     "permanent": true
   },
   "/docspace/installation/enterprise/hosted-solutions.aspx": {
-    "destination": "/docspace/installation/enterprise/hosted-solutions",
+    "destination": "/docspace/installation/enterprise#hosted_solutions_block",
     "permanent": true
   },
   "/docspace/installation/developer/hosted-solutions.aspx": {
-    "destination": "/docspace/installation/developer/hosted-solutions",
+    "destination": "/docspace/installation/developer#hosted_solutions_block",
     "permanent": true
   },
   "/mobile/ios/documents/document-editor.aspx": {
@@ -11985,18 +11985,6 @@
   },
   "/docs/userguides/plugins/plugin-manager.aspx": {
     "destination": "/docs/userguides/plugins/PluginManager.aspx",
-    "permanent": true
-  },
-  "/docspace/installation/community/hosted-solutions": {
-    "destination": "/docspace/installation/community#hosted_solutions_block",
-    "permanent": true
-  },
-  "/docspace/installation/developer/hosted-solutions": {
-    "destination": "/docspace/installation/developer#hosted_solutions_block",
-    "permanent": true
-  },
-  "/docspace/installation/enterprise/hosted-solutions": {
-    "destination": "/docspace/installation/enterprise#hosted_solutions_block",
     "permanent": true
   },
   "/userguides/calendar-add-all-day-event.aspx": {

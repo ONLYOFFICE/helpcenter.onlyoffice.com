@@ -9,7 +9,7 @@ import MainContent from "@components/screens/main-content";
 import Accordion from "@components/screens/common/accordion";
 import Footer from "@components/screens/footer";
 
-const MainPage = ({ locale, data }) => {
+const MainPage = ({ locale, data, preview }) => {
   const { t } = useTranslation();
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
 
@@ -34,6 +34,7 @@ const MainPage = ({ locale, data }) => {
       <Layout.SectionMain>
         <MainContent
           t={t}
+          preview={preview}
           locale={locale}
           data={data}
           leftMenuIsOpen={leftMenuIsOpen}
