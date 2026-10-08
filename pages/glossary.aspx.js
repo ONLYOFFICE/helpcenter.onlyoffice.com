@@ -10,14 +10,15 @@ import Footer from "@components/screens/footer";
 import HeadSEO from "@components/screens/head";
 import GlossaryContent from "@components/screens/glossary-content";
 
-const GlossaryPage = ({ locale, menuData, glossaryData, fullMenuData }) => {
+const GlossaryPage = ({ locale, menuData, glossaryData, fullMenuData, preview }) => {
   const { t } = useTranslation();
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
   const [leftMenuData, setLeftMenuData] = useState(menuData);
 
   useEffect(() => {
+    setLeftMenuData(menuData);
     const loadData = async () => {
-      const data = await getLeftMenu(locale);
+      const data = await getLeftMenu(locale, undefined, preview);
       setLeftMenuData(data);
     };
 

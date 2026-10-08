@@ -13,7 +13,7 @@ import ArticleContent from "@components/screens/article-content";
 import SubCategoryContent from "@components/screens/subcategory-content";
 import Footer from "@components/screens/footer";
 
-const Level4Page = ({ locale, data, menuData, categorySlug, fullMenuData }) => {
+const Level4Page = ({ locale, data, menuData, categorySlug, fullMenuData, preview }) => {
   const { t } = useTranslation();
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
   const [leftMenuData, setLeftMenuData] = useState(menuData);
@@ -22,9 +22,10 @@ const Level4Page = ({ locale, data, menuData, categorySlug, fullMenuData }) => {
   const categorySlugPlural = categorySlug === "docs" ? "docs" : `${categorySlug}s`;
   const dataAttr = data.data?.[0];
   useEffect(() => {
+    setLeftMenuData(menuData);
     if (!dataAttr.article) {
       const loadData = async () => {
-        const data = await getLeftMenu(locale);
+        const data = await getLeftMenu(locale, undefined, preview);
         setLeftMenuData(data);
       };
   

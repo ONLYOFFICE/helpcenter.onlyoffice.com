@@ -8,13 +8,13 @@ import GuidesCell from "./sub-components/guides-cell";
 import Masonry from "react-masonry-css";
 import Heading from "@components/common/heading";
 
-const MainContent = ({ t, locale, data, leftMenuIsOpen, setLeftMenuIsOpen }) => {
+const MainContent = ({ t, locale, data, leftMenuIsOpen, setLeftMenuIsOpen, preview }) => {
   const [leftMenuData, setLeftMenuData] = useState(data);
   const [showLeftMenu, setShowLeftMenu] = useState(false);
 
   useEffect(() => {
     const loadData = async () => {
-      const data = await getLeftMenu(locale);
+      const data = await getLeftMenu(locale, undefined, preview);
       setLeftMenuData(data);
     };
 

@@ -81,7 +81,10 @@ const ArticleContent = ({
           const button = document.createElement("button");
           button.className = "copy-code-btn";
           button.addEventListener("click", () => {
-            navigator.clipboard.writeText(element.textContent)
+            const text = element.textContent
+              .replace(/[  ]/g, " ")
+              .replace(/[​﻿]/g, "");
+            navigator.clipboard.writeText(text);
 
             const range = document.createRange();
             range.selectNodeContents(element);

@@ -24,9 +24,10 @@ const Level3Page = ({ locale, menuData, data, categorySlug, preview, fullMenuDat
   const level4DataLength = dataAttr?.[`level_3_${categorySlugPlural}`]?.map(item => item[`level_4_${categorySlugPlural}`]?.length);
 
   useEffect(() => {
+    setLeftMenuData(menuData);
     if (!dataAttr.article) {
       const loadData = async () => {
-        const data = await getLeftMenu(locale);
+        const data = await getLeftMenu(locale, undefined, preview);
         setLeftMenuData(data);
       };
   
