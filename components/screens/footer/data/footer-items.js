@@ -10,7 +10,7 @@ const Items = [
       },
       {
         localize: true,
-        label: "DocSpace",
+        label: "Apps",
         href: "/download-docspace",
       },
       {

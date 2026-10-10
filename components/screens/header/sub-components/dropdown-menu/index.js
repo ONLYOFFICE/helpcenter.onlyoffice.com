@@ -17,7 +17,7 @@ const desktopGroupsConfigMobile = [
     ["connecting_to_cloud"]
 ];
 
-const DropdownMenu = ({ item }) => {
+const DropdownMenu = ({ t, item }) => {
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
@@ -67,14 +67,14 @@ const DropdownMenu = ({ item }) => {
         <StyledDropdownMenu breakpointCols={totalCols} className="nav-submenu integration">
             {docsChunks.map((chunk, i) => (
                 <Column key={`docs-${i}`} style={{ paddingTop: i !== 0 ? '28px' : '0' }}>
-                    {i === 0 && <ColTitle as="span">Connectors for Docs</ColTitle>}
+                    {i === 0 && <ColTitle as="span">{t("ConnectorsForDocs")}</ColTitle>}
                     {chunk.map((link) => (
                         <ColLink key={link.id} href={link.url}>{link.title}</ColLink>
                     ))}
                 </Column>
             ))}
             <Column>
-                <ColTitle as="span">Connectors for DocSpace</ColTitle>
+                <ColTitle as="span">{t("ConnectorsForApps")}</ColTitle>
                 {docspaceArticles.map((link) => (
                     <ColLink key={link.id} href={link.url}>{link.title}</ColLink>
                 ))}
