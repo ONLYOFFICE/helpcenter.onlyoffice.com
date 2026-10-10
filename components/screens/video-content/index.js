@@ -14,7 +14,7 @@ const VideoContent = ({ t, locale, videoData, leftMenuIsOpen, setLeftMenuIsOpen 
   const contentRef = useRef(null);
   const leftMenuRef = useRef(null);
   const groupedVideos = {};
-  const order = ['Docs', 'Docspace', 'Workspace', 'Connectors', 'Desktop', 'Mobile'];
+  const order = ['Docs', 'Apps', 'Workspace', 'Connectors', 'Desktop', 'Mobile'];
 
   videoData.data.forEach(video => {
     Object.keys(video).forEach(key => {

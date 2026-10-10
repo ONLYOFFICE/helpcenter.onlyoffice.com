@@ -92,7 +92,7 @@ const Header = ({ t, locale, data, isMain, leftMenuIsOpen, setLeftMenuIsOpen }) 
                       {item.name}
                     </div>
                   )}
-                  {!menuMobile && openIndex === index && <DropdownMenu item={item} />}
+                  {!menuMobile && openIndex === index && <DropdownMenu t={t} item={item} />}
                 </li>
               ))}
           </ul>
