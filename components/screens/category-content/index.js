@@ -7,6 +7,7 @@ import { tableBuilder } from "@utils/helpers/TableBuilder/table-builder";
 import getTagsArticle from "@lib/strapi/getTagsArticle";
 import InternalLink from "@components/common/internal-link";
 import Heading from "@components/common/heading";
+import UpdateNotice from "@components/common/update-notice";
 import Tag from "@components/common/tag";
 import CategoryItem from "./sub-components/category-item";
 import LeftMenu from "@components/screens/common/left-menu";
@@ -104,6 +105,7 @@ const CategoryContent = ({
             pageName={pageName}
           />
           <Heading className="wrapper-title" level={1} label={pageName} />
+          <UpdateNotice categorySlug={categorySlug} />
           {tags?.data?.length > 0 &&
             <ul ref={tagsRef} className="tags">
               {tags?.data.map((item, index) => (

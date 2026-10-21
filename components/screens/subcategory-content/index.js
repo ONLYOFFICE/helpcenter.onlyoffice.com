@@ -5,6 +5,7 @@ import SubCategoryItem from "./sub-components/subcategory-item";
 import LeftMenu from "@components/screens/common/left-menu";
 import StyledWrapperContent from "@components/screens/common/wrapper-content/styled-wrapper-content";
 import Heading from "@components/common/heading";
+import UpdateNotice from "@components/common/update-notice";
 import Tag from "@components/common/tag";
 import InternalLink from "@components/common/internal-link";
 import Breadcrumbs from "@components/screens/common/breadcrumbs";
@@ -127,6 +128,7 @@ const SubCategoryContent = ({
             }
             {pageName}
           </Heading>
+          <UpdateNotice categorySlug={categorySlug} />
           {tags?.data?.length > 0 &&
             <ul ref={tagsRef} className="tags">
               {tags?.data.map((item, index) => (
