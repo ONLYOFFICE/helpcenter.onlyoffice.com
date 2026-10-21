@@ -15,6 +15,7 @@ import DownloadArea from "./sub-components/download-area";
 import ConnectorsVideo from "./sub-components/connectors-video";
 import ArticlePopup from "@components/screens/common/article-popup";
 import AiChips from "@components/common/ai-chips";
+import UpdateNotice from "@components/common/update-notice";
 import Cookies from "universal-cookie";
 import ScrollToTopButton from "@components/screens/common/scroll-to-top-button";
 import { handleFaqAccordionClick, handleImagePopupClick, handleTogglerClick, handleShortcutToggleClick, handleChangelogClick } from "@utils/handle-click-functions";
@@ -202,6 +203,7 @@ const ArticleContent = ({
             </ul>
           }
           <div ref={wrapperContentRef}>
+            <UpdateNotice categorySlug={categorySlug} />
             <StyledRawHtml onClick={handleClick} ref={containerRef}>{parse(pageDescription)}</StyledRawHtml>
             {videos && videos.length > 0 &&
               <ConnectorsVideo t={t} videos={videos} setVideoOffsetTrigger={setVideoOffsetTrigger} />
