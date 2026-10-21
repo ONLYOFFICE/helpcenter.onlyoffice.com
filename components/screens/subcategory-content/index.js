@@ -128,7 +128,7 @@ const SubCategoryContent = ({
             }
             {pageName}
           </Heading>
-          <UpdateNotice categorySlug={categorySlug} />
+          <UpdateNotice categorySlug={categorySlug} isSection />
           {tags?.data?.length > 0 &&
             <ul ref={tagsRef} className="tags">
               {tags?.data.map((item, index) => (
