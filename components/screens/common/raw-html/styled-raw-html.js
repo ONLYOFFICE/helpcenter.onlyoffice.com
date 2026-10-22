@@ -72,7 +72,11 @@ const StyledRawHtml = styled.div`
           top: 73px;
           border-bottom: 1px solid #d7d8dc;
           background: white;
-          z-index: 100;          
+          z-index: 100;
+
+          @media ${device.mobile} {
+            position: static;
+          }
         }
 
         td {            

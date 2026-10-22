@@ -85,8 +85,7 @@ const Level1CategoryContent = ({ t, locale, categoriesMenuData, categoryName, ca
         <div className="info-content category-content">
           <div className="info-content-header">
             <img className="info-content-icon" src={categoryImg} alt={categoryName} />
-            <Heading className="info-content-title" level={1} label={categoryName} />
-          </div>
+            <Heading className="info-content-title" level={1} label={categoryName} />          </div>
           <AlgoliaAsk t={t} locale={locale} />
         </div>
 
